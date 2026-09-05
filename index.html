@@ -75,10 +75,51 @@
       box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
     }
 
+    /* Фільтри */
+    .filter-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      min-width: 90px;
+    }
+
+    .pill-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .pill-btn:hover {
+      background: var(--border-subtle);
+      color: var(--text);
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
     .tabs {
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      margin-top: 4px;
     }
 
     .tab-btn {
@@ -104,7 +145,7 @@
       border-color: var(--text);
     }
 
-    /* Таблиця порівняння */
+    /* Таблиця */
     .table-wrapper {
       overflow-x: auto;
       background: var(--card-bg);
@@ -126,7 +167,6 @@
       min-width: 160px;
     }
 
-    /* Візуальні доріжки — розділювальні вертикальні лінії */
     table th:not(:first-child),
     table td:not(:first-child) {
       border-left: 1px solid var(--border-subtle);
@@ -144,8 +184,8 @@
     }
 
     th:first-child, td:first-child {
-      min-width: 140px;
-      width: 15%;
+      min-width: 150px;
+      width: 18%;
       background: #fbfcfd;
     }
 
@@ -153,7 +193,6 @@
       border-bottom: none;
     }
 
-    /* Бейджі рівнів у шапці */
     .th-badge {
       display: inline-block;
       padding: 4px 10px;
@@ -163,7 +202,6 @@
       border: 1px solid transparent;
     }
 
-    /* Кольорова диференціація колонок */
     .col-A1 .th-badge, .badge-A1 { background: var(--a1-bg); color: var(--a1-color); border-color: var(--a1-border); }
     .col-A2 .th-badge, .badge-A2 { background: var(--a2-bg); color: var(--a2-color); border-color: var(--a2-border); }
     .col-B1 .th-badge, .badge-B1 { background: var(--b1-bg); color: var(--b1-color); border-color: var(--b1-border); }
@@ -210,6 +248,29 @@
       border: 1px solid transparent;
     }
 
+    .pos-tag {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .cat-pill {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 5px;
+    }
+
     .audio-btn {
       background: none;
       border: none;
@@ -225,7 +286,6 @@
       opacity: 1;
     }
 
-    /* Картки окремого рівня */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -270,7 +330,21 @@
   <header>
     <h1>Німецький Словник Рівнів та Відтінків</h1>
     <div class="controls">
-      <input type="search" id="searchInput" class="search-bar" placeholder="Шукати значення, контекст або слово німецькою...">
+      <input type="search" id="searchInput" class="search-bar" placeholder="Шукати значення, частину мови, контекст або слово...">
+
+      <!-- Фільтр категорій -->
+      <div class="filter-row" id="categoryGroup">
+        <span class="filter-label">Категорія:</span>
+        <button class="pill-btn active" data-filter="all">Всі</button>
+      </div>
+
+      <!-- Фільтр частин мови -->
+      <div class="filter-row" id="posGroup">
+        <span class="filter-label">Частина мови:</span>
+        <button class="pill-btn active" data-filter="all">Всі</button>
+      </div>
+
+      <!-- Вкладки рівнів -->
       <nav class="tabs" id="tabsGroup">
         <button class="tab-btn active" data-view="all">Всі рівні (Порівняння)</button>
         <button class="tab-btn" data-view="A1">A1</button>
@@ -286,79 +360,34 @@
 </div>
 
 <script>
-  // База даних повністю збережена
   const wordsDB = [
     {
+      category: "Спілкування",
+      pos: "дієслово",
       concept: "сказати / висловити",
       words: {
-        A1: { 
-          de: "sagen", 
-          meaning: "сказати, промовити (найпростіша пряма дія)", 
-          context: "базове", 
-          ex: "Er sagt die Wahrheit." 
-        },
-        A2: { 
-          de: "erzählen", 
-          meaning: "розповідати (історію, досвід, деталі)", 
-          context: "оповідне", 
-          ex: "Sie erzählt eine spannende Geschichte." 
-        },
-        B1: { 
-          de: "mitteilen", 
-          meaning: "повідомити інформацію, сповістити офіційно", 
-          context: "ділове / офіційне", 
-          ex: "Ich teile Ihnen die Details per E-Mail mit." 
-        },
-        B2: { 
-          de: "behaupten", 
-          meaning: "стверджувати (часто без доказів або суперечливо)", 
-          context: "дискусія", 
-          ex: "Er behauptet, nichts davon gewusst zu haben." 
-        },
-        C1: { 
-          de: "äußern", 
-          meaning: "висловлювати (позицію, думку, сумнів, критику)", 
-          context: "формальне / публічне", 
-          ex: "Der Minister äußerte ernsthafte Bedenken." 
-        }
+        A1: { de: "sagen", meaning: "сказати, промовити (найпростіша пряма дія)", context: "базове", ex: "Er sagt die Wahrheit." },
+        A2: { de: "erzählen", meaning: "розповідати (історію, досвід, деталі)", context: "оповідне", ex: "Sie erzählt eine spannende Geschichte." },
+        B1: { de: "mitteilen", meaning: "повідомити інформацію, сповістити офіційно", context: "ділове / офіційне", ex: "Ich teile Ihnen die Details per E-Mail mit." },
+        B2: { de: "behaupten", meaning: "стверджувати (часто без доказів або суперечливо)", context: "дискусія", ex: "Er behauptet, nichts davon gewusst zu haben." },
+        C1: { de: "äußern", meaning: "висловлювати (позицію, думку, сумнів, критику)", context: "формальне / публічне", ex: "Der Minister äußerte ernsthafte Bedenken." }
       }
     },
     {
+      category: "Мислення",
+      pos: "дієслово",
       concept: "розуміти / осягати",
       words: {
-        A1: { 
-          de: "verstehen", 
-          meaning: "розуміти слова або зміст речення", 
-          context: "базове", 
-          ex: "Ich verstehe die Frage nicht." 
-        },
-        A2: { 
-          de: "begreifen", 
-          meaning: "осягати розумом суть складної речі чи ідеї", 
-          context: "глибоке розуміння", 
-          ex: "Er begreift die mathematische Formel schnell." 
-        },
-        B1: { 
-          de: "nachvollziehen", 
-          meaning: "розуміти чужі мотиви або логіку (поставити себе на місце іншого)", 
-          context: "емпатія / логіка", 
-          ex: "Ich kann deine Entscheidung gut nachvollziehen." 
-        },
-        B2: { 
-          de: "erfassen", 
-          meaning: "швидко охопити поглядом або розумом цілу картину", 
-          context: "аналітичне", 
-          ex: "Sie erfasste die Situation auf einen Blick." 
-        },
-        C1: { 
-          de: "durchschauen", 
-          meaning: "бачити наскрізь (розкрити чийсь прихований намір чи обман)", 
-          context: "психологічне / критичне", 
-          ex: "Er hat ihre Absichten sofort durchschaut." 
-        }
+        A1: { de: "verstehen", meaning: "розуміти слова або зміст речення", context: "базове", ex: "Ich verstehe die Frage nicht." },
+        A2: { de: "begreifen", meaning: "осягати розумом суть складної речі чи ідеї", context: "глибоке розуміння", ex: "Er begreift die mathematische Formel schnell." },
+        B1: { de: "nachvollziehen", meaning: "розуміти чужі мотиви або логіку (поставити себе на місце іншого)", context: "емпатія / логіка", ex: "Ich kann deine Entscheidung gut nachvollziehen." },
+        B2: { de: "erfassen", meaning: "швидко охопити поглядом або розумом цілу картину", context: "аналітичне", ex: "Sie erfasste die Situation auf einen Blick." },
+        C1: { de: "durchschauen", meaning: "бачити наскрізь (розкрити чийсь прихований намір чи обман)", context: "психологічне / критичне", ex: "Er hat ihre Absichten sofort durchschaut." }
       }
     },
     {
+      category: "Діяльність",
+      pos: "дієслово",
       concept: "робити / виконувати",
       words: {
         A1: { de: "machen", context: "базове", meaning: "найпростіша універсальна дія", ex: "Was machst du heute Abend?" },
@@ -369,6 +398,8 @@
       }
     },
     {
+      category: "Соціальне",
+      pos: "дієслово",
       concept: "допомагати / підтримувати",
       words: {
         A1: { de: "helfen", meaning: "надати звичайну допомогу", context: "базове", ex: "Kannst du mir bitte beim Kochen helfen?" },
@@ -379,6 +410,8 @@
       }
     },
     {
+      category: "Спілкування",
+      pos: "дієслово",
       concept: "запитувати / з'ясовувати",
       words: {
         A1: { de: "fragen", meaning: "задати просте питання", context: "базове", ex: "" },
@@ -387,14 +420,52 @@
         B2: { de: "Rücksprache halten", meaning: "узгоджувати питання, радитися з колегою або керівником", context: "корпоративне", ex: "" },
         C1: { de: "hinterfragen", meaning: "ставити під сумнів, глибинно перевіряти причини явища", context: "аналітичне / критичне", ex: "" }
       }
-    }
+    },
+    {
+      category: "",
+      pos: "дієслово",
+      concept: "",
+      words: {
+        A1: { de: "", meaning: "", context: "", ex: "" },
+        A2: { de: "", meaning: "", context: "", ex: "" },
+        B1: { de: "", meaning: "", context: "", ex: "" },
+        B2: { de: "", meaning: "", context: "", ex: "" },
+        C1: { de: "", meaning: "", context: "", ex: "" }
+      }
+    },
   ];
 
   let activeView = "all";
+  let activeCategory = "all";
+  let activePos = "all";
   const levels = ["A1", "A2", "B1", "B2", "C1"];
+  
   const searchInput = document.getElementById("searchInput");
   const tabsGroup = document.getElementById("tabsGroup");
+  const categoryGroup = document.getElementById("categoryGroup");
+  const posGroup = document.getElementById("posGroup");
   const appRoot = document.getElementById("appRoot");
+
+  // Автоматична генерація фільтрів категорій і частин мови
+  function initDynamicFilters() {
+    const categories = Array.from(new Set(wordsDB.map(item => item.category).filter(Boolean)));
+    categories.forEach(cat => {
+      const btn = document.createElement("button");
+      btn.className = "pill-btn";
+      btn.dataset.filter = cat;
+      btn.innerText = cat;
+      categoryGroup.appendChild(btn);
+    });
+
+    const partsOfSpeech = Array.from(new Set(wordsDB.map(item => item.pos).filter(Boolean)));
+    partsOfSpeech.forEach(pos => {
+      const btn = document.createElement("button");
+      btn.className = "pill-btn";
+      btn.dataset.filter = pos;
+      btn.innerText = pos;
+      posGroup.appendChild(btn);
+    });
+  }
 
   function speak(text) {
     if (!('speechSynthesis' in window)) return;
@@ -406,10 +477,26 @@
 
   function getFilteredData() {
     const q = searchInput.value.trim().toLowerCase();
-    if (!q) return wordsDB;
 
     return wordsDB.filter(item => {
+      if (!item.concept) return false;
+
+      // Фільтр за категорією
+      if (activeCategory !== "all" && item.category !== activeCategory) {
+        return false;
+      }
+
+      // Фільтр за частиною мови
+      if (activePos !== "all" && item.pos !== activePos) {
+        return false;
+      }
+
+      // Пошуковий рядок
+      if (!q) return true;
+
       const matchConcept = item.concept.toLowerCase().includes(q);
+      const matchCat = item.category && item.category.toLowerCase().includes(q);
+      const matchPos = item.pos && item.pos.toLowerCase().includes(q);
       const matchWord = levels.some(lvl => {
         const entry = item.words[lvl];
         return entry && (
@@ -419,7 +506,8 @@
           entry.ex.toLowerCase().includes(q)
         );
       });
-      return matchConcept || matchWord;
+
+      return matchConcept || matchCat || matchPos || matchWord;
     });
   }
 
@@ -439,8 +527,16 @@
     `;
 
     data.forEach(item => {
-      if (!item.concept) return; // захист від порожніх шаблонів
-      html += `<tr><td><strong>${item.concept}</strong></td>`;
+      html += `
+        <tr>
+          <td>
+            <div>
+              <strong>${item.concept}</strong>
+              ${item.pos ? `<span class="pos-tag">${item.pos}</span>` : ''}
+            </div>
+            ${item.category ? `<span class="cat-pill">🏷️ ${item.category}</span>` : ''}
+          </td>
+      `;
       levels.forEach(lvl => {
         const word = item.words[lvl];
         if (word && word.de) {
@@ -484,7 +580,11 @@
             <button class="audio-btn" onclick="speak('${word.de}')" title="Слухати">🔊</button>
           </div>
           ${word.meaning ? `<div><strong>Відтінок:</strong> ${word.meaning}</div>` : ''}
-          <div><strong>Тема:</strong> ${item.concept}</div>
+          <div>
+            <strong>Тема:</strong> ${item.concept} 
+            ${item.pos ? `<span class="pos-tag">${item.pos}</span>` : ''}
+            ${item.category ? `(🏷️ ${item.category})` : ''}
+          </div>
           ${word.ex ? `<div class="example">„${word.ex}“</div>` : ''}
         </div>
       `;
@@ -508,6 +608,23 @@
     render();
   });
 
+  categoryGroup.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("pill-btn")) return;
+    categoryGroup.querySelectorAll(".pill-btn").forEach(btn => btn.classList.remove("active"));
+    e.target.classList.add("active");
+    activeCategory = e.target.dataset.filter;
+    render();
+  });
+
+  posGroup.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("pill-btn")) return;
+    posGroup.querySelectorAll(".pill-btn").forEach(btn => btn.classList.remove("active"));
+    e.target.classList.add("active");
+    activePos = e.target.dataset.filter;
+    render();
+  });
+
+  initDynamicFilters();
   render();
 </script>
 

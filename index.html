@@ -1,1 +1,441 @@
 
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Німецький Словник Рівнів та Відтінків</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --primary: #2563eb;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 24px 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1024px;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      margin-bottom: 16px;
+    }
+
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      outline: none;
+      background: var(--card-bg);
+    }
+
+    .search-bar:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .tab-btn.active {
+      background: var(--text);
+      color: #fff;
+      border-color: var(--text);
+    }
+
+    /* Таблиця порівняння */
+    .table-wrapper {
+      overflow-x: auto;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      min-width: 160px;
+    }
+
+    th:first-child, td:first-child {
+      min-width: 140px;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .word-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .word-title {
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .word-meaning {
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .context-tag {
+      font-size: 0.72rem;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 1px 6px;
+      border-radius: 4px;
+      width: fit-content;
+      font-weight: 500;
+    }
+
+    .audio-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+    }
+
+    .audio-btn:hover {
+      color: var(--primary);
+      background: #eff6ff;
+    }
+
+    /* Картки окремого рівня */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .example {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      border-left: 2px solid var(--border);
+      padding-left: 8px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 48px 0;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>Німецький Словник Рівнів та Відтінків</h1>
+    <div class="controls">
+      <input type="search" id="searchInput" class="search-bar" placeholder="Шукати значення, контекст або слово німецькою...">
+      <nav class="tabs" id="tabsGroup">
+        <button class="tab-btn active" data-view="all">Всі рівні (Порівняння)</button>
+        <button class="tab-btn" data-view="A1">A1</button>
+        <button class="tab-btn" data-view="A2">A2</button>
+        <button class="tab-btn" data-view="B1">B1</button>
+        <button class="tab-btn" data-view="B2">B2</button>
+        <button class="tab-btn" data-view="C1">C1</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="appRoot"></main>
+</div>
+
+<script>
+  // База даних із контекстом і точним відтінком
+  const wordsDB = [
+    {
+      concept: "сказати / висловити",
+      words: {
+        A1: { 
+          de: "sagen", 
+          meaning: "сказати, промовити (найпростіша пряма дія)", 
+          context: "базове", 
+          ex: "Er sagt die Wahrheit." 
+        },
+        A2: { 
+          de: "erzählen", 
+          meaning: "розповідати (історію, досвід, деталі)", 
+          context: "оповідне", 
+          ex: "Sie erzählt eine spannende Geschichte." 
+        },
+        B1: { 
+          de: "mitteilen", 
+          meaning: "повідомити інформацію, сповістити офіційно", 
+          context: "ділове / офіційне", 
+          ex: "Ich teile Ihnen die Details per E-Mail mit." 
+        },
+        B2: { 
+          de: "behaupten", 
+          meaning: "стверджувати (часто без доказів або суперечливо)", 
+          context: "дискусія", 
+          ex: "Er behauptet, nichts davon gewusst zu haben." 
+        },
+        C1: { 
+          de: "äußern", 
+          meaning: "висловлювати (позицію, думку, сумнів, критику)", 
+          context: "формальне / публічне", 
+          ex: "Der Minister äußerte ernsthafte Bedenken." 
+        }
+      }
+    },
+    {
+      concept: "розуміти / осягати",
+      words: {
+        A1: { 
+          de: "verstehen", 
+          meaning: "розуміти слова або зміст речення", 
+          context: "базове", 
+          ex: "Ich verstehe die Frage nicht." 
+        },
+        A2: { 
+          de: "begreifen", 
+          meaning: "осягати розумом суть складної речі чи ідеї", 
+          context: "глибоке розуміння", 
+          ex: "Er begreift die mathematische Formel schnell." 
+        },
+        B1: { 
+          de: "nachvollziehen", 
+          meaning: "розуміти чужі мотиви або логіку (поставити себе на місце іншого)", 
+          context: "емпатія / логіка", 
+          ex: "Ich kann deine Entscheidung gut nachvollziehen." 
+        },
+        B2: { 
+          de: "erfassen", 
+          meaning: "швидко охопити поглядом або розумом цілу картину", 
+          context: "аналітичне", 
+          ex: "Sie erfasste die Situation auf einen Blick." 
+        },
+        C1: { 
+          de: "durchschauen", 
+          meaning: "бачити наскрізь (розкрити чийсь прихований намір чи обман)", 
+          context: "психологічне / критичне", 
+          ex: "Er hat ihre Absichten sofort durchschaut." 
+        }
+      }
+    },
+    {
+      concept: "робити / виконувати",
+      words: {
+        A1: { de: "machen", context: "базове", meaning: "найпростіша універсальна дія", ex: "Was machst du heute Abend?" },
+        A2: { de: "erledigen", context: "побутове / завдання", meaning: "зробити конкретну справу, закрити таск (справу на роботі)", ex: "Ich muss noch schnell ein paar Einkäufe erledigen." },
+        B1: { de: "ausführen", context: "професійне / точне", meaning: "виконувати інструкцію, технічну роботу чи платіж", ex: "Die Bank hat die Überweisung sofort ausgeführt" },
+        B2: { de: "durchführen", context: "ділове / проєктне", meaning: "проводити захід, проєкт, експеримент чи перевірку", ex: "Wir müssen die Qualitätskontrolle bis Freitag durchführen" },
+        C1: { de: "vollziehen", context: "формальне / юридичне", meaning: "здійснювати офіційну зміну, формальний акт чи правочин", ex: "Das Unternehmen vollzog im letzten Jahr einen grundlegenden Strategiewechsel." }
+      }
+    },
+    
+  ];
+
+  let activeView = "all";
+  const levels = ["A1", "A2", "B1", "B2", "C1"];
+  const searchInput = document.getElementById("searchInput");
+  const tabsGroup = document.getElementById("tabsGroup");
+  const appRoot = document.getElementById("appRoot");
+
+  function speak(text) {
+    if (!('speechSynthesis' in window)) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'de-DE';
+    window.speechSynthesis.speak(utterance);
+  }
+
+  function getFilteredData() {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) return wordsDB;
+
+    return wordsDB.filter(item => {
+      const matchConcept = item.concept.toLowerCase().includes(q);
+      const matchWord = levels.some(lvl => {
+        const entry = item.words[lvl];
+        return entry && (
+          entry.de.toLowerCase().includes(q) || 
+          entry.meaning.toLowerCase().includes(q) || 
+          entry.context.toLowerCase().includes(q) || 
+          entry.ex.toLowerCase().includes(q)
+        );
+      });
+      return matchConcept || matchWord;
+    });
+  }
+
+  function renderAll(data) {
+    if (!data.length) return `<div class="empty-state">Нічого не знайдено</div>`;
+
+    let html = `
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Загальна тема</th>
+              ${levels.map(l => `<th>${l}</th>`).join('')}
+            </tr>
+          </thead>
+          <tbody>
+    `;
+
+    data.forEach(item => {
+      html += `<tr><td><strong>${item.concept}</strong></td>`;
+      levels.forEach(lvl => {
+        const word = item.words[lvl];
+        if (word) {
+          html += `
+            <td>
+              <div class="word-cell">
+                <div class="word-title">
+                  ${word.de}
+                  <button class="audio-btn" onclick="speak('${word.de}')" title="Слухати">🔊</button>
+                </div>
+                <span class="context-tag">${word.context}</span>
+                <div class="word-meaning">${word.meaning}</div>
+              </div>
+            </td>`;
+        } else {
+          html += `<td>—</td>`;
+        }
+      });
+      html += `</tr>`;
+    });
+
+    html += `</tbody></table></div>`;
+    return html;
+  }
+
+  function renderLevel(data, level) {
+    const filtered = data.filter(item => item.words[level]);
+    if (!filtered.length) return `<div class="empty-state">Нічого не знайдено для рівня ${level}</div>`;
+
+    let html = `<div class="cards-grid">`;
+    filtered.forEach(item => {
+      const word = item.words[level];
+      html += `
+        <div class="card">
+          <div class="card-header">
+            <span class="context-tag">${word.context}</span>
+            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: bold;">${level}</span>
+          </div>
+          <div class="word-title" style="font-size: 1.3rem;">
+            ${word.de}
+            <button class="audio-btn" onclick="speak('${word.de}')" title="Слухати">🔊</button>
+          </div>
+          <div><strong>Відтінок:</strong> ${word.meaning}</div>
+          <div><strong>Тема:</strong> ${item.concept}</div>
+          <div class="example">„${word.ex}“</div>
+        </div>
+      `;
+    });
+    html += `</div>`;
+    return html;
+  }
+
+  function render() {
+    const data = getFilteredData();
+    appRoot.innerHTML = activeView === "all" ? renderAll(data) : renderLevel(data, activeView);
+  }
+
+  searchInput.addEventListener("input", render);
+
+  tabsGroup.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("tab-btn")) return;
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+    e.target.classList.add("active");
+    activeView = e.target.dataset.view;
+    render();
+  });
+
+  render();
+</script>
+
+</body>
+</html>

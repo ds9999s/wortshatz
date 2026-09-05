@@ -423,6 +423,20 @@
       padding: 48px 0;
       color: var(--text-muted);
     }
+
+    .hint-text {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+body.dark-theme .hint-text {
+  color: #94a3b8;
+}
   </style>
 </head>
 <body>
@@ -430,7 +444,8 @@
 <div class="container">
   <header>
     <div class="header-top">
-      <h1>Німецький Словник Рівнів та Відтінків</h1>
+      <h1>Німецький Словник A1 - C1</h1>
+      <p class="hint-text">💡 Порада: краще обирати категорію одразу — так значно зручніше шукати.</p>
       <button id="themeToggle" class="theme-toggle-btn" title="Змінити тему">🌙</button>
     </div>
     <div class="controls">
@@ -610,7 +625,7 @@
       }
     },
     {
-      category: "Конфлікти",
+      category: "Конфлікт і емоції",
       pos: "дієслово",
       concept: "сваритися / конфліктувати",
       words: {
@@ -622,7 +637,7 @@
       }
     },
     {
-      category: "Конфлікти",
+      category: "Конфлікт і емоції",
       pos: "дієслово",
       concept: "вирішувати / врегульовувати",
       words: {
@@ -634,7 +649,7 @@
       }
     },
     {
-      category: "Конфлікти",
+      category: "Конфлікт і емоції",
       pos: "дієслово",
       concept: "звинувачувати / докоряти",
       words: {
@@ -646,7 +661,7 @@
       }
     },
     {
-      category: "Конфлікти",
+      category: "Конфлікт і емоції",
       pos: "дієслово",
       concept: "погрожувати / тиснути",
       words: {
@@ -658,7 +673,7 @@
       }
     },
     {
-      category: "Конфлікти",
+      category: "Конфлікт і емоції",
       pos: "дієслово",
       concept: "захищатися / заперечувати",
       words: {
@@ -1183,18 +1198,6 @@
         B1: { de: "sich erholen", meaning: "відновлювати сили після хвороби/втоми", context: "стандартне", ex: "Im Urlaub konnte ich mich gut erholen." },
         B2: { de: "genesen", meaning: "проходити процес медичного одужання", context: "медичне / описове", ex: "Der Patient ist nach der Operation rasch genesen." },
         C1: { de: "zu Kräften kommen", meaning: "повноцінно повертати сили після важкого стану", context: "образне / мова", ex: "Er muss sich schonen, um wieder zu Kräften zu kommen." }
-      }
-    },
-    {
-      category: "Подорожі",
-      pos: "іменник",
-      concept: "затримка / спізнення",
-      words: {
-        A1: { de: "zu spät", meaning: "запізно (базове поняття)", context: "базове", ex: "Der Bus kommt zu spät." },
-        A2: { de: "die Verspätung", meaning: "запізнення транспорту", context: "повсякденне", ex: "Der Zug hatte zwanzig Minuten Verspätung." },
-        B1: { de: "der Ausfall", meaning: "повне скасування рейсу або поїзда", context: "транспортне", ex: "Wegen des Streiks kam es zum Ausfall vieler Züge." },
-        B2: { de: "die Verzögerung", meaning: "вимушена часова затримка у маршруті", context: "інформаційне", ex: "Bei der Gepäckausgabe gab es unerwartete Verzögerungen." },
-        C1: { de: "der Stillstand", meaning: "повна зупинка руху на лінії чи дорозі", context: "аналітичне / звіти", ex: "Ein Unfall auf der Autobahn führte zu stundenlangem Stillstand." }
       }
     },
     {
@@ -2036,7 +2039,1366 @@
         B2: { de: "chancengleich", meaning: "такий, що гарантує рівні стартові можливості", context: "соціально-політичне", ex: "Das Bildungssystem sollte allen Kindern einen chancengleichen Start ermöglichen." },
         C1: { de: "egalitär", meaning: "заснований на цілковитій соціальній рівності прав і статусу", context: "соціологія / аналітика", ex: "Die Bewegung forderte den Aufbau einer egalitären Gesellschaftsordnung." }
       }
+    },
+    {
+    category: "Здоров'я",
+    pos: "дієслово",
+    concept: "боліти / викликати біль",
+    words: {
+      A1: { de: "wehtun", meaning: "боліти (найпростіше формулювання)", context: "базове", ex: "Mein Kopf tut sehr weh." },
+      A2: { de: "Schmerzen haben", meaning: "мати відчутний біль у тілі", context: "побутове", ex: "Ich habe seit gestern starke Bauchschmerzen." },
+      B1: { de: "leiden an (+ Dat.)", meaning: "страждати від конкретної хвороби чи хронічного болю", context: "стандартне", ex: "Er leidet regelmäßig an schwerer Migräne." },
+      B2: { de: "plagen", meaning: "дошкуляти, мучити тривалими неприємними симптомами", context: "описове / симптоми", ex: "Ein hartnäckiger Reizhusten plagte die Patientin seit Wochen." },
+      C1: { de: "heimsuchen", meaning: "раптово вражати тяжким або гострим больовим нападом", context: "медичне / образне", ex: "Den Patienten suchten plötzlich stechende Schmerzen in der Brust heim." }
     }
+  },
+  {
+    category: "Здоров'я",
+    pos: "дієслово",
+    concept: "записуватися на прийом до лікаря",
+    words: {
+      A1: { de: "zum Arzt gehen", meaning: "йти до лікаря", context: "базове", ex: "Ich muss heute zum Arzt gehen." },
+      A2: { de: "einen Termin machen", meaning: "домовлятися про прийом телефоном чи особисто", context: "побутове", ex: "Ich möchte einen Termin beim Zahnarzt machen." },
+      B1: { de: "einen Termin vereinbaren", meaning: "офіційно узгоджувати дату та час візиту", context: "медичне / сервіс", ex: "Haben Sie bereits einen Termin in der Praxis vereinbart?" },
+      B2: { de: "eine Sprechstunde aufsuchen", meaning: "звертатися до лікаря в години регулярного прийому", context: "формальне / пацієнтське", ex: "Bei anhaltenden Beschwerden sollten Sie baldmöglichst die offene Sprechstunde aufsuchen." },
+      C1: { de: "einer Konsultation bedürfen", meaning: "потребувати невідкладного фахового лікарського огляду", context: "клінічне / протокольне", ex: "Das akute Krankheitsbild bedarf einer unverzüglichen fachärztlichen Konsultation." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "іменник",
+    concept: "рецепт на ліки / призначення",
+    words: {
+      A1: { de: "der Zettel", meaning: "папірець від лікаря", context: "базове", ex: "Wo ist mein Zettel für die Apotheke?" },
+      A2: { de: "das Rezept", meaning: "медичний рецепт", context: "побутове", ex: "Der Arzt hat mir ein Rezept für Tabletten gegeben." },
+      B1: { de: "das Medikament", meaning: "лікарський засіб, препарат", context: "стандартне", ex: "Dieses Medikament müssen Sie dreimal täglich einnehmen." },
+      B2: { de: "die Verordnung", meaning: "офіційне лікарське призначення медикаментів або фізіотерапії", context: "медичне / страхова", ex: "Für die Krankengymnastik benötigen Sie eine ärztliche Verordnung." },
+      C1: { de: "die Medikation", meaning: "системна схема фармакологічного курсу лікування", context: "фармацевтичне / клінічне", ex: "Der Chefarzt passte die bestehende Medikation an die neuen Laborwerte an." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "дієслово",
+    concept: "заражатися / підхопити вірус",
+    words: {
+      A1: { de: "krank werden", meaning: "захворіти", context: "базове", ex: "Ich werde im Winter oft krank." },
+      A2: { de: "bekommen", meaning: "підхопити застуду чи нежить", context: "побутове", ex: "Ich habe eine Erkältung bekommen." },
+      B1: { de: "sich anstecken bei (+ Dat.)", meaning: "заразитися інфекцією від іншої людини", context: "стандартне", ex: "Ich habe mich leider bei meinen Kindern angesteckt." },
+      B2: { de: "sich infizieren mit (+ Dat.)", meaning: "інфікуватися вірусом або бактерією", context: "медичне / новини", ex: "Mehrere Mitarbeiter haben sich mit dem Grippevirus infiziert." },
+      C1: { de: "sich zuziehen", meaning: "отримати травму, інфекцію або ускладнення внаслідок обставин", context: "протокольне / акти", ex: "Der Sportler zog sich während des Trainings eine schwere Entzündung zu." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "іменник",
+    concept: "травма / ушкодження тіла",
+    words: {
+      A1: { de: "die Wunde", meaning: "ранка, поріз", context: "базове", ex: "Die Wunde blutet noch ein bisschen." },
+      A2: { de: "das Blut", meaning: "кров (ознака порізу)", context: "побутове", ex: "Am Finger ist etwas Blut." },
+      B1: { de: "die Verletzung", meaning: "травма кінцівки чи м'яких тканин", context: "стандартне", ex: "Nach dem Sturz hatte er eine schwere Verletzung am Knie." },
+      B2: { de: "die Blessur", meaning: "легке тілесне ушкодження або забій", context: "спорт / побут", ex: "Der Fahrer kam bei dem Vorfall mit leichten Blessuren davon." },
+      C1: { de: "das Trauma", meaning: "глибоке механічне ураження тканини або органу", context: "клінічне / діагностика", ex: "Die Notaufnahme diagnostizierte ein stumpfes Bauchtrauma." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "прикметник",
+    concept: "втомлений / знесилений хворобою",
+    words: {
+      A1: { de: "müde", meaning: "сонний, втомлений", context: "базове", ex: "Ich bin heute den ganzen Tag müde." },
+      A2: { de: "kaputt", meaning: "розбитий, без сил", context: "розмовне", ex: "Nach der Grippe fühle ich mich völlig kaputt." },
+      B1: { de: "schwach", meaning: "слабкий через підвищену температуру чи нездужання", context: "побутове", ex: "Wegen des Fiebers fühlt er sich noch sehr schwach auf den Beinen." },
+      B2: { de: "erschöpft", meaning: "виснажений морально або фізично", context: "симптоматичне", ex: "Die Patientin wirkt nach der langen Therapie extrem erschöpft." },
+      C1: { de: "entkräftet", meaning: "повністю позбавлений життєвих сил у критичному стані", context: "медичне / клінічне", ex: "Der entkräftete Patient musste intravenös mit Nährstoffen versorgt werden." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "дієслово",
+    concept: "приймати ліки",
+    words: {
+      A1: { de: "trinken", meaning: "пити (сироп, чай, ліки)", context: "базове", ex: "Trink diesen Tee gegen den Husten." },
+      A2: { de: "nehmen", meaning: "вживати таблетки", context: "побутове", ex: "Ich muss jeden Morgen eine Tablette nehmen." },
+      B1: { de: "einnehmen", meaning: "приймати за медичною інструкцією", context: "медичне", ex: "Die Tropfen sollten Sie vor den Mahlzeiten einnehmen." },
+      B2: { de: "verabreichen", meaning: "вводити або видавати препарат пацієнту медперсоналом", context: "догляд / клініка", ex: "Die Krankenschwester verabreichte dem Kranken das Schmerzmittel." },
+      C1: { de: "dosieren", meaning: "точно вивіряти добову норму препарату", context: "фармакологічне", ex: "Das hochwirksame Präparat muss äußerst präzise dosiert werden." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "іменник",
+    concept: "огляд / діагностика",
+    words: {
+      A1: { de: "der Test", meaning: "базовий тест", context: "базове", ex: "Der Test war zum Glück negativ." },
+      A2: { de: "die Kontrolle", meaning: "плановий візит до лікаря", context: "побутове", ex: "Ich gehe zweimal im Jahr zur Kontrolle zum Zahnarzt." },
+      B1: { de: "die Untersuchung", meaning: "медичний огляд або аналізи", context: "стандартне медичне", ex: "Die ärztliche Untersuchung dauerte nur zwanzig Minuten." },
+      B2: { de: "die Vorsorgeuntersuchung", meaning: "профілактичний скринінговий огляд", context: "страхове / превентивне", ex: "Regelmäßige Vorsorgeuntersuchungen helfen, Risiken frühzeitig zu erkennen." },
+      C1: { de: "die Befunderhebung", meaning: "комплексний клінічний збір симптомів та аналізів", context: "клінічне / діагностика", ex: "Nach gründlicher Befunderhebung konnte eine eindeutige Diagnose gestellt werden." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "іменник",
+    concept: "хвороба / захворювання",
+    words: {
+      A1: { de: "krank", meaning: "хвороба (описово)", context: "базове", ex: "Er liegt mit Grippe im Bett." },
+      A2: { de: "das Fieber", meaning: "висока температура як симптом", context: "побутове", ex: "Das Kind hat heute hohes Fieber." },
+      B1: { de: "die Krankheit", meaning: "хвороба, недуга", context: "стандартне", ex: "Gegen diese Krankheit gibt es wirksame Medikamente." },
+      B2: { de: "die Erkrankung", meaning: "офіційно зафіксоване захворювання органу чи системи", context: "медичне / DTB", ex: "Er leidet an einer chronischen Erkrankung der Atemwege." },
+      C1: { de: "das Leiden / die Pathologie", meaning: "тривалий патологічний розлад або тяжка хронічна вада", context: "клінічне / термінологія", ex: "Das organische Leiden erforderte einen operativen Eingriff." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "прикметник",
+    concept: "заразний / інфекційний",
+    words: {
+      A1: { de: "nicht gesund", meaning: "небезпечний для контакту", context: "базове", ex: "Komm nicht so nah, ich bin nicht gesund." },
+      A2: { de: "bleib weg", meaning: "застереження про хворобу", context: "розмовне", ex: "Bleib lieber weg, die Grippe ist schlimm." },
+      B1: { de: "ansteckend", meaning: "заразний при контакті", context: "побутове медичне", ex: "Windpocken sind extrem ansteckend." },
+      B2: { de: "infektiös", meaning: "спричинений збудником, здатний передаватися іншим", context: "медичне / гігієна", ex: "Das Material muss wegen infektiöser Rückstände sofort entsorgt werden." },
+      C1: { de: "übertragbar", meaning: "епідеміологічно здатний до трансмісії між носіями", context: "епідеміологія / протокол", ex: "Es handelt sich um eine über Tröpfchen leicht übertragbare Viruserkrankung." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "дієслово",
+    concept: "скеровувати до іншого лікаря / спеціаліста",
+    words: {
+      A1: { de: "schicken", meaning: "відправляти до іншого лікаря", context: "базове", ex: "Der Arzt schickt mich ins Krankenhaus." },
+      A2: { de: "weitergehen", meaning: "йти далі до іншого спеціаліста", context: "побутове", ex: "Ich muss jetzt zu einem anderen Arzt weitergehen." },
+      B1: { de: "überweisen an (+ Akk.)", meaning: "видавати офіційне направлення (Überweisung)", context: "медичне / сервіс", ex: "Der Hausarzt hat mich an einen Kardiologen überwiesen." },
+      B2: { de: "eine Überweisung ausstellen", meaning: "офіційно оформляти направлення для страхової", context: "ділове / медицина", ex: "Die Praxis stellte mir umgehend eine Überweisung zum Facharzt aus." },
+      C1: { de: "konsiliarisch hinzuziehen", meaning: "залучати стороннього вузького експерта для консиліуму", context: "клінічне / стаціонар", ex: "Bei dem unklaren Krankheitsverlauf wurde ein Neurologe konsiliarisch hinzugezogen." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "іменник",
+    concept: "страховка / медичний поліс",
+    words: {
+      A1: { de: "die Karte", meaning: "картка пацієнта", context: "базове", ex: "Geben Sie mir bitte Ihre Karte." },
+      A2: { de: "die Versicherung", meaning: "страховка", context: "побутове", ex: "Wo ist deine deutsche Versicherung?" },
+      B1: { de: "die Krankenkasse", meaning: "лікарняна каса (страхова компанія)", context: "стандартне", ex: "Welche Krankenkasse übernimmt die Kosten für den Kurs?" },
+      B2: { de: "die Krankenversicherungskarte", meaning: "електронна картка обов'язкового медичного страхування (eGK)", context: "офіційне / облік", ex: "Bitte legen Sie beim Erstkontakt Ihre Krankenversicherungskarte vor." },
+      C1: { de: "der Leistungsträger", meaning: "установа-платник медичних послуг згідно із законодавством", context: "юридичне / страхове", ex: "Die Abrechnung erfolgt direkt über den zuständigen Leistungsträger." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "іменник",
+    concept: "побічна дія ліків",
+    words: {
+      A1: { de: "nicht gut", meaning: "погане самопочуття від таблеток", context: "базове", ex: "Von der Tablette wird mir nicht gut." },
+      A2: { de: "schlecht fühlen", meaning: "почуватися гірше після прийому", context: "розмовне", ex: "Nach dem Saft fühle ich mich schlecht." },
+      B1: { de: "die Nebenwirkung", meaning: "небажана побічна реакція на ліки", context: "медичне / фармація", ex: "Haben Sie durch das Präparat irgendwelche Nebenwirkungen bemerkt?" },
+      B2: { de: "die Unverträglichkeit", meaning: "індивідуальна непереносимість речовини організмом", context: "діагностичне", ex: "Bei dem Patienten besteht eine bekannte Unverträglichkeit gegen Penicillin." },
+      C1: { de: "die Kontraindikation", meaning: "суворе медичне протипоказання до застосування засобу", context: "фармакологічне / клініка", ex: "Bestehender Bluthochdruck gilt als absolute Kontraindikation für diesen Wirkstoff." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "дієслово",
+    concept: "оперувати / проводити хірургічне втручання",
+    words: {
+      A1: { de: "helfen", meaning: "допомагати хірургічно", context: "базове", ex: "Der Arzt muss ihm schnell helfen." },
+      A2: { de: "aufmachen", meaning: "робити розріз (розмовне)", context: "побутове", ex: "Die Ärzte mussten das Bein aufmachen." },
+      B1: { de: "operieren", meaning: "робити хірургічну операцію", context: "медичне", ex: "Das Knie muss nächste Woche operiert werden." },
+      B2: { de: "einen Eingriff vornehmen", meaning: "виконувати заплановане хірургічне чи діагностичне втручання", context: "клінічне / DTB", ex: "Der Chirurg nahm den minimalinvasiven Eingriff ohne Komplikationen vor." },
+      C1: { de: "chirurgisch intervenieren", meaning: "здійснювати невідкладне хірургічне втручання за протоколом", context: "клінічне / документація", ex: "Aufgrund der inneren Blutung musste das Team sofort chirurgisch intervenieren." }
+    }
+  },
+  {
+    category: "Здоров'я",
+    pos: "прикметник",
+    concept: "хронічний / тривалий",
+    words: {
+      A1: { de: "immer", meaning: "постійний (біль/хвороба)", context: "базове", ex: "Ich habe den Schmerz fast immer." },
+      A2: { de: "seit Langem", meaning: "той, що триває давно", context: "побутове", ex: "Sie hat das Problem schon seit Langem." },
+      B1: { de: "chronisch", meaning: "тривалий, невиліковний до кінця", context: "стандартне медичне", ex: "Er leidet an chronischen Rückenschmerzen." },
+      B2: { de: "dauerhaft behandlungsbedürftig", meaning: "такий, що потребує постійного нагляду й терапії", context: "страхове / картка хворого", ex: "Der Patient gilt infolge der Diagnose als dauerhaft behandlungsbedürftig." },
+      C1: { de: "persistierend", meaning: "патологічно стійкий, не зникаючий попри лікування", context: "клінічна термінологія", ex: "Die persistierenden Symptome deuten auf eine systemische Entzündung hin." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "дієслово",
+    concept: "закохуватися / любити",
+    words: {
+      A1: { de: "lieb haben", meaning: "любити, тепло ставитися", context: "базове", ex: "Ich habe dich sehr lieb." },
+      A2: { de: "sich verlieben in", meaning: "закохуватися в людину", context: "побутове", ex: "Er hat sich sofort in sie verliebt." },
+      B1: { de: "Gefühle entwickeln für", meaning: "починати відчувати романтичний потяг", context: "емоційне", ex: "Mit der Zeit hat er tiefere Gefühle für sie entwickelt." },
+      B2: { de: "Zuneigung fassen zu", meaning: "перейматися щирою душевністю та симпатією", context: "психологічне / стиль", ex: "Sie fasste schnell eine tiefe Zuneigung zu ihren neuen Verwandten." },
+      C1: { de: "in Liebe entbrennen für", meaning: "палко спалахнути коханням і пристрастю", context: "літературне / витончене", ex: "Er entbrannte in unsterblicher Liebe für die Künstlerin." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "дієслово",
+    concept: "зраджувати / порушувати довіру",
+    words: {
+      A1: { de: "lügen", meaning: "говорити неправду", context: "базове", ex: "Lüg mich bitte nicht an." },
+      A2: { de: "nicht treu sein", meaning: "не бути вірним у парі", context: "розмовне", ex: "Er war seiner Freundin nicht immer treu." },
+      B1: { de: "betrügen", meaning: "зраджувати партнеру або дурити", context: "стандартне", ex: "Sie trennte sich, weil er sie betrogen hatte." },
+      B2: { de: "hintergehen", meaning: "діяти підступно за спиною близької людини", context: "міжособистісне", ex: "Er fühlte sich von seinem engsten Vertrauten schamlos hintergangen." },
+      C1: { de: "das Vertrauen missbrauchen", meaning: "цинічно корисливо використовувати надану довіру", context: "морально-етичне", ex: "Mit dieser unbedachten Tat hat sie sein Vertrauen nachhaltig missbraucht." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "дієслово",
+    concept: "підтримувати зв'язок / спілкуватися",
+    words: {
+      A1: { de: "schreiben", meaning: "писати повідомлення", context: "базове", ex: "Schreib mir bitte bald wieder!" },
+      A2: { de: "anrufen", meaning: "дзвонити телефоном", context: "побутове", ex: "Wir rufen uns jedes Wochenende an." },
+      B1: { de: "in Kontakt bleiben mit", meaning: "не втрачати зв'язку на відстані", context: "стандартне", ex: "Trotz des Umzugs sind wir immer in Kontakt geblieben." },
+      B2: { de: "die Beziehung pflegen", meaning: "свідомо піклуватися про збереження близькості", context: "стосунки / доросле", ex: "Freundschaften muss man auch über weite Distanzen aktiv pflegen." },
+      C1: { de: "einen regen Austausch pflegen", meaning: "вести регулярне змістовне й близьке спілкування", context: "високий стиль / публіцистика", ex: "Die beiden Denker pflegten über Jahrzehnte einen regen brieflichen Austausch." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "іменник",
+    concept: "повага / шана",
+    words: {
+      A1: { de: "nett sein", meaning: "ввічливість та доброзичливість", context: "базове", ex: "Sei bitte nett zu den Großeltern." },
+      A2: { de: "gut finden", meaning: "поважати людину за вчинки", context: "розмовне", ex: "Ich finde sehr gut, wie er hilft." },
+      B1: { de: "der Respekt", meaning: "повага до кордонів та особистості", context: "стандартне", ex: "Gegenseitiger Respekt ist die Basis jeder Partnerschaft." },
+      B2: { de: "die Wertschätzung", meaning: "визнання цінності та гідності людини", context: "соціально-психологічне", ex: "In einer gesunden Beziehung braucht jeder Partner echte Wertschätzung." },
+      C1: { de: "die Ehrerbietung", meaning: "глибока шанобливість та пошана до авторитету", context: "формальне / етикетне", ex: "Der junge Mann begegnete den Familienältesten mit aufrichtiger Ehrerbietung." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "прикметник",
+    concept: "ревнивий / заздрісний у парі",
+    words: {
+      A1: { de: "böse", meaning: "злий через увагу до інших", context: "базове", ex: "Er wird böse, wenn sie mit anderen spricht." },
+      A2: { de: "nicht froh", meaning: "невдоволений суперником", context: "побутове", ex: "Sie ist gar nicht froh über seine neue Kollegin." },
+      B1: { de: "eifersüchtig auf (+ Akk.)", meaning: "ревнивий до романтичного партнера", context: "стандартне", ex: "Er war grundlos eifersüchtig auf ihren besten Freund." },
+      B2: { de: "besitzergreifend", meaning: "власницький, схильний контролювати кожен крок", context: "характеристика стосунків", ex: "Ihr Partner neigt leider zu extrem besitzergreifendem Verhalten." },
+      C1: { de: "argwöhnisch", meaning: "підозріливий, сповнений прихованої недовіри", context: "психологічний портрет", ex: "Mit argwöhnischem Blick verfolgte sie jede seiner Handlungen." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "дієслово",
+    concept: "прощати / вибачати образу",
+    words: {
+      A1: { de: "gut sein", meaning: "забувати образу, бути знову в мирі", context: "базове", ex: "Jetzt ist alles wieder gut zwischen uns." },
+      A2: { de: "nicht mehr böse sein", meaning: "переставати сердитися на когось", context: "побутове", ex: "Bist du mir immer noch böse?" },
+      B1: { de: "verzeihen (+ Dat.)", meaning: "щиро прощати людині провину", context: "стандартне", ex: "Ich kann dir diesen großen Fehler verzeihen." },
+      B2: { de: "Nachsicht üben mit", meaning: "проявляти розуміння та поблажливість до слабкостей", context: "соціальне / характер", ex: "In einer Partnerschaft muss man ab und zu Nachsicht üben." },
+      C1: { de: "Vergebung gewähren", meaning: "великодушно дарувати повне відпущення образи", context: "морально-етичне / високий стиль", ex: "Nach jahrelangem Schweigen gewährte sie ihm endlich Vergebung." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "дієслово",
+    concept: "співпереживати / підтримувати емоційно",
+    words: {
+      A1: { de: "traurig sein", meaning: "сумувати разом з кимось", context: "базове", ex: "Ich bin auch sehr traurig darüber." },
+      A2: { de: "verstehen", meaning: "розуміти почуття іншого", context: "побутове", ex: "Ich verstehe deine Situation vollkommen." },
+      B1: { de: "mitfühlen mit", meaning: "розділяти біль або горе близького", context: "емоційне", ex: "Wir fühlen alle von Herzen mit dir." },
+      B2: { de: "sich hineinversetzen in (+ Akk.)", meaning: "ставити себе на місце іншого для глибокого розуміння", context: "психологічне / емпатія", ex: "Er kann sich sehr gut in die Gefühle seiner Partnerin hineinversetzen." },
+      C1: { de: "Empathie entgegenbringen (+ Dat.)", meaning: "свідомо демонструвати глибоке емпатичне прийняття", context: "психологічне / культура спілкування", ex: "Sie brachte den Sorgen ihres Gegenübers aufrichtige Empathie entgegen." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "іменник",
+    concept: "згуртованість / солідарність",
+    words: {
+      A1: { de: "zusammen", meaning: "разом (бути разом)", context: "базове", ex: "Wir sind eine starke Familie." },
+      A2: { de: "das Team", meaning: "команда (як пара чи родина)", context: "розмовне", ex: "Wir beide sind ein richtig gutes Team." },
+      B1: { de: "der Zusammenhalt", meaning: "єдність, взаємна виручка всередині сім'ї чи пари", context: "стандартне", ex: "In schweren Zeiten war der Zusammenhalt der Familie spürbar." },
+      B2: { de: "die Verbundenheit", meaning: "глибока душевна спільність і зв'язок між людьми", context: "стосунки / почуття", ex: "Trotz der räumlichen Distanz spüren sie eine innige Verbundenheit." },
+      C1: { de: "die Solidarität", meaning: "беззастережна моральна й практична спільність дій", context: "етичне / суспільне", ex: "In der Krise bewiesen die Angehörigen eine unerschütterliche Solidarität." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "прикметник",
+    concept: "привабливий / чарівний",
+    words: {
+      A1: { de: "schön", meaning: "гарний на вигляд", context: "базове", ex: "Sie hat ein sehr schönes Lächeln." },
+      A2: { de: "hübsch", meaning: "симпатичний, миловидний", context: "побутове", ex: "Er ist ein hübscher junger Mann." },
+      B1: { de: "attraktiv", meaning: "привабливий зовні та за манерами", context: "стандартне", ex: "Ich finde seine ruhige Ausstrahlung sehr attraktiv." },
+      B2: { de: "anziehend", meaning: "той, що притягує до себе, харизматичний", context: "міжособистісне / шарм", ex: "Ihre offene und humorvolle Art wirkt ungemein anziehend." },
+      C1: { de: "betörend", meaning: "п'янкий, той, що зачаровує до втрати голови", context: "літературне / образне", ex: "Sie besaß eine betörende Eleganz, der sich niemand entziehen konnte." }
+    }
+  },
+  {
+    category: "Особисті стосунки",
+    pos: "іменник",
+    concept: "ревнощі / недовіра в парі",
+    words: {
+      A1: { de: "die Angst", meaning: "страх втратити", context: "базове", ex: "Er hat Angst um sie." },
+      A2: { de: "der Ärger", meaning: "роздратування через увагу до інших", context: "побутове", ex: "Es gab wieder Ärger wegen eines Fotos." },
+      B1: { de: "die Eifersucht", meaning: "ревнощі до партнера", context: "стандартне", ex: "Ihre übertriebene Eifersucht belastete die Beziehung." },
+      B2: { de: "das Misstrauen", meaning: "глибока прихована недовіра до слів чи вчинків", context: "психологічне", ex: "Nach den vielen Lügen wuchs das Misstrauen von Tag zu Tag." },
+      C1: { de: "der Argwohn", meaning: "постійна похмура підозріливість і передчуття обману", context: "психологічний портрет", ex: "Jedes spätere Nachhausekommen nährte seinen quälenden Argwohn." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "сполучник",
+    concept: "подвійні сполучники / градація",
+    words: {
+      A1: { de: "und ... und", meaning: "і ... і (просте перелічення)", context: "базове", ex: "Ich mag Tee und Kaffee." },
+      A2: { de: "sowohl ... als auch", meaning: "як ..., так і ...", context: "повсякденне / ділове", ex: "Er spricht sowohl Deutsch als auch Englisch." },
+      B1: { de: "nicht nur ... sondern auch", meaning: "не лише ..., але й ...", context: "стандартне ділове", ex: "Die Wohnung ist nicht nur groß, sondern auch sehr hell." },
+      B2: { de: "weder ... noch", meaning: "ані ..., ані ... (подвійне заперечення)", context: "офіційне / DTB", ex: "Der Bericht enthält weder neue Zahlen noch konkrete Vorschläge." },
+      C1: { de: "einerseits ... andererseits", meaning: "з одного боку ..., з іншого боку ...", context: "структурне / дебати", ex: "Einerseits ist der Plan riskant, andererseits bietet er enorme Chancen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "дійсно / насправді",
+    words: {
+      A1: { de: "wirklich", meaning: "справді, дійсно", context: "базове", ex: "Das ist wirklich sehr nett von dir." },
+      A2: { de: "echt", meaning: "по-справжньому, реально", context: "розмовне", ex: "Das schmeckt echt super." },
+      B1: { de: "tatsächlich", meaning: "фактично, насправді", context: "стандартне", ex: "Der Bericht ist tatsächlich schon fertig." },
+      B2: { de: "in der Tat", meaning: "і справді / дійсно так", context: "ділове / погодження", ex: "Das ist in der Tat ein beachtliches Ergebnis." },
+      C1: { de: "wahrhaftig", meaning: "істинно, беззаперечно правдиво", context: "літературне / публіцистика", ex: "Es war ein wahrhaftig historischer Augenblick für die Firma." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "обов'язково / неодмінно",
+    words: {
+      A1: { de: "bitte", meaning: "будь ласка (як заклик зробити точно)", context: "базове", ex: "Komm bitte morgen pünktlich!" },
+      A2: { de: "sicher", meaning: "точно, впевнено", context: "побутове", ex: "Ich helfe dir sicher beim Umzug." },
+      B1: { de: "unbedingt", meaning: "обов'язково, за будь-яких умов", context: "стандартне", ex: "Du musst dir diesen Film unbedingt ansehen." },
+      B2: { de: "zwingend", meaning: "в обов'язковому порядку (за правилами)", context: "регламентне / DTB", ex: "Die Vorlage des Passes ist zwingend erforderlich." },
+      C1: { de: "ausnahmslos", meaning: "без жодних винятків / суворо для всіх", context: "юридичне / норми", ex: "Die Sicherheitsvorschriften gelten ausnahmslos für alle Mitarbeiter." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "на щастя / на жаль",
+    words: {
+      A1: { de: "leider", meaning: "на жаль", context: "базове", ex: "Ich habe heute leider keine Zeit." },
+      A2: { de: "zum Glück", meaning: "на щастя", context: "побутове", ex: "Zum Glück hat er den Bus noch erreicht." },
+      B1: { de: "erfreulicherweise", meaning: "на втіху / на радість", context: "стандартне ділове", ex: "Erfreulicherweise sind alle Tests positiv verlaufen." },
+      B2: { de: "bedauerlicherweise", meaning: "з прикрістю / як це не прикро", context: "ділове листування / DTB", ex: "Bedauerlicherweise müssen wir den Liefertermin verschieben." },
+      C1: { de: "unglückseligerweise", meaning: "за фатальним збігом обставин", context: "публіцистичне / розповідне", ex: "Unglückseligerweise fiel der Server genau zum Verkaufsstart aus." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "раптово / несподівано",
+    words: {
+      A1: { de: "schnell", meaning: "швидко (про зміну події)", context: "базове", ex: "Das ging jetzt aber schnell." },
+      A2: { de: "plötzlich", meaning: "зненацька, раптом", context: "побутове", ex: "Plötzlich fing es stark an zu regnen." },
+      B1: { de: "unerwartet", meaning: "неочікувано за прогнозом", context: "стандартне", ex: "Sein Besuch kam völlig unerwartet." },
+      B2: { de: "abrupt", meaning: "різко, раптово обірвавшись", context: "ділове / аналітичне", ex: "Die Verhandlungen wurden abrupt unterbrochen." },
+      C1: { de: "unversehens", meaning: "непомітно для очей / несподівано зненацька", context: "літературне / витончене", ex: "Unversehens fand sich das Team in einer Sackgasse wieder." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "частково / певною мірою",
+    words: {
+      A1: { de: "ein bisschen", meaning: "трохи, частково", context: "базове", ex: "Ich verstehe das ein bisschen." },
+      A2: { de: "nicht ganz", meaning: "не повністю", context: "побутове", ex: "Das stimmt nicht ganz so." },
+      B1: { de: "teilweise", meaning: "частково, місцями", context: "стандартне", ex: "Der Bericht ist teilweise schon fertiggestellt." },
+      B2: { de: "gewissermaßen", meaning: "до певної міри / так би мовити", context: "дискусійне / стиль", ex: "Er hat damit gewissermaßen recht." },
+      C1: { de: "stückweit", meaning: "певною мірою (у виваженій аргументації)", context: "публіцистичне / аналітика", ex: "Wir müssen den Forderungen ein Stück weit entgegenkommen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "зрештою / наприкінці",
+    words: {
+      A1: { de: "am Ende", meaning: "наприкінці", context: "базове", ex: "Am Ende waren alle zufrieden." },
+      A2: { de: "endlich", meaning: "нарешті, врешті", context: "побутове", ex: "Endlich ist der Zug angekommen." },
+      B1: { de: "schließlich", meaning: "зрештою, кінець кінцем", context: "стандартне", ex: "Er hat schließlich doch noch zugestimmt." },
+      B2: { de: "letztendlich", meaning: "у кінцевому підсумку (після зважування всього)", context: "ділове / DTB", ex: "Letztendlich zählte für uns nur die Qualität des Ergebnisses." },
+      C1: { de: "resümierend", meaning: "підсумовуючи / роблячи остаточний висновок", context: "формальне / доповідь", ex: "Resümierend lässt sich festhalten, dass das Projekt glückte." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "постійно / безупинно",
+    words: {
+      A1: { de: "immer", meaning: "завжди", context: "базове", ex: "Er ist immer freundlich." },
+      A2: { de: "oft", meaning: "часто, постійно", context: "побутове", ex: "Das Telefon klingelt heute sehr oft." },
+      B1: { de: "ständig", meaning: "постійно, раз у раз (з легким роздратуванням)", context: "стандартне", ex: "Sie unterbricht mich ständig beim Sprechen." },
+      B2: { de: "kontinuierlich", meaning: "безперервно, планомірно", context: "ділове / процеси", ex: "Die Verkaufszahlen steigen seit Monaten kontinuierlich." },
+      C1: { de: "unablässig", meaning: "невпинно, без жодної паузи чи перепочинку", context: "літературне / описове", ex: "Er arbeitete unablässig an der Fertigstellung des Manuskripts." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "головним чином / переважно",
+    words: {
+      A1: { de: "meistens", meaning: "переважно, зазвичай", context: "базове", ex: "Ich trinke meistens Wasser." },
+      A2: { de: "fast alles", meaning: "майже все", context: "розмовне", ex: "Wir haben fast alles erledigt." },
+      B1: { de: "hauptsächlich", meaning: "головним чином, здебільшого", context: "стандартне", ex: "Das Problem betrifft hauptsächlich den Kundenservice." },
+      B2: { de: "vorwiegend", meaning: "переважно (у статистиці та звітах)", context: "ділове / аналітика", ex: "Das Budget fließt vorwiegend in die Modernisierung." },
+      C1: { de: "maßgeblich", meaning: "вирішальним чином, насамперед", context: "експертне / формальне", ex: "Der Erfolg hing maßgeblich von ihrem persönlichen Einsatz ab." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "і навпаки / так само",
+    words: {
+      A1: { de: "auch so", meaning: "так само", context: "базове", ex: "Für mich ist das auch so." },
+      A2: { de: "gleich", meaning: "однаково", context: "побутове", ex: "Bei uns ist es genau gleich." },
+      B1: { de: "ebenso", meaning: "так само, аналогічно", context: "стандартне ділове", ex: "Ich wünsche Ihnen ebenso ein schönes Wochenende." },
+      B2: { de: "umgekehrt", meaning: "і навпаки (у зворотному напрямку)", context: "дискусійне / логіка", ex: "Gute Vorbereitung spart Zeit und umgekehrt führt Hektik zu Fehlern." },
+      C1: { de: "gleichermaßen", meaning: "однаковою мірою, рівнозначно для обох сторін", context: "офіційне / юридичне", ex: "Die Vereinbarung verpflichtet Arbeitgeber wie Arbeitnehmer gleichermaßen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "займенник",
+    concept: "хтось / будь-хто",
+    words: {
+      A1: { de: "jemand", meaning: "хтось (невизначена особа)", context: "базове", ex: "Ist hier jemand im Zimmer?" },
+      A2: { de: "einer", meaning: "хтось / один із людей", context: "розмовне", ex: "Kann mir mal einer kurz helfen?" },
+      B1: { de: "irgendjemand", meaning: "хто-небудь, будь-хто без різниці", context: "стандартне", ex: "Hat irgendjemand meine Brille gesehen?" },
+      B2: { de: "eine beliebige Person", meaning: "будь-яка особа на вибір", context: "ділове / опис", ex: "Nicht eine beliebige Person darf diese Dokumente einsehen." },
+      C1: { de: "wer auch immer", meaning: "хоч би хто це був / будь-який суб'єкт", context: "дискусійне / стиль", ex: "Wer auch immer den Beschluss fasste, muss dafür einstehen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "займенник",
+    concept: "ніхто / жодна людина",
+    words: {
+      A1: { de: "niemand", meaning: "ніхто", context: "базове", ex: "Niemand ist heute im Büro." },
+      A2: { de: "keiner", meaning: "жоден / ніхто з групи", context: "побутове", ex: "Keiner von uns wusste die Antwort." },
+      B1: { de: "gar niemand / überhaupt keiner", meaning: "абсолютно ніхто (посилення)", context: "емоційне / розмовне", ex: "Es war überhaupt keiner am Informationsschalter." },
+      B2: { de: "keine einzige Person", meaning: "жодна людина (офіційне підкреслення відсутності)", context: "ділове / DTB", ex: "Keine einzige Person hat Einwände gegen den Entwurf erhoben." },
+      C1: { de: "keinerlei Beteiligte", meaning: "жодна зі сторін чи учасників", context: "юридичне / протокольне", ex: "Keinerlei Beteiligte wollten die Verantwortung für das Versäumnis tragen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "займенник",
+    concept: "щось / будь-що",
+    words: {
+      A1: { de: "etwas", meaning: "щось (невизначений предмет чи дія)", context: "базове", ex: "Möchtest du etwas trinken?" },
+      A2: { de: "was", meaning: "щось (скорочена розмовна форма)", context: "розмовне", ex: "Ich habe da was für dich mitgebracht." },
+      B1: { de: "irgendetwas", meaning: "що-небудь, що завгодно", context: "стандартне", ex: "Fehlt dir noch irgendetwas für die Präsentation?" },
+      B2: { de: "dergleichen", meaning: "щось подібне / речі такого штибу", context: "ділове / стилістичне", ex: "Ich habe noch nie dergleichen erlebt." },
+      C1: { de: "jegliches", meaning: "будь-яке явище чи факт без винятку", context: "аналітичне / академічне", ex: "Jegliches Zögern könnte fatale finanzielle Folgen nach sich ziehen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "займенник",
+    concept: "ніщо / анічого",
+    words: {
+      A1: { de: "nichts", meaning: "нічого, ніщо", context: "базове", ex: "Ich sehe hier leider nichts." },
+      A2: { de: "gar nichts", meaning: "геть нічого (розмовне підкреслення)", context: "побутове", ex: "Er hat heute noch gar nichts gegessen." },
+      B1: { de: "überhaupt nichts", meaning: "зовсім нічого / нуль інформації", context: "стандартне", ex: "Dazu kann ich derzeit überhaupt nichts sagen." },
+      B2: { de: "keinerlei", meaning: "жодного / жодної частки (із незлічуваними)", context: "ділове / DTB", ex: "Wir haben keinerlei Rückmeldung von der Behörde erhalten." },
+      C1: { de: "nicht das Mindeste", meaning: "ані найменшої крихти / геть нічого", context: "високий стиль / публіцистика", ex: "Er wusste über die Hintergründe nicht das Mindeste zu berichten." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "займенник",
+    concept: "кожен / усякий",
+    words: {
+      A1: { de: "alle", meaning: "всі люди", context: "базове", ex: "Alle sind zur Besprechung gekommen." },
+      A2: { de: "jeder", meaning: "кожен окремо", context: "побутове", ex: "Jeder Mitarbeiter muss unterschreiben." },
+      B1: { de: "ein jeder", meaning: "кожен без винятку (виразне окреслення)", context: "стандартне ділове", ex: "Ein jeder sollte seine Aufgaben fristgerecht erledigen." },
+      B2: { de: "jedweder", meaning: "будь-який можливий / кожен у широкому сенсі", context: "регламентне / договори", ex: "Das Team sollte sich jedweder vorschnellen Wertung enthalten." },
+      C1: { de: "ein jeglicher", meaning: "кожен окремий суб'єкт (архаїчний / правовий відтінок)", context: "урочисте / юридичне", ex: "Ein jeglicher trage die Konsequenzen seines eigenen Handelns." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "займенник",
+    concept: "сам / самостійно (підсилювальний)",
+    words: {
+      A1: { de: "selbst", meaning: "сам (особисто)", context: "базове", ex: "Ich habe den Kuchen selbst gebacken." },
+      A2: { de: "allein", meaning: "сам, наодинці / без допомоги", context: "побутове", ex: "Kannst du das ganz allein schaffen?" },
+      B1: { de: "selber", meaning: "сам особисто (розмовний варіант)", context: "розмовне", ex: "Das musst du schon selber entscheiden." },
+      B2: { de: "eigenhändig", meaning: "власноруч (особистим фізичним підписом чи працею)", context: "ділове / DTB", ex: "Der Vertrag wurde vom Direktor eigenhändig unterzeichnet." },
+      C1: { de: "höchstpersönlich", meaning: "особисто найвища посадова особа (акцент на статусі)", context: "протокольне / іронічне", ex: "Der Vorstandschef erschien höchstpersönlich zur Schlichtung." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "сполучник",
+    concept: "порівняння / чим ..., тим ...",
+    words: {
+      A1: { de: "wie", meaning: "як (рівність)", context: "базове", ex: "Er arbeitet so schnell wie ich." },
+      A2: { de: "als", meaning: "ніж (вищий ступінь порівняння)", context: "побутове", ex: "Der neue Job ist interessanter als der alte." },
+      B1: { de: "je ... desto", meaning: "чим ..., тим ... (пропорційна зміна)", context: "стандартне", ex: "Je mehr man übt, desto besser spricht man." },
+      B2: { de: "je ... umso", meaning: "чим ..., тим (більш формальний стилістичний варіант)", context: "ділове / аналітика", ex: "Je früher die Freigabe erfolgt, umso stabiler ist der Zeitplan." },
+      C1: { de: "in dem Maße, wie", meaning: "тією мірою, якою / у міру того як", context: "публіцистичне / академічне", ex: "In dem Maße, wie Anforderungen wuchsen, stieg die Verantwortung." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "сполучник",
+    concept: "обмеження / наскільки / крім того що",
+    words: {
+      A1: { de: "aber", meaning: "але (просте застереження)", context: "базове", ex: "Er kommt, aber er bleibt kurz." },
+      A2: { de: "außer", meaning: "крім (прийменниковий виняток)", context: "побутове", ex: "Alle waren da, außer dem Abteilungsleiter." },
+      B1: { de: "soweit / soviel", meaning: "наскільки (наскільки мені відомо / наскільки можливо)", context: "ділове", ex: "Soweit ich weiß, findet die Konferenz wie geplant statt." },
+      B2: { de: "abgesehen davon, dass", meaning: "не беручи до уваги той факт, що / крім того що", context: "ділове / DTB", ex: "Abgesehen davon, dass das Budget knapp war, lief alles gut." },
+      C1: { de: "insofern ..., als", meaning: "остільки ..., оскільки / в тій мірі, що", context: "аргументація / стиль", ex: "Der Plan überzeugt insofern, als er alle Risiken einkalkuliert." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "етикетна формула",
+    concept: "привітання / звернення на початку контакту",
+    words: {
+      A1: { de: "Hallo!", meaning: "привіт", context: "базове нефільтроване", ex: "Hallo, wie geht es dir?" },
+      A2: { de: "Guten Tag!", meaning: "доброго дня", context: "побутове стандартне", ex: "Guten Tag, kann ich mich hier hinsetzen?" },
+      B1: { de: "Sehr geehrte Damen und Herren,", meaning: "шановні пані та панове", context: "офіційне листування", ex: "Sehr geehrte Damen und Herren, anbei sende ich meine Unterlagen." },
+      B2: { de: "Sehr geehrte(r) Frau/Herr Dr. ...,", meaning: "шановний пане / шановна пані з посадою чи науковим ступенем", context: "ділове адресоване / DTB", ex: "Sehr geehrter Herr Dr. Weber, bezugnehmend auf unser Telefonat wende ich mich an Sie." },
+      C1: { de: "Hochverehrte(r) / Exzellenz,", meaning: "високоповажний / дипломатичне або вкрай урочисте протокольне звернення", context: "дипломатичний протокол", ex: "Hochverehrte Damen und Herren, es ist mir ein außerordentliches Privileg, Sie zu begrüßen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "етикетна формула",
+    concept: "прощання / завершення комунікації",
+    words: {
+      A1: { de: "Tschüss!", meaning: "бувай", context: "неформальне усне", ex: "Tschüss, bis morgen!" },
+      A2: { de: "Auf Wiedersehen!", meaning: "до побачення", context: "стандартне ввічливе", ex: "Auf Wiedersehen und einen schönen Tag noch!" },
+      B1: { de: "Mit freundlichen Grüßen,", meaning: "з дружніми вітаннями / з повагою", context: "стандартний лист", ex: "Mit freundlichen Grüßen, Olena Petrenko." },
+      B2: { de: "Mit besten Grüßen verbleibend,", meaning: "залишаючись із щирою повагою", context: "кореспонденція партнерів / DTB", ex: "Mit besten Grüßen verbleibend, Ihre Projektleitung." },
+      C1: { de: "Mit vorzüglicher Hochachtung,", meaning: "з глибокою шаною / вищим ступенем поваги", context: "протокольне / адвокатське", ex: "Mit vorzüglicher Hochachtung, die Direktion der Vertretung." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "вигук",
+    concept: "здивування / несподіванка / шок",
+    words: {
+      A1: { de: "Oh!", meaning: "о! (спонтанна реакція)", context: "базове", ex: "Oh, das habe ich nicht gewusst!" },
+      A2: { de: "Ach so!", meaning: "он воно що! / зрозуміло!", context: "побутове мовленнєве", ex: "Ach so! Jetzt verstehe ich, was du meinst." },
+      B1: { de: "Na so was!", meaning: "нічого собі! / оце так!", context: "емоційне стандартне", ex: "Na so was! Er hat den Job tatsächlich sofort bekommen." },
+      B2: { de: "Du meine Güte!", meaning: "боже мій! / о лишенько! (вираження розгубленості)", context: "мовленнєве / реакція", ex: "Du meine Güte, der ganze Serverraum steht unter Wasser!" },
+      C1: { de: "Mitnichten!", meaning: "анітрохи! / в жодному разі! (пафосне / категоричне заперечення)", context: "риторичне / книжне", ex: "Glauben Sie, das Vorhaben sei gescheitert? Mitnichten!" }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "етикетна формула",
+    concept: "подяка за сприяння чи співпрацю",
+    words: {
+      A1: { de: "Danke!", meaning: "дякую", context: "базове", ex: "Danke für den Kaffee." },
+      A2: { de: "Vielen Dank für Ihre Hilfe!", meaning: "щиро дякую за допомогу", context: "побутове ввічливе", ex: "Vielen Dank für Ihre Hilfe bei der Reparatur." },
+      B1: { de: "Ich bedanke mich herzlich bei Ihnen für...", meaning: "сердечно дякую вам за...", context: "стандартне ділове", ex: "Ich bedanke mich herzlich bei Ihnen für die rasche Rückmeldung." },
+      B2: { de: "Für Ihre Unterstützung bedanke ich mich im Voraus verbindlich,", meaning: "заздалегідь висловлюю тверду вдячність за вашу підтримку", context: "ділове листування / DTB", ex: "Für Ihre wohlwollende Prüfung bedanke ich mich im Voraus verbindlich." },
+      C1: { de: "Wir wissen Ihr geschätztes Engagement gebührend zu würdigen,", meaning: "ми належним чином оцінюємо ваш високоцінний внесок", context: "високий корпоративний стиль", ex: "Wir wissen Ihr geschätztes Engagement in dieser Krise gebührend zu würdigen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "вигук",
+    concept: "полегшення / зняття напруги",
+    words: {
+      A1: { de: "Puh!", meaning: "фух! (фізична втома або видих)", context: "базове", ex: "Puh! Die Kiste ist wirklich sehr schwer." },
+      A2: { de: "Gott sei Dank!", meaning: "слава Богу!", context: "побутове", ex: "Gott sei Dank ist der Pass wieder da." },
+      B1: { de: "Ein Glück!", meaning: "яке щастя! / пощастило!", context: "розмовне стандартне", ex: "Ein Glück, dass der Termin noch rechtzeitig verschoben wurde!" },
+      B2: { de: "Da fällt mir ein Stein vom Herzen!", meaning: "гора з плечей впала!", context: "ідеоматичне ділове / розмовне", ex: "Als der Vertrag unterzeichnet war, fiel mir ein Stein vom Herzen." },
+      C1: { de: "Aufatmen können,", meaning: "зітхнути з полегшенням (метафоричний зворот-вигук)", context: "публіцистичне / преса", ex: "Die Branche kann endlich aufatmen: Das drohende Embargo wurde abgewendet." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "етикетна формула",
+    concept: "висловлення співчуття / підтримка в горі",
+    words: {
+      A1: { de: "Tut mir leid!", meaning: "мені шкода", context: "базове", ex: "Das tut mir wirklich leid für dich." },
+      A2: { de: "Das ist sehr traurig.", meaning: "це дуже сумно", context: "побутове", ex: "Ich habe es gehört, das ist wirklich sehr traurig." },
+      B1: { de: "Mein herzliches Beileid!", meaning: "мої щирі співчуття", context: "стандартне ввічливе", ex: "Mein herzliches Beileid zu Ihrem schweren Verlust." },
+      B2: { de: "Ich möchte Ihnen mein tiefes Mitgefühl aussprechen,", meaning: "хочу висловити вам своє глибоке співчуття", context: "офіційне / DTB", ex: "In dieser schweren Zeit möchte ich Ihnen und Ihrer Familie mein aufrichtiges Mitgefühl aussprechen." },
+      C1: { de: "Wir versichern Sie unseres tief empfundenen Beileids,", meaning: "запевняємо вас у нашому глибокому співчутті", context: "дипломатичний протокол / некролог", ex: "Die Belegschaft versichert die Hinterbliebenen ihres tief empfundenen Beileids." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "етикетна формула",
+    concept: "привернення уваги / ввічливе вклинювання в розмову",
+    words: {
+      A1: { de: "Hallo!", meaning: "привіт / послухайте", context: "базове", ex: "Hallo! Darf ich mal durch?" },
+      A2: { de: "Entschuldigung,", meaning: "перепрошую (для запитання на вулиці)", context: "побутове", ex: "Entschuldigung, wo finde ich die Post?" },
+      B1: { de: "Darf ich Sie kurz stören?", meaning: "чи можу я вас на хвилинку потурбувати?", context: "офісне / повсякденне", ex: "Entschuldigen Sie, darf ich Sie kurz bei der Arbeit stören?" },
+      B2: { de: "Gestatten Sie mir eine kurze Zwischenfrage,", meaning: "дозвольте коротке уточнення / запитання", context: "ділова нарада / DTB", ex: "Gestatten Sie mir bitte eine kurze Zwischenfrage zum Zeitplan?" },
+      C1: { de: "Darf ich mir die Freiheit herausnehmen,", meaning: "чи дозволено мені взяти на себе сміливість", context: "високий стиль / дебати", ex: "Darf ich mir die Freiheit herausnehmen, Ihren Ansatz grundsätzlich zu hinterfragen?" }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "вигук",
+    concept: "схвалення / захват / згода",
+    words: {
+      A1: { de: "Super!", meaning: "чудово, супер", context: "базове", ex: "Das Essen schmeckt super!" },
+      A2: { de: "Toll gemacht!", meaning: "чудово зроблено", context: "розмовне", ex: "Das hast du wirklich toll gemacht!" },
+      B1: { de: "Ausgezeichnet!", meaning: "відмінно, неперевершено", context: "стандартне ділове", ex: "Der Entwurf ist ausgezeichnet gelungen." },
+      B2: { de: "Hervorragend!", meaning: "блискуче, на найвищому рівні", context: "ділова оцінка / презентації", ex: "Ein hervorragendes Ergebnis, das unsere Erwartungen übertrifft." },
+      C1: { de: "Chapeau! / Bravourös!", meaning: "знімаю капелюха! / майстерно!", context: "публіцистичне / елітарне", ex: "Chapeau! Diese schwierige Verhandlung haben Sie bravourös gemeistert." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "етикетна формула",
+    concept: "висловлення побажання успіху / наснаги",
+    words: {
+      A1: { de: "Viel Glück!", meaning: "удачі", context: "базове", ex: "Viel Glück bei der Prüfung morgen!" },
+      A2: { de: "Viel Erfolg!", meaning: "великих успіхів", context: "побутове ділове", ex: "Ich wünsche dir viel Erfolg im neuen Job!" },
+      B1: { de: "Gutes Gelingen!", meaning: "нехай усе вдасться", context: "стандартне", ex: "Gutes Gelingen bei der Umsetzung Ihres Vorhabens!" },
+      B2: { de: "Ich wünsche Ihnen viel Erfolg bei Ihrem weiteren Werdegang,", meaning: "бажаю успіхів у подальшій кар'єрі", context: "ділове листування / характеристика", ex: "Für Ihren weiteren beruflichen Werdegang wünschen wir Ihnen weiterhin viel Erfolg." },
+      C1: { de: "Möge das Vorhaben von nachhaltigem Erfolg gekrönt sein,", meaning: "хай задум увінчається тривалим успіхом", context: "урочисте / протокол", ex: "Möge Ihre strategische Initiative von nachhaltigem Erfolg gekrönt sein." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "вигук",
+    concept: "сумнів / непевність / скепсис",
+    words: {
+      A1: { de: "Hm...", meaning: "гм... (замисленість)", context: "базове", ex: "Hm, ich bin mir nicht ganz sicher." },
+      A2: { de: "Wirklich?", meaning: "справді? (недовіра)", context: "побутове", ex: "Stimmt das wirklich, was du da sagst?" },
+      B1: { de: "Wer weiß...", meaning: "хтозна... / як сказати...", context: "розмовне", ex: "Wer weiß, ob das Wetter am Wochenende hält." },
+      B2: { de: "Das sei mal dahingestellt!", meaning: "це ще під великим питанням!", context: "дискусійне / критика", ex: "Ob dieser Plan funktioniert, das sei erst einmal dahingestellt!" },
+      C1: { de: "Mit Verlaub, das ist anzuzweifeln!", meaning: "з вашого дозволу, це викликає сумніви!", context: "академічне / полеміка", ex: "Mit Verlaub, die Belastbarkeit dieser Zahlen ist doch stark anzuzweifeln." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "дієслово",
+    concept: "висловлювати невдоволення / скаржитися",
+    words: {
+      A1: { de: "nicht gut finden", meaning: "вважати щось поганим", context: "базове", ex: "Ich finde diesen Service nicht gut." },
+      A2: { de: "sauer sein auf", meaning: "сердитися через ситуацію", context: "побутове", ex: "Ich bin wirklich sauer auf den Lieferservice." },
+      B1: { de: "sich beschweren über (+ Akk.)", meaning: "скаржитися на неякісний сервіс чи товар", context: "стандартне ділове", ex: "Ich möchte mich hiermit über die mangelhafte Ware beschweren." },
+      B2: { de: "meinen Unmut äußern über (+ Akk.)", meaning: "офіційно висловлювати обурення та претензію в листі", context: "DTB / лист-скарга", ex: "Mit diesem Schreiben möchte ich meinen Unmut über die gravierenden Lieferverzögerungen äußern." },
+      C1: { de: "formelle Beanstandung erheben gegen", meaning: "висувати юридично обґрунтовану рекламацію", context: "юридичне / арбітраж", ex: "Wir sehen uns gezwungen, formelle Beanstandung gegen die vertragswidrige Ausführung zu erheben." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "дієслово",
+    concept: "вимагати усунення недоліків / виправлення",
+    words: {
+      A1: { de: "neu machen", meaning: "переробляти, виправляти", context: "базове", ex: "Bitte machen Sie das schnell neu." },
+      A2: { de: "reparieren müssen", meaning: "мусити відремонтувати", context: "побутове", ex: "Sie müssen das Gerät sofort reparieren." },
+      B1: { de: "bitten um Nachbesserung", meaning: "просити про доопрацювання або заміну", context: "стандартне ділове", ex: "Ich bitte Sie höflich um eine zeitnahe Nachbesserung." },
+      B2: { de: "zur Nachbesserung auffordern", meaning: "офіційно вимагати усунення дефектів зі встановленням строку", context: "DTB / претензія", ex: "Ich fordere Sie hiermit auf, die festgestellten Mängel bis zum 15. des Monats nachzubessern." },
+      C1: { de: "auf Nacherfüllung drängen", meaning: "законодавчо наполягати на повторному належному виконанні договору", context: "цивільне право / договори", ex: "Der Mandant drängt auf unverzügliche Nacherfüllung der vertraglichen Vereinbarungen." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "дієслово",
+    concept: "встановлювати термін / дедлайн для відповіді",
+    words: {
+      A1: { de: "schnell machen", meaning: "робити якнайшвидше", context: "базове", ex: "Machen Sie das bitte bis morgen." },
+      A2: { de: "warten bis", meaning: "чекати до певної дати", context: "розмовне", ex: "Ich warte noch bis Freitag auf Ihre Antwort." },
+      B1: { de: "einen Termin setzen", meaning: "призначати кінцевий день", context: "стандартне ділове", ex: "Wir setzen Ihnen einen Termin bis zum Ende der Woche." },
+      B2: { de: "eine Frist setzen bis zum", meaning: "встановлювати чіткий юридичний строк у рекламації", context: "DTB / офіційний лист", ex: "Ich setze Ihnen eine Frist zur Stellungnahme bis zum 24. Oktober." },
+      C1: { de: "eine letztmalige Frist anberaumen", meaning: "призначати остаточний досудовий термін", context: "претензійне листування", ex: "Wir beraumen eine letztmalige Frist zur Zahlung an, bevor rechtliche Schritte eingeleitet werden." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "дієслово",
+    concept: "вибачатися за помилку (відповідь фірми)",
+    words: {
+      A1: { de: "Entschuldigung sagen", meaning: "казати вибачте", context: "базове", ex: "Wir sagen Entschuldigung für den Fehler." },
+      A2: { de: "leid tun", meaning: "жалкувати про ситуацію", context: "побутове", ex: "Es tut uns sehr leid, dass das passiert ist." },
+      B1: { de: "sich entschuldigen für", meaning: "офіційно вибачатися перед клієнтом", context: "клієнтський сервіс", ex: "Wir möchten uns aufrichtig für die entstandenen Unannehmlichkeiten entschuldigen." },
+      B2: { de: "um Entschuldigung und Verständnis bitten", meaning: "дипломатично просити вибачення й порозуміння в діловій відповіді", context: "DTB / відповідь на скаргу", ex: "Wir bitten Sie für diesen bedauerlichen Vorfall vielmals um Entschuldigung und um Ihr Verständnis." },
+      C1: { de: "sein tiefstes Bedauern zum Ausdruck bringen", meaning: "висловлювати глибокий жаль на рівні керівництва компанії", context: "високий корпоративний стиль", ex: "Die Geschäftsleitung bringt ihr tiefstes Bedauern über das Versäumnis zum Ausdruck." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "дієслово",
+    concept: "пропонувати компенсацію / загладити провину",
+    words: {
+      A1: { de: "Geld zurückgeben", meaning: "повертати гроші клієнту", context: "базове", ex: "Wir geben Ihnen das Geld gerne zurück." },
+      A2: { de: "einen Rabatt geben", meaning: "надавати знижку на наступний раз", context: "побутове", ex: "Sie bekommen einen Rabatt von 10 Prozent." },
+      B1: { de: "eine Entschädigung anbieten", meaning: "пропонувати матеріальне відшкодування", context: "ділове листування", ex: "Als Ausgleich möchten wir Ihnen eine angemessene Entschädigung anbieten." },
+      B2: { de: "einen Warengutschein aus Kulanz anbieten", meaning: "надавати сертифікат чи компенсацію як жест доброї волі (Kulanz)", context: "DTB / врегулювання скарг", ex: "Um die Angelegenheit beizulegen, bieten wir Ihnen aus reiner Kulanz einen Warengutschein an." },
+      C1: { de: "den entstandenen Schaden monetär kompensieren", meaning: "у повному обсязі грошово компенсувати завдані збитки", context: "правове врегулювання", ex: "Wir verpflichten uns dazu, den entstandenen materiellen Schaden vollumfänglich zu kompensieren." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "дієслово",
+    concept: "погрожувати наслідками / юристами у разі відмови",
+    words: {
+      A1: { de: "nicht mehr kommen", meaning: "більше не купувати / не приходити", context: "базове", ex: "Dann kaufe ich bei Ihnen nie wieder ein!" },
+      A2: { de: "zum Chef gehen", meaning: "йти скаржитися начальству", context: "розмовне", ex: "Ich gehe sofort zu Ihrem Vorgesetzten." },
+      B1: { de: "rechtliche Schritte prüfen", meaning: "розглядати можливість звернутися до адвоката", context: "ділове офіційне", ex: "Falls Sie nicht antworten, prüfe ich weitere rechtliche Schritte." },
+      B2: { de: "sich rechtliche Schritte vorbehalten", meaning: "офіційно залишати за собою право звернутися до суду", context: "DTB / фінал скарги", ex: "Sollten Sie die Frist verstreichen lassen, behalte ich mir rechtliche Schritte ausdrücklich vor." },
+      C1: { de: "die Angelegenheit dem Rechtsbeistand übergeben", meaning: "передавати справу до адвокатської контори для примусового стягнення", context: "досудова вимога", ex: "Nach Fristablauf werden wir den gesamten Vorgang unserem Rechtsbeistand zur Klageerhebung übergeben." }
+    }
+  },
+  {
+    category: "Дозвілля",
+    pos: "дієслово",
+    concept: "займатися хобі / приділяти час захопленню",
+    words: {
+      A1: { de: "spielen", meaning: "грати (в ігри, на інструменті)", context: "базове", ex: "In meiner Freizeit spiele ich gerne Gitarre." },
+      A2: { de: "ein Hobby haben", meaning: "мати хобі", context: "побутове", ex: "Mein Vater hat ein sehr schönes Hobby." },
+      B1: { de: "sich beschäftigen mit", meaning: "захоплюватися чимось, витрачати час на справу", context: "стандартне", ex: "In meiner Freizeit beschäftige ich mich viel mit Fotografie." },
+      B2: { de: "nachgehen (+ Dat.)", meaning: "регулярно присвячувати вільний час улюбленому заняттю", context: "письмове / DTB", ex: "Sie geht am Wochenende mit Begeisterung sportlichen Aktivitäten nach." },
+      C1: { de: "frönen (+ Dat.)", meaning: "віддаватися улюбленому захопленню чи пристрасті", context: "високий стиль / публіцистика", ex: "Im Sommer frönte er ausgiebig seiner Leidenschaft für das Segeln." }
+    }
+  },
+  {
+    category: "Дозвілля",
+    pos: "іменник",
+    concept: "дозвілля / вільний від роботи час",
+    words: {
+      A1: { de: "die Freizeit", meaning: "вільний час", context: "базове", ex: "Was machst du in deiner Freizeit?" },
+      A2: { de: "der freie Tag", meaning: "вихідний день", context: "побутове", ex: "Morgen habe ich endlich einen freien Tag." },
+      B1: { de: "der Feierabend", meaning: "завершення робочого дня, вечірній відпочинок", context: "стандартне", ex: "Ich wünsche dir einen schönen Feierabend!" },
+      B2: { de: "die Freizeitgestaltung", meaning: "організація та планування власного дозвілля", context: "ділове / суспільне", ex: "Aktive Freizeitgestaltung trägt maßgeblich zur mentalen Erholung bei." },
+      C1: { de: "das Refugium", meaning: "тихий прихисток для усамітнення й відриву від рутини", context: "культура / стиль", ex: "Das kleine Ferienhaus in den Bergen diente ihr als ideales Refugium." }
+    }
+  },
+  {
+    category: "Дозвілля",
+    pos: "дієслово",
+    concept: "брати участь у заході / подіях",
+    words: {
+      A1: { de: "mitkommen", meaning: "йти разом кудись", context: "базове", ex: "Kommst du mit ins Kino?" },
+      A2: { de: "mitmachen", meaning: "долучатися до гри чи активності", context: "побутове", ex: "Beim Workshop haben alle aktiv mitgemacht." },
+      B1: { de: "teilnehmen an (+ Dat.)", meaning: "брати участь у події чи курсі", context: "стандартне ділове", ex: "Möchten Sie an unserem Stadtrundgang teilnehmen?" },
+      B2: { de: "sich beteiligen an (+ Dat.)", meaning: "активно долучатися дією чи внеском до організації", context: "суспільне / DTB", ex: "Viele Anwohner beteiligten sich engagiert am Straßenfest." },
+      C1: { de: "partizipieren an (+ Dat.)", meaning: "брати інституційну участь / користуватися культурними благами", context: "аналітичне / публіцистика", ex: "Bürger sollten gleichberechtigt am kulturellen Leben partizipieren." }
+    }
+  },
+  {
+    category: "Дозвілля",
+    pos: "прикметник",
+    concept: "захоплюючий / цікавий",
+    words: {
+      A1: { de: "gut", meaning: "хороший, приємний", context: "базове", ex: "Der Film gestern war wirklich sehr gut." },
+      A2: { de: "interessant", meaning: "цікавий", context: "побутове", ex: "Das Buch ist spannend und interessant." },
+      B1: { de: "unterhaltsam", meaning: "розважальний, такий, що не дає нудьгувати", context: "стандартне", ex: "Wir hatten einen ausgesprochen unterhaltsamen Theaterabend." },
+      B2: { de: "fesselnd", meaning: "захоплюючий, що тримає увагу без відриву", context: "огляди / критика", ex: "Der Roman war so fesselnd, dass ich ihn in einer Nacht durchlas." },
+      C1: { de: "kurzweilig", meaning: "такий, з яким час спливає непомітно та насичено", context: "витончене / журналістика", ex: "Dank der brillanten Moderation war die Veranstaltung überaus kurzweilig." }
+    }
+  },
+  {
+    category: "Дозвілля",
+    pos: "дієслово",
+    concept: "нудьгувати / марнувати час",
+    words: {
+      A1: { de: "nichts tun", meaning: "нічого не робити", context: "базове", ex: "Am Sonntag mache ich oft gar nichts." },
+      A2: { de: "keine Lust haben", meaning: "не мати бажання щось робити", context: "розмовне", ex: "Ich habe heute überhaupt keine Lust rauszugehen." },
+      B1: { de: "sich langweilen", meaning: "нудьгувати через брак подій", context: "стандартне", ex: "Ohne Internet hat er sich schrecklich gelangweilt." },
+      B2: { de: "die Zeit totschlagen", meaning: "вбивати час через бездіяльність", context: "розмовне ідіоматичне", ex: "Wir mussten drei Stunden am Bahnhof warten und die Zeit totschlagen." },
+      C1: { de: "der Eintönigkeit anheimfallen", meaning: "занурюватися в гнітючу одноманітність і нудьгу", context: "літературне / опис стану", ex: "Ohne kulturelle Angebote fällt das Leben im Dorf schnell der Eintönigkeit anheim." }
+    }
+  },
+  {
+    category: "Конфлікт і емоції",
+    pos: "іменник",
+    concept: "це повне безглуздя / маячня / нісенітниця",
+    words: {
+      A1: { de: "der Blödsinn", meaning: "дурість, дурниця", context: "дитяче / побутове", ex: "Hör auf, so einen Blödsinn zu machen!" },
+      A2: { de: "der Quatsch", meaning: "нісенітниця, балаканина", context: "розмовне", ex: "Das ist doch totaler Quatsch, was er da erzählt." },
+      B1: { de: "der Unsinn", meaning: "безглуздя, нелогічна річ", context: "стандартне критичне", ex: "Es ist völliger Unsinn, das Projekt jetzt abzubrechen." },
+      B2: { de: "die bodenlose Frechheit", meaning: "нечуване нахабство / зухвале безглуздя", context: "дебати / обурення", ex: "Dieser Vorwurf ist eine bodenlose Frechheit und entbehrt jeder Grundlage." },
+      C1: { de: "das groteske Konstrukt", meaning: "абсурдний вимисел / гротескна штучна вигадка", context: "парламентське / нищівне", ex: "Diese Argumentation entpuppt sich als ein groteskes und intellektuell unhaltbares Konstrukt." }
+    }
+  },
+  {
+    category: "Конфлікт і емоції",
+    pos: "дієслово",
+    concept: "збожеволіти / втратити глузд",
+    words: {
+      A1: { de: "verrückt sein", meaning: "бути божевільним", context: "базове", ex: "Bist du jetzt völlig verrückt geworden?" },
+      A2: { de: "spinnen", meaning: "верзти дурню / чудити", context: "розмовне", ex: "Du spinnst wohl, das kann niemals funktionieren!" },
+      B1: { de: "den Verstand verlieren", meaning: "втрачати розум через стрес чи злість", context: "емоційне стандартне", ex: "Hast du denn vollkommen den Verstand verloren?" },
+      B2: { de: "die Zurechnungsfähigkeit einbüßen", meaning: "втрачати адекватність / осудність", context: "ділова полеміка / іронія", ex: "Wer solchen Bedingungen zustimmt, hat jegliche geschäftliche Zurechnungsfähigkeit eingebüßt." },
+      C1: { de: "geistiger Umnachtung anheimfallen", meaning: "занурюватися в абсолютне потьмарення розуму", context: "високий стиль / нищівна критика", ex: "Man könnte meinen, die Verfasser dieses Beschlusses seien völliger geistiger Umnachtung anheimgefallen." }
+    }
+  },
+  {
+    category: "Конфлікт і емоції",
+    pos: "фраза",
+    concept: "мені байдуже / це не моя справа",
+    words: {
+      A1: { de: "egal", meaning: "байдуже, все одно", context: "базове", ex: "Das ist mir jetzt wirklich ganz egal." },
+      A2: { de: "Wurst sein", meaning: "до лампочки (розмовна ідіома)", context: "побутове сленгове", ex: "Was die anderen denken, ist mir völlig Wurst." },
+      B1: { de: "nicht interessieren", meaning: "не цікавити, не мати значення", context: "стандартне", ex: "Dieses Thema interessiert mich im Moment überhaupt nicht." },
+      B2: { de: "keine Relevanz beimessen", meaning: "не надавати жодної ваги чи значущості", context: "ділове / холодна відмова", ex: "Diesen unsachlichen Behauptungen messen wir keinerlei Relevanz bei." },
+      C1: { de: "tangiert mich peripher", meaning: "обходить мене стороною / анітрохи не торкається", context: "псевдоакадемічний сарказм", ex: "Ihre unqualifizierten Zwischenrufe tangieren mich, wenn überhaupt, nur äußerst peripher." }
+    }
+  },
+  {
+    category: "Конфлікт і емоції",
+    pos: "вигук",
+    concept: "забирайтеся звідси / припиніть негайно",
+    words: {
+      A1: { de: "Geh weg!", meaning: "йди геть", context: "пряме базове", ex: "Geh bitte einfach weg von mir!" },
+      A2: { de: "Hau ab!", meaning: "відчепися / згинь", context: "грубе розмовне", ex: "Hau endlich ab und lass mich in Ruhe!" },
+      B1: { de: "Verschwinden Sie!", meaning: "щезніть / забирайтеся геть", context: "різке стандартне", ex: "Verschwinden Sie augenblicklich aus meinem Büro!" },
+      B2: { de: "Ich fordere Sie auf, zu weichen!", meaning: "вимагаю негайно звільнити простір / відійти", context: "формально-дистанційоване", ex: "Treten Sie sofort zurück und weichen Sie aus dem Konferenzraum!" },
+      C1: { de: "Ich entziehe Ihnen das Wort!", meaning: "позбавляю вас права голосу / велю замовкнути за регламентом", context: "парламентське / протокольне", ex: "Wegen wiederholter Entgleisungen entziehe ich Ihnen hiermit unweigerlich das Wort!" }
+    }
+  },
+  {
+    category: "Конфлікт і емоції",
+    pos: "іменник",
+    concept: "брехня / відвертий обман",
+    words: {
+      A1: { de: "die Lüge", meaning: "брехня", context: "базове", ex: "Das ist eine dicke Lüge!" },
+      A2: { de: "das Märchen", meaning: "байки, казки (у значенні вигадок)", context: "побутове іронічне", ex: "Erzähl mir doch keine Märchen!" },
+      B1: { de: "die Falschaussage", meaning: "неправдиве твердження", context: "офіційне", ex: "Ihre Erklärung beruht auf einer eindeutigen Falschaussage." },
+      B2: { de: "die bewusste Täuschung", meaning: "свідоме введення в оману", context: "ділове / юридичне", ex: "Das Verstecken dieser Kostenpunkte grenzt an eine bewusste Täuschung der Kunden." },
+      C1: { de: "das perfide Lügengebilde", meaning: "підступна конструкція суцільного обману", context: "високий стиль / полеміка", ex: "Der Redner entlarvte den vorgelegten Rechenschaftsbericht als ein perfides und zynisches Lügengebilde." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "фраза",
+    concept: "набридло / дістало / вичерпався терпець",
+    words: {
+      A1: { de: "keine Lust", meaning: "немає бажання", context: "дитяче / базове", ex: "Ich habe wirklich keine Lust mehr auf diese Hausaufgaben." },
+      A2: { de: "nervt mich", meaning: "мене це бісить / нервує", context: "побутове розмовне", ex: "Dieses ständige Warten nervt mich total." },
+      B1: { de: "die Nase voll haben", meaning: "бути ситим по горло", context: "стандартна ідіома", ex: "Ich habe die Nase voll von seinen ständigen Ausreden." },
+      B2: { de: "einer Sache überdrüssig sein", meaning: "відчувати пересичення чи моральну втому від чогось", context: "ділове виважене / стиль", ex: "Die Belegschaft ist der endlosen Umstrukturierungen längst überdrüssig." },
+      C1: { de: "ein tiefes Überdrussgefühl empfinden", meaning: "відчувати глибоку екзистенційну втому та відторгнення", context: "есеїстичне / витончена іронія", ex: "Angesichts der monotonen Debatten empfand das Gremium ein tiefes Überdrussgefühl." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "фраза",
+    concept: "пощастило / неймовірний успіх",
+    words: {
+      A1: { de: "Glück haben", meaning: "мати удачу", context: "базове", ex: "Wir haben heute wirklich großes Glück gehabt." },
+      A2: { de: "Schwein haben", meaning: "підфартило (сленгова німецька ідіома)", context: "розмовне вуличне", ex: "Da hast du aber echt Schwein gehabt mit dem letzten Ticket!" },
+      B1: { de: "einen Glückstreffer landen", meaning: "влучити в яблучко / зірвати куш", context: "стандартне повсякденне", ex: "Mit dieser bezahlbaren Wohnung hat er einen echten Glückstreffer gelandet." },
+      B2: { de: "vom Schicksal begünstigt sein", meaning: "бути пестунчиком долі в конкретній ситуації", context: "публіцистичне / легка іронія", ex: "Bei den Verhandlungen schien das Startup auffallend vom Schicksal begünstigt zu sein." },
+      C1: { de: "eine glückliche Fügung erfahren", meaning: "пізнати винятково сприятливий збіг життєвих обставин", context: "високий стиль / красномовство", ex: "Es bedurfte einer überaus glücklichen Fügung des Schicksals, um das Werk zu vollenden." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "дієслово",
+    concept: "зазнати фіаско / провалитися / сісти в калюжу",
+    words: {
+      A1: { de: "kaputt gehen", meaning: "зламатися, зіпсуватися", context: "базове", ex: "Mein Plan ist leider kaputt gegangen." },
+      A2: { de: "in die Hose gehen", meaning: "піти шкереберть / осоромитися", context: "побутове сленгове", ex: "Die ganze Überraschungsparty ist total in die Hose gegangen." },
+      B1: { de: "scheitern", meaning: "зазнати невдачі", context: "стандартне ділове", ex: "Der Versuch, die Kosten zu senken, ist leider gescheitert." },
+      B2: { de: "Schiffbruch erleiden", meaning: "зазнати аварії / краху у справах", context: "метафоричне / преса", ex: "Mit seiner riskanten Strategie erlitt der Finanzvorstand letztlich Schiffbruch." },
+      C1: { de: "ein eklatantes Fiasko zeitigen", meaning: "призвести до кричущого та ганебного фіаско", context: "нищівна ділова аналітика", ex: "Die unausgereifte Reform zeitigte ein administrativ wie finanziell eklatantes Fiasko." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "дієслово",
+    concept: "злякатися / здригнутися від страху",
+    words: {
+      A1: { de: "Angst haben", meaning: "боятися", context: "базове", ex: "Ich habe große Angst vor Hunden." },
+      A2: { de: "Schiss haben", meaning: "труситися від страху / ссикувати", context: "грубувате сленгове", ex: "Er hatte total Schiss vor der mündlichen Prüfung." },
+      B1: { de: "erschrecken", meaning: "злякатися, вжахнутися", context: "стандартне", ex: "Ich bin über das plötzliche Geräusch sehr erschrocken." },
+      B2: { de: "kalte Füße bekommen", meaning: "дати задню в останній момент через острах", context: "ідіоматичне / ділове", ex: "Kurz vor der Vertragsunterzeichnung bekam der Investor kalte Füße." },
+      C1: { de: "von jäher Mutlosigkeit erfasst werden", meaning: "бути раптово охопленим малодушністю та паралізуючим острахом", context: "психологічний портрет / література", ex: "Inmitten der Krise wurde die Führungsriege von einer jähen Mutlosigkeit erfasst." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "фраза",
+    concept: "зробити щось даремно / пустити гроші на вітер",
+    words: {
+      A1: { de: "Geld weg", meaning: "грошей більше немає", context: "дитяче / базове", ex: "Das Ticket ist alt und mein Geld ist weg." },
+      A2: { de: "für die Katz sein", meaning: "коту під хвіст", context: "розмовне ідіоматичне", ex: "Die ganze Mühe am Wochenende war völlig für die Katz." },
+      B1: { de: "Geld verschwenden", meaning: "марнувати ресурси без користі", context: "стандартне", ex: "Wir dürfen unser Budget nicht für unnötige Dinge verschwenden." },
+      B2: { de: "Kapital in den Sand setzen", meaning: "зарити гроші в пісок / безнадійно профукати кошти", context: "бізнес-сленг / преса", ex: "Mit dem Fehlkauf hat die Direktion Millionen in den Sand gesetzt." },
+      C1: { de: "Ressourcen ohne jeden Mehrwert verbrennen", meaning: "марно спалювати активи без найменшого приросту доданої вартості", context: "корпоративна іронія / аудит", ex: "Die Kampagne verbrannte erhebliche finanzielle Mittel, ohne auch nur den geringsten Mehrwert zu stiften." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "фраза",
+    concept: "страшенно втомитися / знесилитися",
+    words: {
+      A1: { de: "sehr müde sein", meaning: "дуже хотіти спати, втомитися", context: "базове", ex: "Ich bin heute wirklich sehr müde." },
+      A2: { de: "kaputt sein", meaning: "бути вбитим / виснаженим", context: "побутове розмовне", ex: "Nach der Arbeit bin ich einfach total kaputt." },
+      B1: { de: "völlig erschöpft sein", meaning: "бути цілком виснаженим", context: "стандартне", ex: "Nach dem langen Umzug waren alle Helfer völlig erschöpft." },
+      B2: { de: "auf dem Zahnfleisch gehen", meaning: "повзти на останньому подиху / триматися з останніх сил", context: "розмовна ідіома / робота", ex: "Wegen der vielen Überstunden geht die ganze Abteilung auf dem Zahnfleisch." },
+      C1: { de: "an die Grenze physischer Erschöpfung geraten", meaning: "дійти до краю фізичного та нервового вичерпання", context: "високий стиль / аналітика", ex: "Die Belegschaft geriet infolge der Dauerbelastung an die Grenzen ihrer physischen Leistungsfähigkeit." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "дієслово",
+    concept: "проговоритися / вибовкати таємницю",
+    words: {
+      A1: { de: "alles sagen", meaning: "розказати все", context: "базове", ex: "Er hat leider sofort alles gesagt." },
+      A2: { de: "petzen", meaning: "наябедничати / розпатякати", context: "побутове / дитяче", ex: "Bitte petz das nicht gleich der Lehrerin!" },
+      B1: { de: "ein Geheimnis verraten", meaning: "видати секрет", context: "стандартне", ex: "Man kann ihm leider kein Geheimnis anvertrauen, er verrät es sofort." },
+      B2: { de: "aus dem Nähkästchen plaudern", meaning: "вибовкати пікантні внутрішні подробиці", context: "іронічне / журналістика", ex: "Beim Firmenessen plauderte der Abteilungsleiter unbedacht aus dem Nähkästchen." },
+      C1: { de: "Indiskretionen begehen", meaning: "допустити неприпустимий витік конфіденційної інформації", context: "офіційне / правове", ex: "Ein ehemaliger Mitarbeiter beging schwere Indiskretionen bezüglich interner Zahlen." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "фраза",
+    concept: "перебільшувати / робити з мухи слона",
+    words: {
+      A1: { de: "zu viel sagen", meaning: "казати забагато", context: "базове", ex: "Das ist nicht so schlimm, du sagst zu viel." },
+      A2: { de: "Drama machen", meaning: "влаштовувати драму на рівному місці", context: "побутове розмовне", ex: "Mach doch bitte nicht immer gleich so ein Drama!" },
+      B1: { de: "übertreiben", meaning: "перебільшувати масштаб події", context: "стандартне", ex: "Er neigt dazu, kleine Probleme maßlos zu übertreiben." },
+      B2: { de: "aus einer Mücke einen Elefanten machen", meaning: "робити з мухи слона", context: "іронічна ідіома", ex: "Wegen fünf Minuten Verspätung musst du nicht gleich aus einer Mücke einen Elefanten machen." },
+      C1: { de: "Bagatellen unverhältnismäßig dramatisieren", meaning: "непропорційно роздувати та драматизувати дрібниці", context: "парламентське / полеміка", ex: "Die Opposition neigt dazu, rein administrative Bagatellen populistisch zu dramatisieren." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "дієслово",
+    concept: "марно базікати / говорити пусті речі",
+    words: {
+      A1: { de: "viel reden", meaning: "багато говорити", context: "базове", ex: "Er redet heute wirklich viel." },
+      A2: { de: "quatschen", meaning: "теревенити / ляпати язиком", context: "побутове розмовне", ex: "Wir haben stundenlang nur über Belangloses gequatscht." },
+      B1: { de: "leeres Zeug reden", meaning: "молоти порожнє / говорити без змісту", context: "критичне розмовне", ex: "Hör endlich auf, so viel leeres Zeug zu reden und handle!" },
+      B2: { de: "heiße Luft produzieren", meaning: "молоти язиком без результату (ганяти повітря)", context: "діловий сленг / нарада", ex: "Die Taskforce hat in drei Sitzungen nichts als heiße Luft produziert." },
+      C1: { de: "sich in substanzloser Rhetorik ergehen", meaning: "розтікатися беззмістовними риторичними фразами", context: "високий стиль / дебати", ex: "Der Kandidat erging sich während der gesamten Diskussion in völlig substanzloser Rhetorik." }
+    }
+  },
+  {
+    category: "Колорит і іронія",
+    pos: "фраза",
+    concept: "дати маху / потрапити в незручне становище",
+    words: {
+      A1: { de: "einen Fehler machen", meaning: "зробити помилку", context: "базове", ex: "Ich habe da einen kleinen Fehler gemacht." },
+      A2: { de: "Mist bauen", meaning: "накосячити / накоїти дурниць", context: "побутове сленгове", ex: "Tut mir leid, da habe ich echten Mist gebaut." },
+      B1: { de: "sich blamieren", meaning: "зганьбитися / зганьбити себе перед людьми", context: "стандартне", ex: "Mit dieser falschen Zahl hat er sich vor dem Kunden blamiert." },
+      B2: { de: "ins Fettnäpfchen treten", meaning: "сісти в калюжу / бовкнути щось недоречне", context: "іронічне розмовне", ex: "Mit seiner Bemerkung über das Alter trat er zielsicher ins Fettnäpfchen." },
+      C1: { de: "einen gravierenden Fauxpas begehen", meaning: "допустити грубий протокольний або соціальний промах", context: "дипломатичне / вишукане", ex: "Das Missachten der Sitzordnung stellte einen diplomatisch gravierenden Fauxpas dar." }
+    }
+  },
+  {
+    category: "Емоції",
+    pos: "прикметник",
+    concept: "радісний / щасливий / захоплений",
+    words: {
+      A1: { de: "froh", meaning: "радий, задоволений", context: "базове", ex: "Ich bin sehr froh, dich zu sehen." },
+      A2: { de: "glücklich", meaning: "щасливий", context: "побутове", ex: "Sie hat die Prüfung bestanden und ist überglücklich." },
+      B1: { de: "begeistert", meaning: "захоплений, сповнений ентузіазму", context: "стандартне ділове", ex: "Das gesamte Team war von dem neuen Konzept begeistert." },
+      B2: { de: "euphorisch", meaning: "ейфорійний, у піднесеному емоційному стані", context: "психологічне / DTB", ex: "Die Stimmung nach dem Wahlsieg war schlichtweg euphorisch." },
+      C1: { de: "überschwänglich", meaning: "надзвичайно бурхливий у вияві радості", context: "літературне / стиль", ex: "Sie bedankte sich mit überschwänglichen Worten für die Unterstützung." }
+    }
+  },
+  {
+    category: "Емоції",
+    pos: "іменник",
+    concept: "злість / гнів / лють",
+    words: {
+      A1: { de: "die Wut", meaning: "злість, гнів", context: "базове", ex: "Er schrie vor lauter Wut." },
+      A2: { de: "der Ärger", meaning: "роздратування, неприємності", context: "побутове", ex: "Es gab viel Ärger wegen der lauten Musik." },
+      B1: { de: "der Zorn", meaning: "глибокий праведний або сильний гнів", context: "стандартне", ex: "Sein Zorn richtete sich gegen die Ungerechtigkeit." },
+      B2: { de: "die Empörung", meaning: "обурення через порушення норм чи моралі", context: "ділове / суспільне", ex: "Die plötzliche Kündigung löste allgemeine Empörung aus." },
+      C1: { de: "die Rage", meaning: "стан шаленства, неконтрольованої люті", context: "психологічне / публіцистика", ex: "Er geriet derart in Rage, dass jede sachliche Debatte unmöglich wurde." }
+    }
+  },
+  {
+    category: "Емоції",
+    pos: "іменник",
+    concept: "сум / туга / пригніченість",
+    words: {
+      A1: { de: "die Traurigkeit", meaning: "сум, печаль", context: "базове", ex: "Seine Augen waren voll von Traurigkeit." },
+      A2: { de: "der Kummer", meaning: "горе, переживання, печаль", context: "побутове", ex: "Liebeskummer kann sehr weh tun." },
+      B1: { de: "die Enttäuschung", meaning: "розчарування від невиправданих очікувань", context: "стандартне", ex: "Die Absage war eine herbe Enttäuschung für die Bewerberin." },
+      B2: { de: "die Niedergeschlagenheit", meaning: "пригніченість, моральний занепад", context: "психологічний стан / DTB", ex: "Nach dem Scheitern des Plans machte sich tiefe Niedergeschlagenheit breit." },
+      C1: { de: "die Melancholie", meaning: "глибока задумлива туга / світлий смуток", context: "високий стиль / література", ex: "Eine leise Melancholie schwang in all seinen Erinnerungen mit." }
+    }
+  },
+  {
+    category: "Емоції",
+    pos: "іменник",
+    concept: "страх / тривога / паніка",
+    words: {
+      A1: { de: "die Angst", meaning: "страх", context: "базове", ex: "Hast du Angst vor der Dunkelheit?" },
+      A2: { de: "die Sorge", meaning: "турбота, переживання за щось", context: "побутове", ex: "Ich mache mir große Sorgen um deine Gesundheit." },
+      B1: { de: "die Befürchtung", meaning: "побоювання щодо негативного розвитку подій", context: "стандартне ділове", ex: "Unsere Befürchtung bezüglich des Lieferverzugs hat sich bestätigt." },
+      B2: { de: "die Beunruhigung", meaning: "внутрішній неспокій, стривоженість", context: "офіційне / преса", ex: "Die Nachricht sorgte für erhebliche Beunruhigung an den Märkten." },
+      C1: { de: "die Beklemmung", meaning: "гнітюче стиснення в грудях від тривоги чи жаху", context: "літературний опис стану", ex: "Ein Gefühl quälender Beklemmung schnürte ihm die Kehle zu." }
+    }
+  },
+  {
+    category: "Емоції",
+    pos: "іменник",
+    concept: "подив / захоплення / шок",
+    words: {
+      A1: { de: "das Wunder", meaning: "диво", context: "базове", ex: "Es ist ein echtes Wunder, dass alles geklappt hat." },
+      A2: { de: "die Überraschung", meaning: "сюрприз, несподіванка", context: "побутове", ex: "Die Party war eine gelungene Überraschung." },
+      B1: { de: "das Erstaunen", meaning: "подив, здивування від побаченого", context: "стандартне", ex: "Zu unserem großen Erstaunen war das Gebäude schon fertig." },
+      B2: { de: "die Verwunderung", meaning: "подив із часткою сумніву чи нерозуміння", context: "ділове / DTB", ex: "Die Entscheidung stieß bei den Mitarbeitern auf offene Verwunderung." },
+      C1: { de: "die Fassungslosigkeit", meaning: "стан заціпеніння / шоку від неможливості осягнути факт", context: "публіцистичне / емоційне B2-C1", ex: "Die Nachricht von dem Skandal hinterließ eine Welle der Fassungslosigkeit." }
+    }
+  },
+  {
+    category: "Емоції",
+    pos: "дієслово",
+    concept: "заспокоюватися / опановувати себе",
+    words: {
+      A1: { de: "ruhig sein", meaning: "бути тихим, спокійним", context: "базове", ex: "Sei bitte ruhig, das Baby schläft." },
+      A2: { de: "sich beruhigen", meaning: "заспокоюватися після хвилювання", context: "побутове", ex: "Trink ein Glas Wasser und beruhige dich erst einmal." },
+      B1: { de: "sich fassen", meaning: "брати себе в руки після шоку чи сліз", context: "стандартне", ex: "Nach der Hiobsbotschaft musste sie sich kurz fassen." },
+      B2: { de: "die Fassung wiedererlangen", meaning: "повертати собі самовладання та гідність", context: "офіційне / поведінка", ex: "Trotz der verbalen Angriffe erlangte der Sprecher rasch seine Fassung wieder." },
+      C1: { de: "seine Contenance wahren", meaning: "зберігати бездоганну зовнішню незворушність і витримку", context: "дипломатичний етикет / витончене", ex: "Inmitten des Eklats wahrte die Ministerin unbeirrt ihre Contenance." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "ставити діагноз / виявляти хворобу",
+    words: {
+      A1: { de: "sehen", meaning: "бачити хворобу", context: "базове", ex: "Der Arzt sieht, was los ist." },
+      A2: { de: "untersuchen", meaning: "оглядати пацієнта", context: "побутове", ex: "Der Doktor untersucht meinen Hals." },
+      B1: { de: "feststellen", meaning: "констатувати, виявляти порушення", context: "стандартне медичне", ex: "Der Arzt stellte eine Entzündung der Atemwege fest." },
+      B2: { de: "eine Diagnose stellen", meaning: "виставляти клінічний діагноз", context: "клінічне / DTB", ex: "Nach Auswertung der Blutwerte stellte die Ärztin eine gesicherte Diagnose." },
+      C1: { de: "diagnostizieren / Befund erheben", meaning: "проводити диференційну діагностику та протокольний опис стану", context: "експертна медицина", ex: "Aufgrund der Symptomatik wurde ein chronisches Nierenversagen diagnostiziert." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "призначати ліки / виписувати рецепт",
+    words: {
+      A1: { de: "geben", meaning: "давати ліки", context: "базове", ex: "Der Arzt gibt mir Tabletten." },
+      A2: { de: "ein Rezept schreiben", meaning: "писати рецепт", context: "побутове", ex: "Er schreibt mir ein Rezept für Tropfen." },
+      B1: { de: "verschreiben", meaning: "виписувати медикаменти", context: "стандартне", ex: "Gegen die Schmerzen hat sie mir ein Schmerzmittel verschrieben." },
+      B2: { de: "verordnen", meaning: "офіційно призначати схему терапії чи препарат", context: "медичне / DTB", ex: "Der Facharzt verordnete eine zehntägige Antibiotikatherapie." },
+      C1: { de: "indizieren / medikamentös einstellen", meaning: "визначати покази та підбирати терапевтичне дозування", context: "фармакотерапія / стаціонар", ex: "Der Patient wurde auf ein neuartiges Antihypertensivum medikamentös eingestellt." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "побічна дія / небажана реакція на препарат",
+    words: {
+      A1: { de: "das Problem", meaning: "проблема від пігулок", context: "базове", ex: "Ich habe ein Problem mit den Pillen." },
+      A2: { de: "Schmerzen bekommen", meaning: "отримувати біль після прийому", context: "побутове", ex: "Nach der Tablette bekomme ich Bauchschmerzen." },
+      B1: { de: "die Nebenwirkung", meaning: "побічний ефект", context: "стандартне", ex: "Haben diese Tropfen starke Nebenwirkungen?" },
+      B2: { de: "die Unverträglichkeit", meaning: "непереносимість речовини організмом", context: "клінічне / DTB", ex: "Der Patient leidet an einer ausgeprägten Histaminunverträglichkeit." },
+      C1: { de: "die unerwünschte Arzneimittelwirkung (UAW)", meaning: "несприятлива фармакологічна токсична або алергічна реакція", context: "протокольне / фармакологія", ex: "Schwere unerwünschte Arzneimittelwirkungen sind umgehend der Aufsichtsbehörde zu melden." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "дослідження / медичний висновок",
+    words: {
+      A1: { de: "das Papier", meaning: "папірець від лікаря", context: "базове", ex: "Hier ist das Papier vom Doktor." },
+      A2: { de: "der Arztbrief", meaning: "лист / виписка від лікаря", context: "побутове", ex: "Ich muss den Arztbrief zur Krankenkasse bringen." },
+      B1: { de: "das Untersuchungsergebnis", meaning: "результат обстеження", context: "стандартне", ex: "Das Untersuchungsergebnis liegt morgen Nachmittag vor." },
+      B2: { de: "der ärztliche Befund", meaning: "клінічний протокольний опис стану органу/тканин", context: "діагностика / DTB", ex: "Der radiologische Befund ergab keinerlei Anzeichen für eine Fraktur." },
+      C1: { de: "die Epikrise", meaning: "остаточний виписний епікриз із критичною оцінкою анамнезу", context: "госпітальне / експертне", ex: "Die Epikrise fasst den gesamten stationären Behandlungsverlauf detailliert zusammen." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "одужувати / відновлюватися після недуги",
+    words: {
+      A1: { de: "wieder gesund sein", meaning: "знову бути здоровим", context: "базове", ex: "Morgen bin ich wieder gesund." },
+      A2: { de: "besser gehen", meaning: "почуватися краще", context: "побутове", ex: "Es geht mir schon viel besser als gestern." },
+      B1: { de: "sich erholen", meaning: "відновлювати сили після хвороби", context: "стандартне", ex: "Er muss sich noch ein paar Tage von der Grippe erholen." },
+      B2: { de: "genesen", meaning: "повністю долати патологічний стан", context: "клінічне / преса", ex: "Der Patient ist nach dem operativen Eingriff rasch genesen." },
+      C1: { de: "rekonvaleszieren", meaning: "проходити фазу поступового клінічного відновлення функцій", context: "академічне / реабілітація", ex: "Nach der schweren Sepsis rekonvaleszierte der Betroffene über mehrere Wochen." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "щеплення / формування імунітету",
+    words: {
+      A1: { de: "die Spritze", meaning: "укол", context: "базове", ex: "Ich brauche eine Spritze gegen Grippe." },
+      A2: { de: "die Impfung", meaning: "щеплення", context: "побутове", ex: "Haben Sie schon die Impfung gegen Tetanus?" },
+      B1: { de: "der Impfschutz", meaning: "імунний захист після вакцинації", context: "стандартне", ex: "Der Impfschutz hält ungefähr zehn Jahre an." },
+      B2: { de: "die Immunisierung", meaning: "формування захисного титру антитіл", context: "офіційне / DTB", ex: "Die vollständige Immunisierung des Personals ist in Kliniken verpflichtend." },
+      C1: { de: "die Herdenimmunität", meaning: "колективний популяційний імунітет", context: "епідеміологія / соціум", ex: "Das Erreichen einer stabilen Herdenimmunität verhinderte die weitere Ausbreitung des Erregers." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "госпіталізувати / класти в лікарню",
+    words: {
+      A1: { de: "ins Krankenhaus gehen", meaning: "йти до лікарні", context: "базове", ex: "Er muss heute ins Krankenhaus gehen." },
+      A2: { de: "ins Krankenhaus bringen", meaning: "відвозити до лікарні", context: "побутове", ex: "Der Krankenwagen bringt ihn sofort ins Krankenhaus." },
+      B1: { de: "einliefern", meaning: "екстрено доставляти у відділення", context: "стандартне", ex: "Der Verletzte wurde direkt in die Notaufnahme eingeliefert." },
+      B2: { de: "stationär aufnehmen", meaning: "оформлювати на стаціонарне лікування", context: "клінічне / DTB", ex: "Aufgrund der akuten Schmerzen musste der Patient stationär aufgenommen werden." },
+      C1: { de: "hospitalisieren", meaning: "проводити госпіталізацію за клінічними показами", context: "експертна медицина", ex: "Eine sofortige Hospitalisierung war infolge der vitalen Bedrohung unumgänglich." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "втрачати свідомість / непритомніти",
+    words: {
+      A1: { de: "umfallen", meaning: "падати на землю", context: "базове", ex: "Er ist plötzlich einfach umgefallen." },
+      A2: { de: "schwarz vor Augen werden", meaning: "темніти в очах", context: "побутове", ex: "Mir ist plötzlich ganz schwarz vor Augen geworden." },
+      B1: { de: "das Bewusstsein verlieren", meaning: "втрачати ясний контакт зі світом", context: "стандартне рятувальне", ex: "Die Person hat kurzzeitig das Bewusstsein verloren." },
+      B2: { de: "in Ohnmacht fallen", meaning: "непритомніти через збій кровообігу", context: "невідкладна допомога / DTB", ex: "Die Patientin fiel infolge des akuten Flüssigkeitsmangels in Ohnmacht." },
+      C1: { de: "eine Synkope erleiden", meaning: "переносити раптовий транзиторний напад непритомності", context: "кардіологія / реанімація", ex: "Der Notarzt stellte fest, dass der Patient eine vasovagale Synkope erlitten hatte." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "оперувати / проводити хірургічне втручання",
+    words: {
+      A1: { de: "aufmachen", meaning: "розрізати (описово)", context: "дитяче / спрощене", ex: "Die Ärzte müssen den Bauch aufmachen." },
+      A2: { de: "eine OP haben", meaning: "мати призначену операцію", context: "побутове", ex: "Mein Nachbar hat morgen eine schwere OP am Knie." },
+      B1: { de: "operieren", meaning: "робити хірургічну операцію", context: "стандартне", ex: "Der Chefarzt wird den gebrochenen Arm morgen operieren." },
+      B2: { de: "einen chirurgischen Eingriff vornehmen", meaning: "проводити планове або термінове хірургічне втручання", context: "стаціонар / DTB", ex: "Wir müssen zeitnah einen minimalinvasiven chirurgischen Eingriff vornehmen." },
+      C1: { de: "sich einer Notfallindikation unterziehen", meaning: "підлягати невідкладному оперативному втручанню за життєвими показами", context: "хірургічний протокол", ex: "Der Verletzte musste sich unverzüglich einer Notfalllaparotomie unterziehen." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "сильний / нестерпний біль",
+    words: {
+      A1: { de: "große Schmerzen", meaning: "дуже сильний біль", context: "базове", ex: "Ich habe hier ganz große Schmerzen." },
+      A2: { de: "starke Schmerzen", meaning: "виражений біль", context: "побутове", ex: "Haben Sie starke oder schwache Schmerzen in der Brust?" },
+      B1: { de: "unerträgliche Schmerzen", meaning: "нестерпні, важкі для витримки больові відчуття", context: "невідкладне", ex: "Der Patient klagt über plötzlich aufgetretene, unerträgliche Schmerzen." },
+      B2: { de: "akute Schmerzsymptomatik", meaning: "гострий больовий синдром із чіткою локалізацією", context: "діагностика / DTB", ex: "Die akute Schmerzsymptomatik strahlt in den linken Oberarm und Rücken aus." },
+      C1: { de: "refraktäre Schmerzkrise", meaning: "тяжкий больовий стан, стійкий до дії стандартних анальгетиків", context: "паліативне / анестезіологія", ex: "Zur Durchbrechung der therapierefraktären Schmerzkrise wurde ein Opiat titriert." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "виписувати з лікарні після лікування",
+    words: {
+      A1: { de: "nach Hause gehen", meaning: "іти додому після лікаря", context: "базове", ex: "Darf ich heute schon nach Hause gehen?" },
+      A2: { de: "rauskommen", meaning: "виходити зі стін лікарні", context: "побутове", ex: "Wann kommt deine Mutter aus dem Spital raus?" },
+      B1: { de: "nach Hause schicken", meaning: "відпускати пацієнта додому", context: "стандартне", ex: "Nach der Untersuchung hat die Ärztin mich wieder nach Hause geschickt." },
+      B2: { de: "aus dem Krankenhaus entlassen", meaning: "офіційно виписувати зі стаціонару за покращенням", context: "клінічне ділове / DTB", ex: "Der Patient konnte am fünften postoperativen Tag beschwerdefrei entlassen werden." },
+      C1: { de: "die Entlassung veranlassen", meaning: "оформлювати фінальну клінічну процедуру завершення госпіталізації", context: "лікарський консиліум", ex: "Nach eingehender Konsultation veranlasste der Oberarzt die reguläre Entlassung." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "швидка допомога / відділення невідкладних станів",
+    words: {
+      A1: { de: "das rote Auto", meaning: "машина швидкої (спрощене)", context: "базове", ex: "Rufe schnell das rote Auto!" },
+      A2: { de: "der Krankenwagen", meaning: "санітарний автомобіль", context: "побутове", ex: "Wir müssen sofort den Krankenwagen unter 112 rufen." },
+      B1: { de: "die Notaufnahme", meaning: "приймальне відділення невідкладних станів", context: "стандартне", ex: "Bitte bringen Sie den Verletzten direkt in die Notaufnahme." },
+      B2: { de: "der Rettungsdienst / Notarztwagen (NAW)", meaning: "спеціалізована мобільна бригада з реанімаційним лікарем", context: "екстрена медицина / DTB", ex: "Der Rettungsdienst traf innerhalb von acht Minuten am Einsatzort ein." },
+      C1: { de: "die interdisziplinäre Notaufnahme (INA)", meaning: "багатопрофільний стаціонарний комплекс екстреної діагностики та шокової терапії", context: "госпітальна інфраструктура", ex: "Die Primärversorgung polytraumatisierter Patienten erfolgt über den Schockraum der INA." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "задишка / приступ ядухи / брак повітря",
+    words: {
+      A1: { de: "keine Luft", meaning: "немає повітря", context: "екстрене базове", ex: "Hilfe, ich bekomme keine Luft mehr!" },
+      A2: { de: "schlecht atmen", meaning: "важко дихати", context: "побутове", ex: "Mein Kind kann seit einer Stunde ganz schlecht atmen." },
+      B1: { de: "die Atemnot", meaning: "задишка, ядуха", context: "стандартне клінічне", ex: "Bei akuter Atemnot muss sofort der Notarzt gerufen werden." },
+      B2: { de: "die Kurzatmigkeit", meaning: "хронічна задишка навіть при незначному навантаженні", context: "діагностика / DTB", ex: "Der Patient klagt über zunehmende Kurzatmigkeit beim Treppensteigen." },
+      C1: { de: "die Dyspnoe / das Lungenödem", meaning: "клінічно виражена диспное / набряк легень із загрозою гіпоксії", context: "реанімація / пульмонологія", ex: "Es entwickelte sich eine progrediente Dyspnoe infolge eines kardialen Lungenödems." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "алергічна реакція / анафілактичний шок",
+    words: {
+      A1: { de: "die Allergie", meaning: "алергія на щось", context: "базове", ex: "Ich habe eine Allergie gegen Erdnüsse." },
+      A2: { de: "rot werden und jucken", meaning: "червоніти та свербіти (шкіра)", context: "побутове", ex: "Mein Arm wird ganz rot und juckt extrem." },
+      B1: { de: "die allergische Reaktion", meaning: "алергічна реакція на медикамент чи їжу", context: "стандартне", ex: "Das Medikament löste eine heftige allergische Reaktion aus." },
+      B2: { de: "der anaphylaktische Schock", meaning: "життєво небезпечний анафілактичний шоковий стан", context: "невідкладна допомога / DTB", ex: "Nach dem Wespenstich erlitt der Patient einen anaphylaktischen Schock." },
+      C1: { de: "die Histaminausschüttung / das Angioödem", meaning: "масивний викид гістаміну з формуванням набряку Квінке", context: "імунологія / токсикологія", ex: "Eine unkontrollierte Histaminausschüttung führte zur Ausbildung eines lebensbedrohlichen Angioödems." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "давати згоду на лікування / операцію",
+    words: {
+      A1: { de: "Ja sagen", meaning: "погоджуватися на лікування", context: "базове", ex: "Ich sage Ja zur Behandlung." },
+      A2: { de: "unterschreiben", meaning: "підписувати формуляр перед процедурою", context: "побутове", ex: "Muss ich das Papier vor der Spritze unterschreiben?" },
+      B1: { de: "einverstanden sein mit", meaning: "бути згодним із планом терапії", context: "стандартне", ex: "Sind Sie mit dem vorgeschlagenen Eingriff einverstanden?" },
+      B2: { de: "die Einwilligung erteilen", meaning: "офіційно давати письмову згоду на медичне втручання", context: "клінічне право / DTB", ex: "Erst nach umfassender ärztlicher Aufklärung erteilte die Patientin ihre Einwilligung." },
+      C1: { de: "eine rechtswirksame Einwilligungserklärung abgeben", meaning: "підписувати юридично чинний протокол інформованої добровільної згоди", context: "медичне право / протокол", ex: "Der Bevollmächtigte gab im Namen des Betroffenen eine rechtswirksame Einwilligungserklärung ab." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "перелом кістки / травма скелета",
+    words: {
+      A1: { de: "der Arm kaputt", meaning: "рука зламана (дитяче / спрощене)", context: "базове", ex: "Mein Arm ist kaputt nach dem Sturz." },
+      A2: { de: "der Knochenbruch", meaning: "перелом кістки", context: "побутове", ex: "Der Arzt sagt, es ist ein einfacher Knochenbruch." },
+      B1: { de: "der Bruch", meaning: "перелом кінцівки", context: "стандартне", ex: "Der Bruch muss geröntgt und ruhiggestellt werden." },
+      B2: { de: "die Fraktur", meaning: "травматичне пошкодження кісткової тканини", context: "травматологія / DTB", ex: "Es liegt eine geschlossene Fraktur des linken Unterschenkels vor." },
+      C1: { de: "die Trümmerfraktur / Fissur", meaning: "уламковий складний перелом або поздовжня тріщина кістки", context: "хірургія пошкоджень", ex: "Die radiologische Diagnostik verifizierte eine dislozierte Trümmerfraktur mit Gefäßbeteiligung." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "довіреність на випадок хвороби / медичний заповіт",
+    words: {
+      A1: { de: "die Hilfe von der Familie", meaning: "допомога родини у виборі лікування", context: "базове", ex: "Meine Familie entscheidet für mich." },
+      A2: { de: "die Vollmacht", meaning: "проста довіреність на документи", context: "побутове", ex: "Hier ist die Vollmacht von meinem Mann." },
+      B1: { de: "die Patientenverfügung", meaning: "письмова воля щодо реанімації та апаратів життєзабезпечення", context: "соціальне / догляд", ex: "Haben Sie bereits eine gültige Patientenverfügung verfasst?" },
+      B2: { de: "die Vorsorgevollmacht", meaning: "юридична довіреність представнику на прийняття рішень за пацієнта", context: "медичне право / DTB", ex: "Im Notfall greift sofort die notariell beglaubigte Vorsorgevollmacht der Tochter." },
+      C1: { de: "die Betreuungsverfügung", meaning: "судовий процесуальний акт призначення законного медичного опікуна", context: "юриспруденція / соціальний кодекс", ex: "Das Amtsgericht prüfte die Betreuungsverfügung zur Abwendung eines behördlichen Betreuerstatus." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "серцевий напад / інфаркт міокарда",
+    words: {
+      A1: { de: "Herz kaputt", meaning: "серце болить / зламалося (крик про допомогу)", context: "екстрене базове", ex: "Hilfe, mein Herz tut extrem weh!" },
+      A2: { de: "das Herzproblem", meaning: "проблема із серцем", context: "побутове", ex: "Er hat seit Jahren schwere Herzprobleme." },
+      B1: { de: "der Herzinfarkt", meaning: "інфаркт серця (гострий стан)", context: "стандартне клінічне", ex: "Der Notarzt muss sofort kommen, Verdacht auf Herzinfarkt!" },
+      B2: { de: "der Myokardinfarkt", meaning: "гострий інфаркт міокарда зі змінами на ЕКГ", context: "кардіологія / DTB", ex: "Das EKG zeigte deutliche Anzeichen für einen akuten Myokardinfarkt." },
+      C1: { de: "das akute Koronarsyndrom (ACS)", meaning: "гострий коронарний синдром із загрозою некрозу тканин", context: "реанімація / кардіохірургія", ex: "Zur Abklärung eines akuten Koronarsyndroms wurde eine sofortige Koronarangiographie eingeleitet." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "інсульт / порушення мозкового кровообігу",
+    words: {
+      A1: { de: "Kopf kaputt / kann nicht sprechen", meaning: "не можу говорити / параліч (симптом)", context: "екстрене базове", ex: "Er kann nicht mehr sprechen und das Gesicht hängt." },
+      A2: { de: "der Schlag", meaning: "удар (побутова назва удару/інсульту)", context: "побутове", ex: "Der alte Nachbar hatte gestern einen schweren Schlag." },
+      B1: { de: "der Schlaganfall", meaning: "інсульт", context: "стандартне", ex: "Bei einem Schlaganfall zählt jede Minute bis zur Behandlung." },
+      B2: { de: "der apoplektische Insult", meaning: "апоплексичний удар / гостре судинне ураження мозку", context: "клінічне / DTB", ex: "Der Patient erlitt einen apoplektischen Insult mit linksseitiger Hemiparese." },
+      C1: { de: "die zerebrale Ischämie", meaning: "гостра церебральна ішемія тканин головного мозку", context: "неврологічний стаціонар", ex: "Die Lysetherapie muss innerhalb des therapeutischen Zeitfensters der zerebralen Ischämie erfolgen." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "реанімувати / повертати до життя",
+    words: {
+      A1: { de: "wieder lebendig machen", meaning: "оживляти (спрощене)", context: "базове", ex: "Die Ärzte müssen den Mann schnell wieder lebendig machen." },
+      A2: { de: "aufwecken", meaning: "будити, повертати до тями", context: "побутове", ex: "Der Rettungsdienst versucht, ihn aufzuwecken." },
+      B1: { de: "wiederbeleben", meaning: "робити штучне дихання та масаж серця", context: "перша допомога", ex: "Die Sanitäter mussten den Verunglückten vor Ort wiederbeleben." },
+      B2: { de: "Reanimationsmaßnahmen durchführen", meaning: "проводити комплекс серцево-легеневої реанімації", context: "невідкладна допомога / DTB", ex: "Die Ersthelfer führten unverzüglich professionelle Reanimationsmaßnahmen durch." },
+      C1: { de: "kardiopulmonal reanimieren", meaning: "здійснювати розширений протокол СЛР із дефібриляцією", context: "реаніматологія", ex: "Der Notarzt reanimierte die Patientin über zwanzig Minuten erfolgreich kardiopulmonal." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "крововилив / тяжка кровотеча",
+    words: {
+      A1: { de: "viel Blut", meaning: "багато крові", context: "екстрене базове", ex: "Hier ist sehr viel Blut am Boden!" },
+      A2: { de: "stark bluten", meaning: "сильно стікати кров'ю", context: "побутове", ex: "Die Wunde am Bein blutet extrem stark." },
+      B1: { de: "die innere Blutung", meaning: "внутрішня кровотеча", context: "стандартне клінічне", ex: "Es besteht der dringende Verdacht auf eine innere Blutung im Bauch." },
+      B2: { de: "die Hämorrhagie", meaning: "судинний масивний крововилив / геморагія", context: "хірургія / DTB", ex: "Zur Stillung der arteriellen Hämorrhagie war eine Notoperation unumgänglich." },
+      C1: { de: "der hämorrhagische Schock", meaning: "декомпенсований геморагічний гіповолемічний шок", context: "трансфузіологія / травмоцентр", ex: "Infolge des massiven Blutverlustes trat ein letal drohender hämorrhagischer Schock ein." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "параліч / оніміння кінцівки чи м'язів",
+    words: {
+      A1: { de: "nicht bewegen", meaning: "не можу поворухнути", context: "базове", ex: "Ich kann meinen Arm gar nicht mehr bewegen." },
+      A2: { de: "taub sein", meaning: "заніміти, втратити чутливість", context: "побутове", ex: "Mein linkes Bein fühlt sich total taub an." },
+      B1: { de: "die Lähmung", meaning: "параліч кінцівки або частини тіла", context: "стандартне", ex: "Nach dem Unfall trat eine plötzliche Lähmung der Beine auf." },
+      B2: { de: "das Taubheitsgefühl / die Parese", meaning: "клінічна парестезія або частковий руховий парез", context: "неврологія / DTB", ex: "Die Patientin klagte über ein Taubheitsgefühl im Mundbereich und eine beginnende Parese." },
+      C1: { de: "die Plegie / Dysästhesie", meaning: "повний параліч довільних рухів або глибоке спотворення сенсорної чутливості", context: "нейрохірургія", ex: "Das Trauma resultierte in einer inkompletten Tetraplegie unterhalb des vierten Zervikalsegments." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "переливати кров / проводити інфузію",
+    words: {
+      A1: { de: "Blut geben", meaning: "давати кров", context: "базове", ex: "Der Arzt muss dem Kind schnell Blut geben." },
+      A2: { de: "an den Tropf hängen", meaning: "ставити крапельницю", context: "побутове", ex: "Im Zimmer hat man mich direkt an den Tropf gehängt." },
+      B1: { de: "eine Infusion bekommen", meaning: "отримувати внутрішньовенний розчин", context: "стандартне клінічне", ex: "Gegen die Austrocknung bekam sie eine Kochsalz-Infusion." },
+      B2: { de: "eine Bluttransfusion verabreichen", meaning: "проводити трансфузію донорської крові чи компонентів", context: "стаціонар / DTB", ex: "Aufgrund des niedrigen Hämoglobinwerts musste eine Bluttransfusion verabreicht werden." },
+      C1: { de: "transfundieren / parenteral substituieren", meaning: "здійснювати інфузійно-трансфузійне заміщення формених елементів і рідини", context: "гематологія / інтенсивна терапія", ex: "Die Gerinnungsfaktoren wurden postoperativ unverzüglich parenteral substituiert." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "панічна атака / напад страху смерті",
+    words: {
+      A1: { de: "große Angst", meaning: "дуже сильний страх", context: "екстрене базове", ex: "Ich habe ganz plötzlich so große Angst!" },
+      A2: { de: "Zittern und Herzklopfen", meaning: "тремтіння та шалене серцебиття", context: "побутове", ex: "Mein Herz klopft extrem schnell und ich zittere am ganzen Körper." },
+      B1: { de: "die Panikattacke", meaning: "раптовий напад гострої паніки", context: "стандартне клінічне", ex: "Hatten Sie schon früher einmal eine solche Panikattacke?" },
+      B2: { de: "der akute Angstzustand", meaning: "гострий тривожний розлад із вегетативними симптомами", context: "невідкладна психіатрія / DTB", ex: "Der Patient wurde wegen eines akuten Angstzustandes in die Notaufnahme gebracht." },
+      C1: { de: "die paroxysmale Panikstörung", meaning: "пароксизмальний тривожний криз із відчуттям вітальної загрози", context: "психосоматика / стаціонар", ex: "Kardiale Ursachen wurden ausgeschlossen, die Symptome sprechen für eine paroxysmale Panikstörung." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "депресивний стан / нервовий зрив",
+    words: {
+      A1: { de: "sehr traurig sein", meaning: "бути постійно сумним", context: "базове", ex: "Er weint jeden Tag und ist so traurig." },
+      A2: { de: "keine Kraft haben", meaning: "не мати сил ні на що", context: "побутове", ex: "Ich habe seit Wochen keine Kraft mehr aufzustehen." },
+      B1: { de: "die Depression", meaning: "клінічна депресія", context: "стандартне", ex: "Sie befindet sich wegen einer schweren Depression in Behandlung." },
+      B2: { de: "der nervliche Zusammenbruch", meaning: "гострий нервовий зрив через перевантаження", context: "діагностика / DTB", ex: "Nach dem traumatischen Vorfall erlitt der Zeuge einen nervlichen Zusammenbruch." },
+      C1: { de: "die depressive Episode / Erschöpfungsdepression", meaning: "тяжкий монополярний депресивний епізод із соматичним синдромом", context: "клінічна психіатрія", ex: "Die Patientin wurde zur Behandlung einer schweren rezidivierenden depressiven Episode eingewiesen." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "помутніння свідомості / марення / дезорієнтація",
+    words: {
+      A1: { de: "nicht wissen, wo man ist", meaning: "не розуміти, де знаходишся", context: "базове", ex: "Der Mann weiß gar nicht, wo er ist." },
+      A2: { de: "verwirrt sein", meaning: "бути розгубленим, збитим з пантелику", context: "побутове", ex: "Die alte Dame wirkt heute Morgen extrem verwirrt." },
+      B1: { de: "die Verwirrtheit", meaning: "сплутаність думок та мовлення", context: "стандартне", ex: "Hohes Fieber kann bei älteren Menschen zu akuter Verwirrtheit führen." },
+      B2: { de: "die Desorientiertheit", meaning: "клінічна дезорієнтація в часі, просторі чи власній особі", context: "неврологія / DTB", ex: "Es besteht eine ausgeprägte Desorientiertheit zu Ort, Zeit und eigener Person." },
+      C1: { de: "das Delir / der Verwirrtheitszustand", meaning: "гострий гіпо- чи гіперактивний делірій із порушенням уваги", context: "геріатрія / інтенсивна терапія", ex: "Postoperativ entwickelte der Patient ein hyperaktives Delir mit visuellen Halluzinationen." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "іменник",
+    concept: "суїцидальні думки / загроза самопошкодження",
+    words: {
+      A1: { de: "nicht mehr leben wollen", meaning: "не хотіти більше жити", context: "екстрене базове", ex: "Mein Freund sagt, er will nicht mehr leben." },
+      A2: { de: "sich wehtun wollen", meaning: "хотіти завдати собі шкоди", context: "побутове", ex: "Sie hat Angst, sich selbst wehzutun." },
+      B1: { de: "Selbstmordgedanken", meaning: "думки про самогубство", context: "стандартне клінічне", ex: "Bei geäußerten Selbstmordgedanken muss sofort gehandelt werden." },
+      B2: { de: "die Suizidalität", meaning: "клінічна оцінка суїцидального ризику та намірів", context: "психіатрична експертиза / DTB", ex: "Der Facharzt konnte eine akute Suizidalität zum Untersuchungszeitpunkt nicht ausschließen." },
+      C1: { de: "die akute Eigengefährdung", meaning: "юридичний та медичний критерій безпосередньої загрози власному життю", context: "примусова госпіталізація / право", ex: "Aufgrund massiver Eigengefährdung erfolgte die geschützte Unterbringung nach dem PsychKG." }
+    }
+  },
+  {
+    category: "Медицина (Продвинута)",
+    pos: "дієслово",
+    concept: "заспокоювати медикаментозно / седатувати",
+    words: {
+      A1: { de: "Tablette zum Schlafen geben", meaning: "давати таблетку для сну", context: "базове", ex: "Geben Sie ihm bitte eine Tablette zum Schlafen." },
+      A2: { de: "ruhiger machen", meaning: "робити пацієнта спокійнішим", context: "побутове", ex: "Das Medikament soll das Herz ruhiger machen." },
+      B1: { de: "ein Beruhigungsmittel geben", meaning: "вводити седативний препарат", context: "стандартне", ex: "Die Krankenschwester gab der Patientin ein leichtes Beruhigungsmittel." },
+      B2: { de: "den Patienten sedieren", meaning: "проводити терапевтичну седацію при збудженні чи паніці", context: "стаціонар / DTB", ex: "Um den Erregungszustand zu dämpfen, musste der Betroffene intravenös sediert werden." },
+      C1: { de: "pharmakologisch dämpfen / anxiolytisch behandeln", meaning: "застосовувати таргетні анксіолітики або нейролептики для ліквідації психомоторного збудження", context: "екстрена фармакопсихіатрія", ex: "Der Patient wurde zur Vermeidung von Fremdgefährdung umgehend anxiolytisch und antipsychotisch therapiert." }
+    }
+  },
+
+
+
   ];
 
   let activeView = "all";
@@ -2197,7 +3559,7 @@
             ${word.de}
             <button class="audio-btn" onclick="speak('${word.de}')" title="Слухати">🔊</button>
           </div>
-          ${word.meaning ? `<div><strong>Відтінок:</strong> ${word.meaning}</div>` : ''}
+          ${word.meaning ? `<div><strong>Значення:</strong> ${word.meaning}</div>` : ''}
           <div>
             <strong>Тема:</strong> ${item.concept} 
             ${item.pos ? `<span class="pos-tag">${item.pos}</span>` : ''}

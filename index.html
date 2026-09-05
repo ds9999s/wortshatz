@@ -423,7 +423,7 @@
     },
     {
       category: "Діяльність",
-      pos: "Іменник",
+      pos: "іменник",
       concept: "проблема / виклик",
       words: {
         A1: { de: "das Problem", meaning: "базова складність чи неприємність", context: "базове", ex: "«Ich habe ein kleines Problem mit dem Computer.»" },
@@ -447,7 +447,7 @@
     },
     {
       category: "Мислення",
-      pos: "Прикметник",
+      pos: "прикметник",
       concept: "важливий / суттєвий",
       words: {
         A1: { de: "wichtig", meaning: "має загальне значення чи вагу", context: "базове", ex: "«Pünktlichkeit ist sehr wichtig in Deutschland.»" },
@@ -479,6 +479,42 @@
       B1: { de: "einen Entschluss fassen", meaning: "прийняти усвідомлене тверде рішення", context: "виважене", ex: "Sie fasste den Entschluss, die Stelle zu wechseln." },
       B2: { de: "eine Entscheidung treffen", meaning: "ухвалити ділове / відповідальне рішення", context: "професійне / управлінське", ex: "Die Geschäftsleitung muss nun eine Entscheidung treffen." },
       C1: { de: "beschließen", meaning: "офіційно ухвалити постанову чи закон", context: "законодавче / протокольне", ex: "Der Vorstand beschloss tiefgreifende Sparmaßnahmen." }
+    }
+  },
+  {
+    category: "Спілкування",
+    pos: "прислівник",
+    concept: "ймовірно / напевно",
+    words: {
+      A1: { de: "vielleicht", meaning: "можливо", context: "базове", ex: "Vielleicht kommt er morgen." },
+      A2: { de: "wahrscheinlich", meaning: "ймовірно, мабуть", context: "розмовне", ex: "Er hat den Termin wahrscheinlich vergessen." },
+      B1: { de: "vermutlich", meaning: "напевно, за припущенням", context: "стандартне", ex: "Die Lieferung verzögert sich vermutlich um zwei Tage." },
+      B2: { de: "aller Voraussicht nach", meaning: "за всіма очікуваннями / прогнозами", context: "ділове / DTB", ex: "Das Projekt wird aller Voraussicht nach termingerecht fertig." },
+      C1: { de: "mutmaßlich", meaning: "імовірно, на основі непрямих доказів", context: "аналітичне / офіційне", ex: "Der Schaden entstand mutmaßlich durch ein Software-Update." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "сполучник",
+    concept: "причина / через те що",
+    words: {
+      A1: { de: "weil", meaning: "тому що (пряма причина)", context: "базове", ex: "Ich bleibe zu Hause, weil ich krank bin." },
+      A2: { de: "denn", meaning: "бо (без зміни порядку слів)", context: "розмовне", ex: "Er kommt nicht, denn er hat viel zu tun." },
+      B1: { de: "da", meaning: "оскільки (причина вже відома)", context: "ділове", ex: "Da der Chef im Urlaub ist, vertrete ich ihn." },
+      B2: { de: "aufgrund dessen, dass", meaning: "на підставі того, що / через", context: "офіційне / DTB", ex: "Aufgrund dessen, dass das Material fehlt, stoppt die Arbeit." },
+      C1: { de: "in Anbetracht der Tatsache, dass", meaning: "беручи до уваги той факт, що", context: "формальне / аналітичне", ex: "In Anbetracht der Tatsache, dass die Kosten steigen, müssen wir sparen." }
+    }
+  },
+  {
+    category: "DTB",
+    pos: "прийменник",
+    concept: "через / внаслідок",
+    words: {
+      A1: { de: "wegen", meaning: "через (з Dativ у розмові)", context: "базове", ex: "Wegen dem Regen bleiben wir hier." },
+      A2: { de: "für", meaning: "з приводу, через", context: "побутове", ex: "Danke für Ihre Hilfe." },
+      B1: { de: "infolge (+ Genitiv)", meaning: "внаслідок події", context: "письмове / новини", ex: "Infolge eines Unfalls kam es zu Verspätungen." },
+      B2: { de: "aufgrund (+ Genitiv)", meaning: "на підставі, через офіційну причину", context: "ділове / DTB", ex: "Aufgrund betrieblicher Änderungen entfällt das Meeting." },
+      C1: { de: "kraft (+ Genitiv)", meaning: "на підставі повноважень чи закону", context: "юридичне / корпоративне", ex: "Kraft seines Amtes ordnete der Geschäftsführer eine Prüfung an." }
     }
   },
   {
@@ -817,7 +853,7 @@
       C1: { de: "beengt", meaning: "вкрай обмежений у просторі, стиснутий", context: "аналітичне / стан", ex: "Die Familie lebte jahrelang unter sehr beengten Wohnverhältnissen." }
     }
   },
-  
+
   ];
 
   let activeView = "all";

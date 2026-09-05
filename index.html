@@ -11,30 +11,36 @@
       --text: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
+      --border-subtle: #f1f5f9;
       --primary: #2563eb;
-      --badge-bg: #e0f2fe;
-      --badge-text: #0369a1;
-      --radius: 8px;
+      --radius: 10px;
+
+      /* Кольори рівнів-доріжок */
+      --a1-color: #059669; --a1-bg: #ecfdf5; --a1-border: #a7f3d0;
+      --a2-color: #0d9488; --a2-bg: #f0fdfa; --a2-border: #99f6e4;
+      --b1-color: #2563eb; --b1-bg: #eff6ff; --b1-border: #bfdbfe;
+      --b2-color: #7c3aed; --b2-bg: #f5f3ff; --b2-border: #ddd6fe;
+      --c1-color: #e11d48; --c1-bg: #fff1f2; --c1-border: #fecdd3;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: system-ui, -apple-system, sans-serif;
     }
 
     body {
       background-color: var(--bg);
       color: var(--text);
-      padding: 24px 16px;
+      padding: 32px 16px;
       display: flex;
       justify-content: center;
     }
 
     .container {
       width: 100%;
-      max-width: 1024px;
+      max-width: 1100px;
     }
 
     header {
@@ -44,6 +50,7 @@
     h1 {
       font-size: 1.75rem;
       margin-bottom: 16px;
+      letter-spacing: -0.02em;
     }
 
     .controls {
@@ -60,6 +67,7 @@
       border-radius: var(--radius);
       outline: none;
       background: var(--card-bg);
+      transition: border-color 0.2s ease;
     }
 
     .search-bar:focus {
@@ -77,10 +85,17 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       padding: 8px 14px;
-      border-radius: var(--radius);
-      font-weight: 500;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: var(--text-muted);
       cursor: pointer;
       transition: all 0.15s ease;
+    }
+
+    .tab-btn:hover {
+      background: #f1f5f9;
+      color: var(--text);
     }
 
     .tab-btn.active {
@@ -95,7 +110,7 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
     }
 
     table {
@@ -105,69 +120,109 @@
     }
 
     th, td {
-      padding: 14px 16px;
-      border-bottom: 1px solid var(--border);
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--border-subtle);
       vertical-align: top;
       min-width: 160px;
     }
 
-    th:first-child, td:first-child {
-      min-width: 140px;
+    /* Візуальні доріжки — розділювальні вертикальні лінії */
+    table th:not(:first-child),
+    table td:not(:first-child) {
+      border-left: 1px solid var(--border-subtle);
     }
 
     th {
-      background: #f1f5f9;
-      font-size: 0.85rem;
+      background: #f8fafc;
+      padding: 12px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+    }
+
+    th:first-child, td:first-child {
+      min-width: 140px;
+      width: 15%;
+      background: #fbfcfd;
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
+    /* Бейджі рівнів у шапці */
+    .th-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+    }
+
+    /* Кольорова диференціація колонок */
+    .col-A1 .th-badge, .badge-A1 { background: var(--a1-bg); color: var(--a1-color); border-color: var(--a1-border); }
+    .col-A2 .th-badge, .badge-A2 { background: var(--a2-bg); color: var(--a2-color); border-color: var(--a2-border); }
+    .col-B1 .th-badge, .badge-B1 { background: var(--b1-bg); color: var(--b1-color); border-color: var(--b1-border); }
+    .col-B2 .th-badge, .badge-B2 { background: var(--b2-bg); color: var(--b2-color); border-color: var(--b2-border); }
+    .col-C1 .th-badge, .badge-C1 { background: var(--c1-bg); color: var(--c1-color); border-color: var(--c1-border); }
+
+    .col-A1 .context-tag { background: var(--a1-bg); color: var(--a1-color); border-color: var(--a1-border); }
+    .col-A2 .context-tag { background: var(--a2-bg); color: var(--a2-color); border-color: var(--a2-border); }
+    .col-B1 .context-tag { background: var(--b1-bg); color: var(--b1-color); border-color: var(--b1-border); }
+    .col-B2 .context-tag { background: var(--b2-bg); color: var(--b2-color); border-color: var(--b2-border); }
+    .col-C1 .context-tag { background: var(--c1-bg); color: var(--c1-color); border-color: var(--c1-border); }
+
+    td:not(:first-child):hover {
+      background: #fafafa;
+    }
+
     .word-cell {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
     }
 
     .word-title {
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #0f172a;
       display: inline-flex;
       align-items: center;
       gap: 6px;
     }
 
     .word-meaning {
-      font-size: 0.85rem;
-      color: var(--text);
+      font-size: 0.8rem;
+      color: #64748b;
+      line-height: 1.35;
     }
 
     .context-tag {
       font-size: 0.72rem;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      padding: 1px 6px;
+      padding: 2px 7px;
       border-radius: 4px;
       width: fit-content;
-      font-weight: 500;
+      font-weight: 600;
+      border: 1px solid transparent;
     }
 
     .audio-btn {
       background: none;
       border: none;
       cursor: pointer;
-      color: var(--text-muted);
+      opacity: 0.35;
       padding: 2px 4px;
       border-radius: 4px;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      transition: opacity 0.15s ease;
     }
 
     .audio-btn:hover {
-      color: var(--primary);
-      background: #eff6ff;
+      opacity: 1;
     }
 
     /* Картки окремого рівня */
@@ -198,7 +253,7 @@
       font-size: 0.85rem;
       color: var(--text-muted);
       font-style: italic;
-      border-left: 2px solid var(--border);
+      border-left: 2px solid var(--primary);
       padding-left: 8px;
     }
 
@@ -231,7 +286,7 @@
 </div>
 
 <script>
-  // База даних із контекстом і точним відтінком
+  // База даних повністю збережена
   const wordsDB = [
     {
       concept: "сказати / висловити",
@@ -332,18 +387,7 @@
         B2: { de: "Rücksprache halten", meaning: "узгоджувати питання, радитися з колегою або керівником", context: "корпоративне", ex: "" },
         C1: { de: "hinterfragen", meaning: "ставити під сумнів, глибинно перевіряти причини явища", context: "аналітичне / критичне", ex: "" }
       }
-    },
-    {
-      concept: "",
-      words: {
-        A1: { de: "", meaning: "", context: "", ex: "" },
-        A2: { de: "", meaning: "", context: "", ex: "" },
-        B1: { de: "", meaning: "", context: "", ex: "" },
-        B2: { de: "", meaning: "", context: "", ex: "" },
-        C1: { de: "", meaning: "", context: "", ex: "" }
-      }
-    },
-    
+    }
   ];
 
   let activeView = "all";
@@ -388,30 +432,31 @@
           <thead>
             <tr>
               <th>Загальна тема</th>
-              ${levels.map(l => `<th>${l}</th>`).join('')}
+              ${levels.map(l => `<th class="col-${l}"><span class="th-badge">${l}</span></th>`).join('')}
             </tr>
           </thead>
           <tbody>
     `;
 
     data.forEach(item => {
+      if (!item.concept) return; // захист від порожніх шаблонів
       html += `<tr><td><strong>${item.concept}</strong></td>`;
       levels.forEach(lvl => {
         const word = item.words[lvl];
-        if (word) {
+        if (word && word.de) {
           html += `
-            <td>
+            <td class="col-${lvl}">
               <div class="word-cell">
                 <div class="word-title">
                   ${word.de}
                   <button class="audio-btn" onclick="speak('${word.de}')" title="Слухати">🔊</button>
                 </div>
-                <span class="context-tag">${word.context}</span>
-                <div class="word-meaning">${word.meaning}</div>
+                ${word.context ? `<span class="context-tag">${word.context}</span>` : ''}
+                ${word.meaning ? `<div class="word-meaning">${word.meaning}</div>` : ''}
               </div>
             </td>`;
         } else {
-          html += `<td>—</td>`;
+          html += `<td class="col-${lvl}" style="color: #cbd5e1; text-align: center;">—</td>`;
         }
       });
       html += `</tr>`;
@@ -422,7 +467,7 @@
   }
 
   function renderLevel(data, level) {
-    const filtered = data.filter(item => item.words[level]);
+    const filtered = data.filter(item => item.words[level] && item.words[level].de);
     if (!filtered.length) return `<div class="empty-state">Нічого не знайдено для рівня ${level}</div>`;
 
     let html = `<div class="cards-grid">`;
@@ -431,16 +476,16 @@
       html += `
         <div class="card">
           <div class="card-header">
-            <span class="context-tag">${word.context}</span>
-            <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: bold;">${level}</span>
+            ${word.context ? `<span class="context-tag badge-${level}">${word.context}</span>` : '<span></span>'}
+            <span class="th-badge badge-${level}">${level}</span>
           </div>
           <div class="word-title" style="font-size: 1.3rem;">
             ${word.de}
             <button class="audio-btn" onclick="speak('${word.de}')" title="Слухати">🔊</button>
           </div>
-          <div><strong>Відтінок:</strong> ${word.meaning}</div>
+          ${word.meaning ? `<div><strong>Відтінок:</strong> ${word.meaning}</div>` : ''}
           <div><strong>Тема:</strong> ${item.concept}</div>
-          <div class="example">„${word.ex}“</div>
+          ${word.ex ? `<div class="example">„${word.ex}“</div>` : ''}
         </div>
       `;
     });

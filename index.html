@@ -15,12 +15,84 @@
       --primary: #2563eb;
       --radius: 10px;
 
-      /* Кольори рівнів-доріжок */
+      /* Кольори рівнів-доріжок (світла тема) */
       --a1-color: #059669; --a1-bg: #ecfdf5; --a1-border: #a7f3d0;
       --a2-color: #0d9488; --a2-bg: #f0fdfa; --a2-border: #99f6e4;
       --b1-color: #2563eb; --b1-bg: #eff6ff; --b1-border: #bfdbfe;
       --b2-color: #7c3aed; --b2-bg: #f5f3ff; --b2-border: #ddd6fe;
       --c1-color: #e11d48; --c1-bg: #fff1f2; --c1-border: #fecdd3;
+    }
+
+    /* Темна тема */
+    body.dark-theme {
+      --bg: #0b0f17;
+      --card-bg: #131926;
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --border: #26334a;
+      --border-subtle: #1c2536;
+      --primary: #60a5fa;
+
+      /* Кольори рівнів для темної теми */
+      --a1-color: #34d399; --a1-bg: rgba(16, 185, 129, 0.15); --a1-border: rgba(52, 211, 153, 0.3);
+      --a2-color: #2dd4bf; --a2-bg: rgba(20, 184, 166, 0.15); --a2-border: rgba(45, 212, 191, 0.3);
+      --b1-color: #60a5fa; --b1-bg: rgba(59, 130, 246, 0.15); --b1-border: rgba(96, 165, 250, 0.3);
+      --b2-color: #a78bfa; --b2-bg: rgba(139, 92, 246, 0.15); --b2-border: rgba(167, 139, 250, 0.3);
+      --c1-color: #fb7185; --c1-bg: rgba(244, 63, 94, 0.15); --c1-border: rgba(251, 113, 133, 0.3);
+    }
+
+    body.dark-theme th {
+      background: #172033;
+    }
+
+    body.dark-theme th:first-child,
+    body.dark-theme td:first-child {
+      background: #111622;
+    }
+
+    body.dark-theme td:not(:first-child):hover {
+      background: #172033;
+    }
+
+    body.dark-theme .word-title {
+      color: #f8fafc;
+    }
+
+    body.dark-theme .word-meaning {
+      color: #cbd5e1;
+    }
+
+    body.dark-theme .pos-tag {
+      background: #1e293b;
+      color: #94a3b8;
+      border-color: #334155;
+    }
+
+    body.dark-theme .tab-btn {
+      background: #131926;
+      border-color: var(--border);
+      color: #cbd5e1;
+    }
+
+    body.dark-theme .tab-btn:hover {
+      background: #1e293b;
+    }
+
+    body.dark-theme .tab-btn.active {
+      background: #f8fafc;
+      color: #0b0f17;
+      border-color: #f8fafc;
+    }
+
+    body.dark-theme .pill-btn.active {
+      background: #3b82f6;
+      border-color: #3b82f6;
+      color: #ffffff;
+    }
+
+    body.dark-theme .search-bar:focus {
+      background: var(--card-bg);
+      color: var(--text);
     }
 
     * {
@@ -36,6 +108,7 @@
       padding: 32px 16px;
       display: flex;
       justify-content: center;
+      transition: background-color 0.2s ease, color 0.2s ease;
     }
 
     .container {
@@ -47,10 +120,37 @@
       margin-bottom: 24px;
     }
 
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
     h1 {
       font-size: 1.75rem;
-      margin-bottom: 16px;
       letter-spacing: -0.02em;
+    }
+
+    .theme-toggle-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 1.1rem;
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--border-subtle);
+      transform: scale(1.05);
     }
 
     .controls {
@@ -67,7 +167,8 @@
       border-radius: var(--radius);
       outline: none;
       background: var(--card-bg);
-      transition: border-color 0.2s ease;
+      color: var(--text);
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
 
     .search-bar:focus {
@@ -141,7 +242,7 @@
 
     .tab-btn.active {
       background: var(--text);
-      color: #fff;
+      color: var(--card-bg);
       border-color: var(--text);
     }
 
@@ -328,7 +429,10 @@
 
 <div class="container">
   <header>
-    <h1>Німецький Словник Рівнів та Відтінків</h1>
+    <div class="header-top">
+      <h1>Німецький Словник Рівнів та Відтінків</h1>
+      <button id="themeToggle" class="theme-toggle-btn" title="Змінити тему">🌙</button>
+    </div>
     <div class="controls">
       <input type="search" id="searchInput" class="search-bar" placeholder="Шукати значення, частину мови, контекст або слово...">
 
@@ -458,775 +562,1481 @@
       }
     },
     {
-    category: "Діяльність",
-    pos: "дієслово",
-    concept: "закінчувати / припиняти",
-    words: {
-      A1: { de: "aufhören", meaning: "перестати щось робити", context: "базове", ex: "Hör bitte mit dem Lärm auf." },
-      A2: { de: "beenden", meaning: "завершити дію чи процес", context: "практичне", ex: "Er hat das Gespräch schnell beendet." },
-      B1: { de: "abschließen", meaning: "успішно завершити проєкт чи навчання", context: "ділове", ex: "Wir konnten das Projekt pünktlich abschließen." },
-      B2: { de: "zum Abschluss bringen", meaning: "довести справу чи переговори до фіналу", context: "професійне", ex: "Wir wollen die Verhandlungen heute zum Abschluss bringen." },
-      C1: { de: "einstellen", meaning: "остаточно згорнути виробництво чи процес", context: "стратегічне", ex: "Die Produktion der Modellreihe wurde komplett eingestellt." }
+      category: "Діяльність",
+      pos: "дієслово",
+      concept: "закінчувати / припиняти",
+      words: {
+        A1: { de: "aufhören", meaning: "перестати щось робити", context: "базове", ex: "Hör bitte mit dem Lärm auf." },
+        A2: { de: "beenden", meaning: "завершити дію чи процес", context: "практичне", ex: "Er hat das Gespräch schnell beendet." },
+        B1: { de: "abschließen", meaning: "успішно завершити проєкт чи навчання", context: "ділове", ex: "Wir konnten das Projekt pünktlich abschließen." },
+        B2: { de: "zum Abschluss bringen", meaning: "довести справу чи переговори до фіналу", context: "професійне", ex: "Wir wollen die Verhandlungen heute zum Abschluss bringen." },
+        C1: { de: "einstellen", meaning: "остаточно згорнути виробництво чи процес", context: "стратегічне", ex: "Die Produktion der Modellreihe wurde komplett eingestellt." }
+      }
+    },
+    {
+      category: "Мислення",
+      pos: "дієслово",
+      concept: "вирішувати / визначатися",
+      words: {
+        A1: { de: "wählen", meaning: "вибирати простий варіант", context: "базове", ex: "Welches Kleid wählst du?" },
+        A2: { de: "entscheiden", meaning: "робити вибір між кількома опціями", context: "особисте", ex: "Ich kann mich schwer entscheiden." },
+        B1: { de: "einen Entschluss fassen", meaning: "прийняти усвідомлене тверде рішення", context: "виважене", ex: "Sie fasste den Entschluss, die Stelle zu wechseln." },
+        B2: { de: "eine Entscheidung treffen", meaning: "ухвалити ділове / відповідальне рішення", context: "професійне / управлінське", ex: "Die Geschäftsleitung muss nun eine Entscheidung treffen." },
+        C1: { de: "beschließen", meaning: "офіційно ухвалити постанову чи закон", context: "законодавче / протокольне", ex: "Der Vorstand beschloss tiefgreifende Sparmaßnahmen." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "прислівник",
+      concept: "ймовірно / напевно",
+      words: {
+        A1: { de: "vielleicht", meaning: "можливо", context: "базове", ex: "Vielleicht kommt er morgen." },
+        A2: { de: "wahrscheinlich", meaning: "ймовірно, мабуть", context: "розмовне", ex: "Er hat den Termin wahrscheinlich vergessen." },
+        B1: { de: "vermutlich", meaning: "напевно, за припущенням", context: "стандартне", ex: "Die Lieferung verzögert sich vermutlich um zwei Tage." },
+        B2: { de: "aller Voraussicht nach", meaning: "за всіма очікуваннями / прогнозами", context: "ділове / DTB", ex: "Das Projekt wird aller Voraussicht nach termingerecht fertig." },
+        C1: { de: "mutmaßlich", meaning: "імовірно, на основі непрямих доказів", context: "аналітичне / офіційне", ex: "Der Schaden entstand mutmaßlich durch ein Software-Update." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "сполучник",
+      concept: "причина / через те що",
+      words: {
+        A1: { de: "weil", meaning: "тому що (пряма причина)", context: "базове", ex: "Ich bleibe zu Hause, weil ich krank bin." },
+        A2: { de: "denn", meaning: "бо (без зміни порядку слів)", context: "розмовне", ex: "Er kommt nicht, denn er hat viel zu tun." },
+        B1: { de: "da", meaning: "оскільки (причина вже відома)", context: "ділове", ex: "Da der Chef im Urlaub ist, vertrete ich ihn." },
+        B2: { de: "aufgrund dessen, dass", meaning: "на підставі того, що / через", context: "офіційне / DTB", ex: "Aufgrund dessen, dass das Material fehlt, stoppt die Arbeit." },
+        C1: { de: "in Anbetracht der Tatsache, dass", meaning: "беручи до уваги той факт, що", context: "формальне / аналітичне", ex: "In Anbetracht der Tatsache, dass die Kosten steigen, müssen wir sparen." }
+      }
+    },
+    {
+      category: "Конфлікти",
+      pos: "дієслово",
+      concept: "сваритися / конфліктувати",
+      words: {
+        A1: { de: "böse sein", meaning: "злитися на когось", context: "емоційне", ex: "Er ist böse auf mich." },
+        A2: { de: "streiten", meaning: "сваритися, сперечатися", context: "побутове", ex: "Die Kollegen streiten oft über Kleinigkeiten." },
+        B1: { de: "einen Konflikt haben", meaning: "мати розбіжності чи конфлікт", context: "особисте / робоче", ex: "Wir haben einen kleinen Konflikt im Team." },
+        B2: { de: "in Streit geraten", meaning: "втягнутися у серйозну суперечку", context: "професійне", ex: "Sie sind wegen der Urlaubsplanung in Streit geraten." },
+        C1: { de: "aneinandergeraten", meaning: "жорстко зіткнутися поглядами чи інтересами", context: "напружене", ex: "Die beiden Abteilungsleiter gerieten in der Sitzung heftig aneinander." }
+      }
+    },
+    {
+      category: "Конфлікти",
+      pos: "дієслово",
+      concept: "вирішувати / врегульовувати",
+      words: {
+        A1: { de: "gut machen", meaning: "виправити ситуацію, помиритися", context: "базове", ex: "Ich möchte das wieder gut machen." },
+        A2: { de: "sich beruhigen", meaning: "заспокоїтися після сварки", context: "емоційне", ex: "Beruhige dich bitte, wir finden eine Lösung." },
+        B1: { de: "lösen", meaning: "знаходити вихід із проблеми", context: "практичне", ex: "Wir müssen das Problem gemeinsam lösen." },
+        B2: { de: "einen Konflikt beilegen", meaning: "мирно владнати офіційний конфлікт", context: "ділове / DTB", ex: "Die Parteien konnten den Konflikt sachlich beilegen." },
+        C1: { de: "schlichten", meaning: "виступати арбітром і врегулювати спір", context: "юридичне / арбітраж", ex: "Ein externer Mediator wurde engagiert, um den Streit zu schlichten." }
+      }
+    },
+    {
+      category: "Конфлікти",
+      pos: "дієслово",
+      concept: "звинувачувати / докоряти",
+      words: {
+        A1: { de: "schuld sein", meaning: "бути винним", context: "базове", ex: "Wer ist schuld daran?" },
+        A2: { de: "die Schuld geben", meaning: "перекладати провину на іншого", context: "розмовне", ex: "Er gibt immer den anderen die Schuld." },
+        B1: { de: "kritisieren", meaning: "вказувати на помилки в роботі", context: "пряме", ex: "Der Vorgesetzte hat seine Arbeitsweise kritisiert." },
+        B2: { de: "einen Vorwurf machen", meaning: "висувати офіційні або робочі претензії", context: "корпоративне", ex: "Niemand macht Ihnen deswegen einen Vorwurf." },
+        C1: { de: "beschuldigen", meaning: "прямо звинувачувати у порушенні правил", context: "формальне / юридичне", ex: "Der Mitarbeiter wurde fälschlicherweise des Diebstahls beschuldigt." }
+      }
+    },
+    {
+      category: "Конфлікти",
+      pos: "дієслово",
+      concept: "погрожувати / тиснути",
+      words: {
+        A1: { de: "Angst machen", meaning: "лякати когось", context: "базове", ex: "Die Situation macht mir etwas Angst." },
+        A2: { de: "Druck machen", meaning: "підганяти або змушувати", context: "розмовне", ex: "Der Chef macht uns wegen der Deadline Druck." },
+        B1: { de: "drohen mit", meaning: "попереджати про неприємні наслідки", context: "ділове / претензія", ex: "Der Kunde droht mit einer Stornierung des Auftrags." },
+        B2: { de: "unter Druck setzen", meaning: "чинити психологічний чи діловий тиск", context: "професійне", ex: "Wir lassen uns von den Lieferanten nicht unter Druck setzen." },
+        C1: { de: "Rechtsschritte androhen", meaning: "офіційно попереджати про судовий позов", context: "юридичне / офіційне", ex: "Das Unternehmen drohte mit der Einleitung rechtlicher Schritte." }
+      }
+    },
+    {
+      category: "Конфлікти",
+      pos: "дієслово",
+      concept: "захищатися / заперечувати",
+      words: {
+        A1: { de: "nicht wahr sein", meaning: "казати, що це неправда", context: "базове", ex: "Das ist nicht wahr!" },
+        A2: { de: "sich wehren", meaning: "давати відсіч або опиратися", context: "практичне", ex: "Man muss sich gegen Ungerechtigkeit wehren." },
+        B1: { de: "widersprechen", meaning: "не погоджуватися з твердженням", context: "ділове", ex: "Da muss ich Ihnen leider widersprechen." },
+        B2: { de: "Stellung nehmen zu", meaning: "давати офіційні пояснення чи позицію", context: "корпоративне / DTB", ex: "Der Angestellte muss zu den Vorwürfen schriftlich Stellung nehmen." },
+        C1: { de: "zurückweisen", meaning: "категорично відкидати звинувачення", context: "офіційне / публічне", ex: "Die Geschäftsführung wies alle Vorwürfe entschieden zurück." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "дієслово",
+      concept: "брати участь / долучатися",
+      words: {
+        A1: { de: "mitmachen", meaning: "брати участь разом з усіма", context: "розмовне", ex: "Wer möchte beim Spiel mitmachen?" },
+        A2: { de: "dabei sein", meaning: "бути присутнім на події", context: "побутове", ex: "Morgen bin ich bei dem Treffen dabei." },
+        B1: { de: "teilnehmen an", meaning: "брати участь у заході", context: "стандартне", ex: "Ich nehme an der heutigen Besprechung teil." },
+        B2: { de: "sich beteiligen an", meaning: "активно долучатися до проєкту чи витрат", context: "ділове / DTB", ex: "Alle Mitarbeiter sollten sich an der Diskussion beteiligen." },
+        C1: { de: "mitwirken an", meaning: "робити суттєвий внесок у спільну справу", context: "професійне / партнерське", ex: "Sie hat maßgeblich an der Entwicklung des neuen Konzepts mitgewirkt." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "дієслово",
+      concept: "наймати / брати на роботу",
+      words: {
+        A1: { de: "nehmen", meaning: "взяти когось", context: "розмовне", ex: "Sie nehmen ihn für den Job." },
+        A2: { de: "einen Job geben", meaning: "дати роботу людині", context: "побутове", ex: "Die Firma hat ihm einen Job gegeben." },
+        B1: { de: "einstellen", meaning: "оформити нового працівника", context: "ділове", ex: "Wir stellen ab nächsten Monat zwei Verkäufer ein." },
+        B2: { de: "unter Vertrag nehmen", meaning: "підписати трудовий договір зі спеціалістом", context: "HR / DTB", ex: "Das Unternehmen hat die neue Projektleiterin unter Vertrag genommen." },
+        C1: { de: "anwerben", meaning: "цілеспрямовано залучати кваліфіковані кадри", context: "рекрутинг / ринок праці", ex: "Die Klinik wirbt gezielt medizinisches Fachpersonal aus dem Ausland an." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "дієслово",
+      concept: "застосовувати / впроваджувати",
+      words: {
+        A1: { de: "benutzen", meaning: "користуватися чимось", context: "базове", ex: "Ich benutze dieses Programm täglich." },
+        A2: { de: "brauchen", meaning: "використовувати за потребою", context: "побутове", ex: "Dafür brauchen wir dieses Werkzeug." },
+        B1: { de: "verwenden", meaning: "задіяти матеріал чи метод", context: "практичне", ex: "Für den Bericht verwenden wir die neuen Zahlen." },
+        B2: { de: "zur Anwendung bringen", meaning: "впроваджувати метод або правило на практиці", context: "виробниче / DTB", ex: "Die neuen Sicherheitsrichtlinien müssen wir sofort zur Anwendung bringen." },
+        C1: { de: "etablieren", meaning: "стійко закріпити процес чи систему", context: "стратегічне", ex: "Das Team konnte einen effizienten Workflow im Betrieb etablieren." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "дієслово",
+      concept: "брати відповідальність",
+      words: {
+        A1: { de: "machen", meaning: "робити на власний розсуд", context: "базове", ex: "Ich mache das auf meine Gefahr." },
+        A2: { de: "schuld sein", meaning: "відповідати, якщо щось піде не так", context: "розмовне", ex: "Wenn es schiefgeht, bin ich schuld." },
+        B1: { de: "zuständig sein для", meaning: "відповідати за конкретну ділянку роботи", context: "ділове", ex: "Frau Müller ist für die Rechnungsstellung zuständig." },
+        B2: { de: "die Verantwortung tragen", meaning: "нести повну відповідальність за результат", context: "управлінське / DTB", ex: "Die Abteilungsleitung trägt die Verantwortung für das Budget." },
+        C1: { de: "sich verbürgen für", meaning: "ручатися своєю репутацією за якість або особу", context: "офіційне / ділове", ex: "Der Geschäftsführer verbürgte sich persönlich für die Einhaltung der Fristen." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "іменник",
+      concept: "помилка / дефект",
+      words: {
+        A1: { de: "der Fehler", meaning: "помилка", context: "базове", ex: "Im Text ist ein kleiner Fehler." },
+        A2: { de: "das Versehen", meaning: "випадкова помилка, неуважність", context: "повсякденне", ex: "Das ist aus Versehen passiert." },
+        B1: { de: "der Mangel", meaning: "недолік або брак у товарі", context: "сервісне", ex: "Das gelieferte Gerät weist einen Mangel auf." },
+        B2: { de: "die Abweichung", meaning: "розбіжність зі стандартом або нормою", context: "контроль якості / DTB", ex: "Bei der Qualitätsprüfung wurde eine Abweichung festgestellt." },
+        C1: { de: "die Unstimmigkeit", meaning: "суттєва невідповідність у даних чи розрахунках", context: "аудит / фінанси", ex: "In der Bilanz traten gravierende Unstimmigkeiten auf." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "іменник",
+      concept: "пропозиція / оффер",
+      words: {
+        A1: { de: "die Idee", meaning: "ідея або пропозиція", context: "базове", ex: "Das ist eine gute Idee." },
+        A2: { de: "der Vorschlag", meaning: "пропозиція щодо плану дій", context: "організаційне", ex: "Ich habe einen Vorschlag für die Pause." },
+        B1: { de: "das Angebot", meaning: "комерційна або цінова пропозиція", context: "ділове", ex: "Wir haben ein günstiges Angebot erhalten." },
+        B2: { de: "die Offerte", meaning: "офіційний комерційний розрахунок для замовника", context: "закупівлі / DTB", ex: "Bitte unterbreiten Sie uns bis morgen eine verbindliche Offerte." },
+        C1: { de: "die Vorlage", meaning: "підготовлений проєкт рішення чи нормативний документ", context: "управлінське", ex: "Die Beschlussvorlage muss dem Vorstand vorgelegt werden." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "іменник",
+      concept: "звільнення / припинення договору",
+      words: {
+        A1: { de: "der Schluss", meaning: "кінець", context: "базове", ex: "Am Schluss waren alle zufrieden." },
+        A2: { de: "das Aufhören", meaning: "припинення праці", context: "розмовне", ex: "Sein Aufhören kam für uns überraschend." },
+        B1: { de: "die Kündigung", meaning: "розірвання контракту, звільнення", context: "стандартне ділове", ex: "Er hat gestern seine Kündigung eingereicht." },
+        B2: { de: "die Vertragsauflösung", meaning: "припинення дії договору (часто за згодою сторін)", context: "кадри / DTB", ex: "Beide Seiten einigten sich auf eine einvernehmliche Vertragsauflösung." },
+        C1: { de: "die Freistellung", meaning: "офіційне відсторонення від роботи зі збереженням або без окладу", context: "трудове право", ex: "Der Mitarbeiter erhielt mit sofortiger Wirkung eine bezahlte Freistellung." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "іменник",
+      concept: "підвищення / розвиток",
+      words: {
+        A1: { de: "das Lernen", meaning: "навчання", context: "базове", ex: "Das Lernen macht mir Spaß." },
+        A2: { de: "der Kurs", meaning: "навчальний курс", context: "практичне", ex: "Ich besuche einen Deutschkurs." },
+        B1: { de: "die Weiterbildung", meaning: "підвищення кваліфікації на роботі", context: "професійне", ex: "Die Firma bezahlt eine berufliche Weiterbildung." },
+        B2: { de: "die Qualifizierungsmaßnahme", meaning: "офіційна програма підвищення кваліфікації/перепідготовки", context: "HR / DTB", ex: "Alle Mitarbeiter nehmen an einer internen Qualifizierungsmaßnahme teil." },
+        C1: { de: "die Kompetenzerweiterung", meaning: "системне розширення професійних компетенцій", context: "стратегічне HR", ex: "Der Fokus des Workshops lag auf der gezielten Kompetenzerweiterung der Führungskräfte." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "дієслово",
+      concept: "прибирати / наводити лад",
+      words: {
+        A1: { de: "putzen", meaning: "мити, чистити", context: "базове", ex: "Ich muss heute das Bad putzen." },
+        A2: { de: "aufräumen", meaning: "складати речі на місця, прибирати кімнату", context: "побутове", ex: "Räum bitte dein Zimmer auf." },
+        B1: { de: "in Ordnung bringen", meaning: "приводити до ладу житло або справи", context: "стандартне", ex: "Vor dem Besuch müssen wir die Wohnung in Ordnung bringen." },
+        B2: { de: "instand halten", meaning: "підтримувати житло/прилади у справному стані", context: "технічне / оренда", ex: "Mieter sind verpflichtet, die Mietsache pfleglich instand zu halten." },
+        C1: { de: "sanieren", meaning: "капітально відновлювати або ремонтувати приміщення", context: "будівельне / офіційне", ex: "Die alte Wohnung muss vor dem Einzug grundlegend saniert werden." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "дієслово",
+      concept: "купувати продукти / запасатися",
+      words: {
+        A1: { de: "kaufen", meaning: "купувати", context: "базове", ex: "Ich kaufe Brot und Milch." },
+        A2: { de: "einkaufen", meaning: "робити щоденні покупки в магазині", context: "повсякденне", ex: "Wir gehen samstags immer im Supermarkt einkaufen." },
+        B1: { de: "besorgen", meaning: "знайти та дістати потрібну для дому річ", context: "організаційне", ex: "Kannst du auf dem Heimweg noch Waschmittel besorgen?" },
+        B2: { de: "Vorräte anlegen", meaning: "робити запаси продуктів чи побутової хімії", context: "господарське", ex: "Es ist ratsam, Vorräte an haltbaren Lebensmitteln anzulegen." },
+        C1: { de: "beziehen von", meaning: "регулярно замовляти харчі у постачальника/фермера", context: "офіційне / якість", ex: "Die Familie bezieht ihr Gemüse direkt von einem Bio-Hof." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "іменник",
+      concept: "житло / помешкання",
+      words: {
+        A1: { de: "das Zimmer", meaning: "кімната", context: "базове", ex: "Mein Zimmer ist hell und ruhig." },
+        A2: { de: "die Wohnung", meaning: "квартира", context: "повсякденне", ex: "Wir haben eine kleine Wohnung im Zentrum." },
+        B1: { de: "die Unterkunft", meaning: "тимчасове житло або прихисток", context: "практичне", ex: "Für die ersten Wochen suchen wir eine günstige Unterkunft." },
+        B2: { de: "die Mietimmobilie", meaning: "орендоване житлове приміщення за договором", context: "оренда / договір", ex: "Die Mietimmobilie verfügt über eine Einbauküche." },
+        C1: { de: "die Wohnstätte", meaning: "постійне місце проживання / оселя", context: "формальне / офіційне", ex: "Das historische Gebäude dient seit Jahrzehnten als Wohnstätte." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "іменник",
+      concept: "комунальні послуги / витрати",
+      words: {
+        A1: { de: "das Geld", meaning: "гроші", context: "базове", ex: "Das kostet zu viel Geld." },
+        A2: { de: "die Miete", meaning: "орендна плата за житло", context: "побутове", ex: "Die Miete ist am Monatsersten fällig." },
+        B1: { de: "die Nebenkosten", meaning: "комунальні платежі (вода, опалення, сміття)", context: "житлове", ex: "Die monatlichen Nebenkosten sind stark gestiegen." },
+        B2: { de: "die Betriebskostenabrechnung", meaning: "офіційний річний перерахунок комунальних витрат", context: "документи / оренда", ex: "Wir warten noch auf die Betriebskostenabrechnung für das letzte Jahr." },
+        C1: { de: "die Instandhaltungsrücklage", meaning: "фонд накопичення коштів на капітальний ремонт будинку", context: "юридичне / нерухомість", ex: "Ein Teil des Hausgeldes fließt direkt in die Instandhaltungsrücklage." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "дієслово",
+      concept: "готувати їжу / харчуватися",
+      words: {
+        A1: { de: "kochen", meaning: "варити, готувати", context: "базове", ex: "Ich koche gerne am Abend." },
+        A2: { de: "warm machen", meaning: "розігрівати готову їжу", context: "розмовне", ex: "Ich mache mir nur schnell eine Suppe warm." },
+        B1: { de: "zubereiten", meaning: "готувати страву за рецептом чи з інгредієнтів", context: "кулінарне", ex: "Er bereitet ein frisches Abendessen für die Familie zu." },
+        B2: { de: "sich verpflegen", meaning: "самостійно забезпечувати себе харчуванням", context: "побутове / офіційне", ex: "In der Ferienwohnung müssen sich die Gäste selbst verpflegen." },
+        C1: { de: "zehren von", meaning: "жити на залишках запасів чи ресурсів", context: "образне / складне", ex: "Nach dem Umzug zehrte die Familie tagelang von den Resten im Tiefkühler." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "дієслово",
+      concept: "сортувати / викидати сміття",
+      words: {
+        A1: { de: "wegwerfen", meaning: "викидати у смітник", context: "базове", ex: "Du kannst die alte Zeitung wegwerfen." },
+        A2: { de: "trennen", meaning: "розділяти сміття за баками", context: "побутове", ex: "In Deutschland muss man den Müll trennen." },
+        B1: { de: "entsorgen", meaning: "правильно утилізувати непотріб чи старі речі", context: "стандартне", ex: "Alte Batterien müssen fachgerecht entsorgt werden." },
+        B2: { de: "der Wiederverwertung zuführen", meaning: "віддавати на вторинну переробку / ресайклінг", context: "екологічне / побутове", ex: "Wir sollten Kartonagen direkt der Wiederverwertung zuführen." },
+        C1: { de: "beseitigen", meaning: "ліквідувати небезпечні залишки чи відходи", context: "офіційне / санітарне", ex: "Die Schadstoffe wurden unter strengen Auflagen beseitigt." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "дієслово",
+      concept: "ламатися / виходити з ладу",
+      words: {
+        A1: { de: "kaputtgehen", meaning: "ламатися", context: "базове", ex: "Die Lampe ist gestern kaputtgegangen." },
+        A2: { de: "nicht funktionieren", meaning: "не працювати", context: "розмовне", ex: "Der Kühlschrank funktioniert leider nicht mehr." },
+        B1: { de: "einen Defekt haben", meaning: "мати технічний дефект чи збій", context: "побутове / сервісне", ex: "Die Waschmaschine scheint einen Defekt zu haben." },
+        B2: { de: "den Geist aufgeben", meaning: "остаточно зламатися / зноситися", context: "образне побутове", ex: "Der alte Staubsauger hat nach zehn Jahren den Geist aufgegeben." },
+        C1: { de: "einer Funktionsstörung unterliegen", meaning: "зазнавати технічного збою у роботі системи", context: "технічне / договірне", ex: "Die Heizanlage unterlag einer vorübergehenden Funktionsstörung." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "дієслово",
+      concept: "ремонтувати / лагодити",
+      words: {
+        A1: { de: "heile machen", meaning: "полагодити (розмовне)", context: "просте", ex: "Kannst du das Spielzeug heile machen?" },
+        A2: { de: "reparieren", meaning: "ремонтувати прилад чи річ", context: "побутове", ex: "Der Handwerker repariert das Schloss." },
+        B1: { de: "instand setzen", meaning: "відновити придатність до експлуатації", context: "практичне / житлове", ex: "Die Heizung muss vor dem Winter instand gesetzt werden." },
+        B2: { de: "einen Schaden beheben", meaning: "усувати поломку або наслідки протікання", context: "оренда / сервіс", ex: "Der Vermieter versprach, den Wasserschaden zügig zu beheben." },
+        C1: { de: "restaurieren", meaning: "фахово реставрувати старі меблі чи елементи житла", context: "експертне", ex: "Die historischen Holztüren wurden fachmännisch restauriert." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "іменник",
+      concept: "сусідські правила / тиша",
+      words: {
+        A1: { de: "die Ruhe", meaning: "спокій, тиша", context: "базове", ex: "Ich brauche heute etwas Ruhe." },
+        A2: { de: "der Lärm", meaning: "шум, галас", context: "повсякденне", ex: "Der Lärm aus der Nachbarwohnung stört mich." },
+        B1: { de: "die Hausordnung", meaning: "правила внутрішнього розпорядку будинку", context: "побутове / оренда", ex: "Laut Hausordnung gilt ab 22 Uhr Nachtruhe." },
+        B2: { de: "die Ruhestörung", meaning: "порушення встановленого режиму тиші", context: "юридичне / побутове", ex: "Wegen wiederholter Ruhestörung beschwerten sich die Nachbarn." },
+        C1: { de: "das Nachbarschaftsverhältnis", meaning: "взаємовідносини між мешканцями / сусідами", context: "формальне", ex: "Ein offenes Gespräch kann das angespannte Nachbarschaftsverhältnis entspannen." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "іменник",
+      concept: "орендар / власник житла",
+      words: {
+        A1: { de: "der Chef", meaning: "головний (розмовне позначення орендодавця)", context: "спрощене", ex: "Der Chef vom Haus wohnt unten." },
+        A2: { de: "der Nachbar", meaning: "сусід по будинку чи поверху", context: "повсякденне", ex: "Mein Nachbar hilft mir oft beim Tragen." },
+        B1: { de: "der Mieter / der Vermieter", meaning: "орендар / орендодавець житла", context: "житлове", ex: "Der Vermieter hat die Nebenkostenabrechnung geschickt." },
+        B2: { de: "die Mietpartei", meaning: "сторона договору оренди (мешканці квартири)", context: "договірне / DTB", ex: "Jede Mietpartei erhält zwei Schlüssel für die Haustür." },
+        C1: { de: "der Immobilieneigentümer", meaning: "законний власник житлової нерухомості", context: "офіційне / правове", ex: "Der Immobilieneigentümer haftet für die Verkehrssicherheit des Gehwegs." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "прикметник",
+      concept: "чистий / прибраний",
+      words: {
+        A1: { de: "sauber", meaning: "чистий, не брудний", context: "базове", ex: "Die Küche ist wieder sauber." },
+        A2: { de: "ordentlich", meaning: "акуратний, прибраний", context: "побутове", ex: "Sein Zimmer ist immer ordentlich." },
+        B1: { de: "gepflegt", meaning: "доглянутий (стан житла або речей)", context: "стандартне / житлове", ex: "Das Haus macht einen sehr gepflegten Eindruck." },
+        B2: { de: "einwandfrei", meaning: "бездоганний, без жодних дефектів чи бруду", context: "оренда / стан", ex: "Die Wohnung wurde in einem einwandfreien Zustand übergeben." },
+        C1: { de: "makellos", meaning: "ідеально чистий, без найменшої вади", context: "описове / вишукане", ex: "Die frisch renovierten Räume waren in makellosem Zustand." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "прикметник",
+      concept: "брудний / занедбаний",
+      words: {
+        A1: { de: "schmutzig", meaning: "брудний", context: "базове", ex: "Meine Schuhe sind ganz schmutzig." },
+        A2: { de: "dreckig", meaning: "замазаний, дуже брудний", context: "розмовне", ex: "Das Geschirr steht noch dreckig in der Spüle." },
+        B1: { de: "unordentlich", meaning: "безладний, захаращений речами", context: "побутове", ex: "Im Flur sieht es wieder unordentlich aus." },
+        B2: { de: "verwahrlost", meaning: "занедбаний через відсутність догляду", context: "житлове / огляд", ex: "Der Garten wirkte nach dem Auszug völlig verwahrlost." },
+        C1: { de: "unzumutbar", meaning: "неприйнятний для проживання за санітарними нормами", context: "юридичне / скарги", ex: "Der Schimmelbefall machte den Zustand der Räume unzumutbar." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "прикметник",
+      concept: "зламаний / непридатний",
+      words: {
+        A1: { de: "kaputt", meaning: "зламаний", context: "базове", ex: "Der Stuhl ist leider kaputt." },
+        A2: { de: "alt", meaning: "старий, зношений", context: "повсякденне", ex: "Wir brauchen einen neuen Toaster, der hier ist zu alt." },
+        B1: { de: "defekt", meaning: "несправний технічно", context: "побутове / техніка", ex: "Die Klingel an der Haustür ist seit gestern defekt." },
+        B2: { de: "beschädigt", meaning: "пошкоджений (з видимими дефектами)", context: "акт прийому / оренда", ex: "Der Parkettboden im Wohnzimmer ist leicht beschädigt." },
+        C1: { de: "marode", meaning: "аварійний, напівзруйнований часом", context: "стан будівель", ex: "Die Wasserleitungen im Altbau sind mittlerweile marode." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "прикметник",
+      concept: "шумний / спокійний (акустика)",
+      words: {
+        A1: { de: "laut", meaning: "гучний", context: "базове", ex: "Die Musik der Nachbarn ist viel zu laut." },
+        A2: { de: "ruhig", meaning: "тихий, спокійний", context: "побутове", ex: "Wir suchen eine ruhige Wohnung am Stadtrand." },
+        B1: { de: "hellhörig", meaning: "з поганою звукоізоляцією (чути сусідів)", context: "житлове", ex: "Das Wohnhaus ist leider extrem hellhörig." },
+        B2: { de: "lärmbelästigt", meaning: "такий, що потерпає від постійного шуму", context: "офіційне / скарги", ex: "Die Anwohner fühlten sich durch die Baustelle lärmbelästigt." },
+        C1: { de: "geräuscharm", meaning: "малошумний, безшумний (про побутові прилади)", context: "технічний опис", ex: "Moderne Geschirrspüler arbeiten heutzutage sehr geräuscharm." }
+      }
+    },
+    {
+      category: "Побут",
+      pos: "прикметник",
+      concept: "тісний / просторий",
+      words: {
+        A1: { de: "klein", meaning: "маленький", context: "базове", ex: "Das Badezimmer ist sehr klein." },
+        A2: { de: "groß", meaning: "великий", context: "базове", ex: "Die Wohnung hat einen großen Balkon." },
+        B1: { de: "gemütlich", meaning: "затишний, комфортний для життя", context: "описове", ex: "Das Wohnzimmer ist klein, aber sehr gemütlich eingerichtet." },
+        B2: { de: "geräumig", meaning: "просторий, місткий за площею", context: "оголошення / оренда", ex: "Die Küche ist geräumig und bietet Platz für einen Esstisch." },
+        C1: { de: "beengt", meaning: "вкрай обмежений у просторі, стиснутий", context: "аналітичне / стан", ex: "Die Familie lebte jahrelang unter sehr beengten Wohnverhältnissen." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "допомагати / сприяти",
+      words: {
+        A1: { de: "helfen", meaning: "допомагати", context: "базове дієслово", ex: "Kannst du mir helfen?" },
+        A2: { de: "Hilfe geben", meaning: "надати допомогу", context: "розмовне", ex: "Er gibt mir gerne Hilfe." },
+        B1: { de: "Hilfe anbieten", meaning: "запропонувати поміч", context: "ввічливе", ex: "Ich habe den Kollegen meine Hilfe angeboten." },
+        B2: { de: "Unterstützung leisten", meaning: "надати підтримку / сприяння", context: "ділове / DTB", ex: "Wir müssen dem neuen Team fachliche Unterstützung leisten." },
+        C1: { de: "Hilfestellung gewährleisten", meaning: "гарантувати системне сприяння", context: "офіційне / керівне", ex: "Die Leitung gewährleistet den Mitarbeitern jede nötige Hilfestellung." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "подавати заявку / клопотати",
+      words: {
+        A1: { de: "fragen nach", meaning: "запитувати про щось", context: "базове", ex: "Ich frage nach mehr Urlaub." },
+        A2: { de: "bitten um", meaning: "просити про дозвіл чи послугу", context: "ввічливе", ex: "Ich bitte um ein kurzes Gespräch." },
+        B1: { de: "beantragen", meaning: "офіційно подавати заяву", context: "ділове", ex: "Sie beantragt morgen ihren Bildungsurlaub." },
+        B2: { de: "einen Antrag stellen auf", meaning: "подати офіційне письмове клопотання", context: "бюрократичне / DTB", ex: "Der Arbeitnehmer hat einen Antrag auf Elternzeit gestellt." },
+        C1: { de: "ein Gesuch einreichen", meaning: "офіційно вносити прохання до інстанції", context: "формальне / правове", ex: "Das Unternehmen reichte ein Gnadengesuch beim Ministerium ein." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "впливати / діяти на",
+      words: {
+        A1: { de: "machen", meaning: "робити враження", context: "базове", ex: "Das macht mich nervös." },
+        A2: { de: "ändern", meaning: "змінювати щось своєю дією", context: "практичне", ex: "Seine Meinung ändert alles." },
+        B1: { de: "beeinflussen", meaning: "чинити прямий вплив", context: "стандартне", ex: "Das Wetter beeinflusst unsere Stimmung." },
+        B2: { de: "Einfluss nehmen auf", meaning: "цілеспрямовано впливати на процес чи рішення", context: "професійне / DTB", ex: "Der Betriebsrat versuchte, Einfluss auf die Verhandlungen zu nehmen." },
+        C1: { de: "Auswirkungen zeitigen", meaning: "мати тривалі вагомі наслідки", context: "публіцистичне / аналіз", ex: "Die Krise zeitigte verheerende Auswirkungen auf den Arbeitsmarkt." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "критикувати / висувати претензію",
+      words: {
+        A1: { de: "schlecht finden", meaning: "вважати щось поганим", context: "базове", ex: "Ich finde die Idee schlecht." },
+        A2: { de: "meckern", meaning: "бурчати, висловлювати невдоволення", context: "розмовне", ex: "Er meckert über das schlechte Essen." },
+        B1: { de: "kritisieren", meaning: "вказувати на помилки в роботі", context: "ділове", ex: "Der Abteilungsleiter kritisierte die Verzögerung." },
+        B2: { de: "Kritik üben an", meaning: "висловлювати конструктивну критику", context: "офіційне / DTB", ex: "Die Prüfer übten deutliche Kritik an den Arbeitsbedingungen." },
+        C1: { de: "auf Missstände hinweisen", meaning: "фахово звертати увагу на серйозні системні порушення", context: "аудит / експертне", ex: "Der Bericht wies ausdrücklich auf strukturelle Missstände hin." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "сумніватися / перевіряти правдивість",
+      words: {
+        A1: { de: "nicht glauben", meaning: "не вірити", context: "базове", ex: "Ich glaube das nicht wirklich." },
+        A2: { de: "nicht sicher sein", meaning: "бути невпевненим у чомусь", context: "розмовне", ex: "Ich bin mir bei diesem Preis nicht sicher." },
+        B1: { de: "zweifeln an", meaning: "мати сумніви", context: "стандартне", ex: "Wir zweifeln am Erfolg dieses Plans." },
+        B2: { de: "in Zweifel ziehen", meaning: "ставити під офіційний сумнів факти чи дані", context: "ділове / DTB", ex: "Die Zahlen des Quartalsberichts wurden vom Vorstand in Zweifel gezogen." },
+        C1: { de: "Skepsis bekunden", meaning: "публічно або дипломатично висловлювати недовіру", context: "формальне / преса", ex: "Wirtschaftsexperten bekundeten erhebliche Skepsis bezüglich der Reform." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "обговорювати / дискутувати",
+      words: {
+        A1: { de: "sprechen über", meaning: "говорити про щось", context: "базове дієслово", ex: "Wir sprechen über den Plan." },
+        A2: { de: "reden über", meaning: "розмовляти на тему", context: "розмовне", ex: "Lass uns morgen darüber reden." },
+        B1: { de: "diskutieren über", meaning: "дискутувати, вести полеміку", context: "стандартне", ex: "Das Team diskutiert über die neue Regelung." },
+        B2: { de: "zur Sprache bringen", meaning: "підняти тему на обговорення під час наради", context: "ділове / DTB", ex: "Ich möchte dieses Problem in der Teamsitzung zur Sprache bringen." },
+        C1: { de: "zur Debatte stellen", meaning: "виносити питання на офіційну дискусію / голосування", context: "парламентське / рада", ex: "Der Vorsitzende stellte den umstrittenen Vorschlag zur Debatte." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "починати / давати старт",
+      words: {
+        A1: { de: "anfangen", meaning: "починати", context: "базове", ex: "Wann fängst du an?" },
+        A2: { de: "beginnen mit", meaning: "братися за дію", context: "стандартне", ex: "Wir beginnen jetzt mit der Arbeit." },
+        B1: { de: "starten", meaning: "запускати процес", context: "практичне", ex: "Nächste Woche starten wir die neue Kampagne." },
+        B2: { de: "in Angriff nehmen", meaning: "рішуче братися до виконання складного завдання", context: "професійне / DTB", ex: "Wir müssen die Digitalisierung der Akten endlich in Angriff nehmen." },
+        C1: { de: "die Weichen stellen für", meaning: "закладати стратегічні передумови на майбутнє", context: "стратегічне / бізнес", ex: "Das Management stellte frühzeitig die Weichen für den Markteintritt." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "враховувати / брати до уваги",
+      words: {
+        A1: { de: "denken an", meaning: "пам'ятати, згадувати", context: "базове", ex: "Denk bitte an die Unterlagen." },
+        A2: { de: "aufpassen auf", meaning: "стежити, бути уважним", context: "побутове", ex: "Pass auf deine Sachen auf." },
+        B1: { de: "beachten", meaning: "дотримуватися вимоги чи знаку", context: "інструкція", ex: "Bitte beachten Sie die Sicherheitsvorschriften." },
+        B2: { de: "in Betracht ziehen", meaning: "розглядати варіант / брати до уваги можливість", context: "ділове / DTB", ex: "Wir sollten auch alternative Anbieter in Betracht ziehen." },
+        C1: { de: "Rechnung tragen (+ Dat.)", meaning: "належним чином врахувати особливості чи інтереси", context: "офіційне / договірне", ex: "Das neue Konzept trägt den geänderten Marktbedingungen voll Rechnung." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "висловлювати сумнів / підозру",
+      words: {
+        A1: { de: "nicht sicher sein", meaning: "не знати точно", context: "базове", ex: "Ich bin mir da nicht sicher." },
+        A2: { de: "Angst haben", meaning: "боятися, що не вийде", context: "емоційне", ex: "Ich habe Angst vor Fehlern." },
+        B1: { de: "Bedenken haben", meaning: "мати внутрішні перестороги", context: "ділове", ex: "Der Kollege hat Bedenken bezüglich der Kosten." },
+        B2: { de: "Zweifel hegen an", meaning: "плекати сумніви щодо успіху / термінів", context: "професійне / DTB", ex: "Die Projektleitung hegt Zweifel an der Machbarkeit des Zeitplans." },
+        C1: { de: "Verdacht schöpfen", meaning: "запідозрити неправомірність дій чи обман", context: "юридичне / аудит", ex: "Die Innenrevision schöpfte nach der Durchsicht der Belege schweren Verdacht." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "виконувати / завершувати",
+      words: {
+        A1: { de: "fertig sein", meaning: "бути готовим", context: "базове", ex: "Ich bin gleich fertig." },
+        A2: { de: "fertigstellen", meaning: "доробити до кінця", context: "побутове", ex: "Der Bericht wurde gestern fertiggestellt." },
+        B1: { de: "abschließen", meaning: "закрити проєкт чи завдання", context: "ділове", ex: "Wir haben das Projekt erfolgreich abgeschlossen." },
+        B2: { de: "zu Ende führen", meaning: "довести почату справу чи переговори до кінця", context: "ділове / DTB", ex: "Trotz der Hürden konnten wir die Verhandlungen zu Ende führen." },
+        C1: { de: "zum Abschluss bringen", meaning: "остаточно формалізувати та завершити складний процес", context: "корпоративне", ex: "Der Vertrag wurde nach Monaten endlich zum Abschluss gebracht." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "NVV",
+      concept: "робити висновок / підсумовувати",
+      words: {
+        A1: { de: "wissen", meaning: "знати результат", context: "базове", ex: "Jetzt weiß ich Bescheid." },
+        A2: { de: "verstehen", meaning: "розуміти що до чого", context: "розмовне", ex: "Ich verstehe das Ergebnis jetzt." },
+        B1: { de: "zusammenfassen", meaning: "коротко узагальнювати", context: "стандартне", ex: "Können Sie die Ergebnisse kurz zusammenfassen?" },
+        B2: { de: "ein Fazit ziehen", meaning: "підбивати офіційний підсумок роботи", context: "аналітичне / DTB", ex: "Am Ende des Geschäftsjahres müssen wir ein nüchternes Fazit ziehen." },
+        C1: { de: "Schlussfolgerungen ableiten", meaning: "виводити логічні та системні наслідки з фактів", context: "експертне / звіт", ex: "Aus den Daten lassen sich präzise Schlussfolgerungen ableiten." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "прийменник",
+      concept: "через / внаслідок",
+      words: {
+        A1: { de: "wegen (+ Dat.)", meaning: "через, з причини", context: "розмовне", ex: "Wegen dem Regen bleibe ich hier." },
+        A2: { de: "durch (+ Akk.)", meaning: "завдяки, через дію", context: "базове", ex: "Durch das Telefonat weiß ich jetzt Bescheid." },
+        B1: { de: "infolge (+ Gen.)", meaning: "внаслідок раптової події", context: "новини / звіти", ex: "Infolge eines Unfalls kam es zu Verspätungen." },
+        B2: { de: "aufgrund (+ Gen.)", meaning: "на підставі, з офіційної причини", context: "ділове листування / DTB", ex: "Aufgrund betrieblicher Änderungen entfällt das geplante Meeting." },
+        C1: { de: "kraft (+ Gen.)", meaning: "силою, на підставі закону чи повноважень", context: "юридичне / протокольне", ex: "Kraft seines Amtes ordnete der Geschäftsführer eine Revision an." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "прийменник",
+      concept: "попри / всупереч",
+      words: {
+        A1: { de: "trotz (+ Dat.)", meaning: "незважаючи на", context: "розмовне", ex: "Trotz dem schlechten Wetter gehen wir raus." },
+        A2: { de: "ohne (+ Akk.)", meaning: "без урахування", context: "побутове", ex: "Wir haben das ohne Probleme geschafft." },
+        B1: { de: "trotz (+ Gen.)", meaning: "всупереч обставинам", context: "стандартне ділове", ex: "Trotz intensiver Bemühungen konnten wir ihn nicht erreichen." },
+        B2: { de: "ungeachtet (+ Gen.)", meaning: "не беручи до уваги застереження чи ризики", context: "офіційне / DTB", ex: "Ungeachtet der Einwände des Betriebsrats wurde die Maßnahme umgesetzt." },
+        C1: { de: "zuwider (+ Dat., післяменник)", meaning: "всупереч чинним правилам або волі", context: "нормативне / судове", ex: "Dieser Beschluss läuft den bestehenden Richtlinien zuwider." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "прийменник",
+      concept: "згідно з / відповідно до",
+      words: {
+        A1: { de: "nach (+ Dat.)", meaning: "згідно зі словами чи думкою", context: "базове", ex: "Nach meiner Meinung ist das falsch." },
+        A2: { de: "wie", meaning: "як зазначено", context: "розмовне", ex: "Wie besprochen, schicke ich die Datei." },
+        B1: { de: "laut (+ Dat./Gen.)", meaning: "за інформацією, згідно з документом", context: "ділове", ex: "Laut aktuellem Dienstplan hat er heute Nachtschicht." },
+        B2: { de: "gemäß (+ Dat.)", meaning: "відповідно до параграфа, контракту чи інструкції", context: "договірне / DTB", ex: "Die Abrechnung erfolgt gemäß den getroffenen Vereinbarungen." },
+        C1: { de: "in Anlehnung an (+ Akk.)", meaning: "спираючись на прецедент або нормативну базу", context: "аналітичне / стандарти", ex: "Der Sicherheitsbericht wurde in Anlehnung an internationale Standards verfasst." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "прийменник",
+      concept: "під час / упродовж",
+      words: {
+        A1: { de: "bei (+ Dat.)", meaning: "при, під час дії", context: "базове", ex: "Beim Essen telefonieren wir nicht." },
+        A2: { de: "in (+ Dat.)", meaning: "у часових межах", context: "побутове", ex: "In dieser Woche habe ich Urlaub." },
+        B1: { de: "während (+ Gen.)", meaning: "протягом часового відрізка чи зміни", context: "стандартне", ex: "Während der Probezeit gelten gesonderte Kündigungsfristen." },
+        B2: { de: "im Laufe (+ Gen.)", meaning: "у процесі розвитку подій протягом терміну", context: "організаційне / DTB", ex: "Wir werden die Anpassungen im Laufe des nächsten Quartals vornehmen." },
+        C1: { de: "binnen (+ Dat./Gen.)", meaning: "строго в межах визначеного стислого дедлайну", context: "претензії / правове", ex: "Die Nachbesserung muss binnen vierzehn Tagen erfolgen." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "прийменник",
+      concept: "стосовно / щодо",
+      words: {
+        A1: { de: "zu (+ Dat.)", meaning: "до цього питання", context: "базове", ex: "Hast du eine Frage zu der Aufgabe?" },
+        A2: { de: "über (+ Akk.)", meaning: "про цей предмет", context: "побутове", ex: "Wir brauchen Infos über die Preise." },
+        B1: { de: "bezüglich (+ Gen.)", meaning: "стосовно конкретної теми чи запиту", context: "ділове листування", ex: "Bezüglich Ihrer Anfrage vom Montag möchten wir Folgendes mitteilen." },
+        B2: { de: "hinsichtlich (+ Gen.)", meaning: "в аспекті, щодо певного параметра", context: "офіційне / DTB", ex: "Hinsichtlich der Lieferfristen müssen wir Rücksprache halten." },
+        C1: { de: "anbelangend (після іменника)", meaning: "що стосується окремого пункту (акцент)", context: "договірне / переговори", ex: "Die Kosten anbelangend, herrscht noch Klärungsbedarf." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "сполучник",
+      concept: "умова / якщо",
+      words: {
+        A1: { de: "wenn", meaning: "якщо / коли", context: "базове", ex: "Wenn du Zeit hast, hilf mir." },
+        A2: { de: "falls", meaning: "у разі якщо", context: "практичне", ex: "Falls es regnet, bleiben wir drinnen." },
+        B1: { de: "sofern", meaning: "за умови якщо", context: "ділове листування", ex: "Die Lieferung erfolgt morgen, sofern die Ware vorrätig ist." },
+        B2: { de: "vorausgesetzt, dass", meaning: "за виняткової умови, що", context: "договірне / DTB", ex: "Wir unterschreiben, vorausgesetzt, dass die Frist eingehalten wird." },
+        C1: { de: "es sei denn, dass", meaning: "хіба що тільки якщо (виняток)", context: "юридичне / норми", ex: "Der Vertrag verlängert sich, es sei denn, dass fristgerecht gekündigt wird." }
+      }
+    },
+    {
+      category: "DTB",
+      pos: "сполучник",
+      concept: "мета / для того щоб",
+      words: {
+        A1: { de: "für", meaning: "для (розмовна заміна з іменником)", context: "базове", ex: "Das mache ich für meinen Job." },
+        A2: { de: "um ... zu", meaning: "щоб зробити щось", context: "побутове", ex: "Ich lerne Deutsch, um eine Stelle zu finden." },
+        B1: { de: "damit", meaning: "для того щоб (різні підмети)", context: "стандартне", ex: "Ich erkläre es genau, damit Sie es verstehen." },
+        B2: { de: "mit dem Ziel, dass", meaning: "із конкретною метою, щоб", context: "проєктне / DTB", ex: "Die Schulung findet statt mit dem Ziel, dass Fehler vermieden werden." },
+        C1: { de: "auf dass", meaning: "аби тільки (високий стиль / заклик)", context: "урочисте / публіцистичне", ex: "Die Vereinbarungen wurden besiegelt, auf dass der Konflikt beigelegt sei." }
+      }
+    },
+    {
+      category: "Емоції",
+      pos: "дієслово",
+      concept: "хвилюватися / панікувати",
+      words: {
+        A1: { de: "Angst haben", meaning: "боятися", context: "базове", ex: "Ich habe Angst vor Spinnen." },
+        A2: { de: "nervös sein", meaning: "нервувати через ситуацію", context: "побутове", ex: "Vor dem Gespräch bin ich sehr nervös." },
+        B1: { de: "sich Sorgen machen", meaning: "переживати за когось або щось", context: "розмовне", ex: "Mach dir bitte keine Sorgen um mich." },
+        B2: { de: "beunruhigt sein", meaning: "відчувати внутрішню тривогу чи неспокій", context: "описове", ex: "Die späte Nachricht hat uns sehr beunruhigt." },
+        C1: { de: "in Panik geraten", meaning: "піддаватися гострому нападу паніки", context: "емоційний стан", ex: "Trotz des Alarms geriet niemand in Panik." }
+      }
+    },
+    {
+      category: "Здоров'я",
+      pos: "дієслово",
+      concept: "одужувати / лікуватися",
+      words: {
+        A1: { de: "gesund sein", meaning: "бути здоровим", context: "базове", ex: "Ich bin wieder gesund." },
+        A2: { de: "besser gehen", meaning: "почуватися краще", context: "побутове", ex: "Heute geht es mir schon viel besser." },
+        B1: { de: "sich erholen", meaning: "відновлювати сили після хвороби/втоми", context: "стандартне", ex: "Im Urlaub konnte ich mich gut erholen." },
+        B2: { de: "genesen", meaning: "проходити процес медичного одужання", context: "медичне / описове", ex: "Der Patient ist nach der Operation rasch genesen." },
+        C1: { de: "zu Kräften kommen", meaning: "повноцінно повертати сили після важкого стану", context: "образне / мова", ex: "Er muss sich schonen, um wieder zu Kräften zu kommen." }
+      }
+    },
+    {
+      category: "Подорожі",
+      pos: "іменник",
+      concept: "затримка / спізнення",
+      words: {
+        A1: { de: "zu spät", meaning: "запізно (базове поняття)", context: "базове", ex: "Der Bus kommt zu spät." },
+        A2: { de: "die Verspätung", meaning: "запізнення транспорту", context: "повсякденне", ex: "Der Zug hatte zwanzig Minuten Verspätung." },
+        B1: { de: "der Ausfall", meaning: "повне скасування рейсу або поїзда", context: "транспортне", ex: "Wegen des Streiks kam es zum Ausfall vieler Züge." },
+        B2: { de: "die Verzögerung", meaning: "вимушена часова затримка у маршруті", context: "інформаційне", ex: "Bei der Gepäckausgabe gab es unerwartete Verzögerungen." },
+        C1: { de: "der Stillstand", meaning: "повна зупинка руху на лінії чи дорозі", context: "аналітичне / звіти", ex: "Ein Unfall auf der Autobahn führte zu stundenlangem Stillstand." }
+      }
+    },
+    {
+      category: "Дозвілля",
+      pos: "дієслово",
+      concept: "відпочивати / розслаблятися",
+      words: {
+        A1: { de: "Pause machen", meaning: "робити коротку перерву", context: "базове", ex: "Lass uns eine kurze Pause machen." },
+        A2: { de: "chillen", meaning: "відпочивати, байдикувати", context: "молодіжне / розмовне", ex: "Am Sonntag will ich nur auf dem Sofa chillen." },
+        B1: { de: "sich entspannen", meaning: "скидати напругу, розслаблятися", context: "стандартне", ex: "Musik hilft mir, mich nach der Arbeit zu entspannen." },
+        B2: { de: "abschalten", meaning: "відволіктися від думок про буденність і справи", context: "психологічне", ex: "Beim Spaziergang im Wald kann ich vollkommen abschalten." },
+        C1: { de: "die Seele baumeln lassen", meaning: "насолоджуватися повним душевним спокоєм", context: "ідіома / образне", ex: "Am Wochenende hat sie einfach die Seele baumeln lassen." }
+      }
+    },
+    {
+      category: "Особисті стосунки",
+      pos: "дієслово",
+      concept: "знайомитися / налагоджувати контакт",
+      words: {
+        A1: { de: "treffen", meaning: "зустрічати людину", context: "базове", ex: "Ich treffe heute einen Freund." },
+        A2: { de: "kennenlernen", meaning: "знайомитися з кимось уперше", context: "повсякденне", ex: "Wir haben uns im Urlaub kennengelernt." },
+        B1: { de: "Kontakt aufnehmen mit", meaning: "встановлювати зв'язок або почати спілкуватися", context: "стандартне", ex: "Er hat über soziale Medien Kontakt mit ihr aufgenommen." },
+        B2: { de: "Kontakte knüpfen", meaning: "зав'язувати нові корисні чи дружні знайомства", context: "соціальне", ex: "Auf der Feier konnte sie viele interessante Kontakte knüpfen." },
+        C1: { de: "anbändeln mit", meaning: "починати романтичний або фліртуючий контакт", context: "розмовне / образне", ex: "Er versuchte den ganzen Abend, mit ihr anzubändeln." }
+      }
+    },
+    {
+      category: "Особисті стосунки",
+      pos: "дієслово",
+      concept: "довіряти / покладатися",
+      words: {
+        A1: { de: "glauben", meaning: "вірити словам", context: "базове", ex: "Ich glaube dir." },
+        A2: { de: "sicher sein", meaning: "бути впевненим у комусь", context: "побутове", ex: "Ich bin mir bei ihr ganz sicher." },
+        B1: { de: "vertrauen (+ Dat.)", meaning: "довіряти людині", context: "міжособистісне", ex: "Ich vertraue meinem besten Freund vollkommen." },
+        B2: { de: "sich verlassen auf (+ Akk.)", meaning: "твердо покладатися на іншого у важливій справі", context: "емоційне / міцне", ex: "Auf meine Familie kann ich mich in jeder Lage verlassen." },
+        C1: { de: "Vertrauen schenken (+ Dat.)", meaning: "свідомо наділяти когось глибокою довірою", context: "витончене / літературне", ex: "Nach vielen Enttäuschungen fiel es ihr schwer, jemandem neues Vertrauen zu schenken." }
+      }
+    },
+    {
+      category: "Особисті стосунки",
+      pos: "дієслово",
+      concept: "подобатися / захоплюватися",
+      words: {
+        A1: { de: "mögen", meaning: "подобатися, любити", context: "базове", ex: "Ich mag sie wirklich sehr." },
+        A2: { de: "gut gefallen", meaning: "справляти гарне враження", context: "повсякденне", ex: "Er gefällt mir schon seit Langem." },
+        B1: { de: "sympathisch finden", meaning: "знаходити людину приємною за характером", context: "оціночне", ex: "Ich fand ihn auf Anhieb sympathisch." },
+        B2: { de: "schwärmen für (+ Akk.)", meaning: "палко захоплюватися кимось, бути закоханим", context: "емоційне / романтичне", ex: "Sie schwärmt schon seit Monaten für ihren Studienkollegen." },
+        C1: { de: "Zuneigung empfinden für", meaning: "відчувати глибоку душевну прихильність і тепло", context: "психологічне / тонке", ex: "Er empfand eine tiefe Zuneigung für seine Jugendfreundin." }
+      }
+    },
+    {
+      category: "Особисті стосунки",
+      pos: "іменник",
+      concept: "розрив / розставання",
+      words: {
+        A1: { de: "das Ende", meaning: "кінець стосунків", context: "базове", ex: "Das war das Ende unserer Zeit." },
+        A2: { de: "der Abschied", meaning: "прощання", context: "побутове", ex: "Der Abschied am Bahnhof fiel beiden schwer." },
+        B1: { de: "die Trennung", meaning: "розставання пари", context: "міжособистісне", ex: "Die Trennung verlief glücklicherweise friedlich." },
+        B2: { de: "der Bruch", meaning: "різкий розрив дружби чи зв'язку через образу", context: "драматичне", ex: "Nach dem Streit kam es zum endgültigen Bruch zwischen den beiden." },
+        C1: { de: "das Zerwürfnis", meaning: "глибокий тривалий розлад і взаємна ворожнеча", context: "високий стиль / психологія", ex: "Ein jahrelanges familiäres Zerwürfnis verhinderte jede Aussöhnung." }
+      }
+    },
+    {
+      category: "Особисті стосунки",
+      pos: "прикметник",
+      concept: "вірний / відданий",
+      words: {
+        A1: { de: "gut", meaning: "хороший, щирий", context: "базове", ex: "Er ist ein guter Freund." },
+        A2: { de: "immer da", meaning: "той, хто постійно поруч", context: "розмовне", ex: "Sie ist immer для mich da." },
+        B1: { de: "treu", meaning: "вірний у коханні чи дружбі", context: "традиційне", ex: "Sie sind seit dreißig Jahren treue Freunde." },
+        B2: { de: "loyal", meaning: "лояльний, вірний принципам і людині перед іншими", context: "соціальне / характер", ex: "In schwierigen Zeiten hat er sich stets absolut loyal verhalten." },
+        C1: { de: "aufopferungsvoll", meaning: "самовідданий, готовий жертвувати власним комфортом", context: "образне / високе", ex: "Mit aufopferungsvoller Fürsorge stand sie ihrem Partner zur Seite." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "іменник",
+      concept: "робочий договір / контракт",
+      words: {
+        A1: { de: "der Vertrag", meaning: "договір, угода", context: "базове", ex: "Ich unterschreibe den Vertrag heute." },
+        A2: { de: "das Papier", meaning: "документ (розмовне)", context: "побутове", ex: "Wo sind meine Papiere für die Arbeit?" },
+        B1: { de: "der Arbeitsvertrag", meaning: "трудовий договір", context: "ділове", ex: "Der Arbeitsvertrag wird für ein Jahr befristet." },
+        B2: { de: "das Beschäftigungsverhältnis", meaning: "офіційні трудові правовідносини", context: "правове / DTB", ex: "Das Beschäftigungsverhältnis endet am Monatsletzten." },
+        C1: { de: "die Vertragsvereinbarung", meaning: "положення / норма колективного або трудового контракту", context: "юридичне / норми", ex: "Diese Klausel entspricht nicht den gesetzlichen Vertragsvereinbarungen." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "дієслово",
+      concept: "брати лікарняний / звітувати про хворобу",
+      words: {
+        A1: { de: "krank sein", meaning: "хворіти", context: "базове", ex: "Ich bin heute leider krank." },
+        A2: { de: "zu Hause bleiben", meaning: "залишатися вдома через нездужання", context: "побутове", ex: "Wegen Fieber muss ich heute zu Hause bleiben." },
+        B1: { de: "sich krankmelden", meaning: "повідомити працедавця про хворобу", context: "робоче", ex: "Ich habe mich heute früh telefonisch krankgemeldet." },
+        B2: { de: "eine Arbeitsunfähigkeitsbescheinigung einreichen", meaning: "подати офіційний електронний чи паперовий лікарняний (AU)", context: "кадри / DTB", ex: "Die Arbeitsunfähigkeitsbescheinigung muss spätestens am vierten Tag vorliegen." },
+        C1: { de: "den Nachweis der Dienstunfähigkeit erbringen", meaning: "юридично засвідчити непрацездатність", context: "формальне / держслужба", ex: "Der Angestellte erbrachte unverzüglich den Nachweis seiner Dienstunfähigkeit." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "іменник",
+      concept: "понаднормові години",
+      words: {
+        A1: { de: "mehr Zeit", meaning: "більше часу на роботі", context: "базове", ex: "Ich brauche heute mehr Zeit." },
+        A2: { de: "mehr arbeiten", meaning: "працювати довше норми", context: "розмовне", ex: "Diese Woche muss ich viel mehr arbeiten." },
+        B1: { de: "die Überstunden", meaning: "понаднормові робочі години", context: "стандартне ділове", ex: "Ich habe im letzten Monat zehn Überstunden gemacht." },
+        B2: { de: "die Mehrarbeit", meaning: "офіційно зафіксована понаднормова праця понад ставку", context: "кадри / DTB", ex: "Der Betriebsrat muss der angeordneten Mehrarbeit zustimmen." },
+        C1: { de: "der Überstundenabbau", meaning: "компенсація понаднормового часу відпочинком (Freizeitausgleich)", context: "регламентне", ex: "Der geplante Überstundenabbau wurde mit der Abteilungsleitung vereinbart." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "іменник",
+      concept: "випробувальний термін",
+      words: {
+        A1: { de: "der Anfang", meaning: "початок роботи", context: "базове", ex: "Am Anfang war die Arbeit sehr schwer." },
+        A2: { de: "die Testzeit", meaning: "тестовий період (калька/розмовне)", context: "побутове", ex: "Meine Testzeit dauert noch zwei Wochen." },
+        B1: { de: "die Probezeit", meaning: "офіційний випробувальний термін", context: "стандартне ділове", ex: "Während der Probezeit gilt eine Kündigungsfrist von zwei Wochen." },
+        B2: { de: "die Bewährungsphase", meaning: "період перевірки відповідності працівника вимогам посади", context: "HR / DTB", ex: "Sie hat die sechsmonatige Bewährungsphase mit Erfolg durchlaufen." },
+        C1: { de: "die Eignungsfeststellung", meaning: "системна процедура підтвердження професійної придатності", context: "експертне кадрове", ex: "Die formelle Eignungsfeststellung bildet die Grundlage für die Festanstellung." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "дієслово",
+      concept: "звільнятися за власним бажанням",
+      words: {
+        A1: { de: "weggehen", meaning: "йти геть з місця", context: "базове", ex: "Ich gehe bald von hier weg." },
+        A2: { de: "aufhören", meaning: "кидати роботу", context: "розмовне", ex: "Er will nächsten Monat bei der Firma aufhören." },
+        B1: { de: "die Stelle kündigen", meaning: "подавати заяву на звільнення", context: "ділове", ex: "Sie hat ihre Stelle gekündigt, um umzuziehen." },
+        B2: { de: "ein Kündigungsschreiben einreichen", meaning: "офіційно подавати письмову заяву про розірвання договору", context: "документи / DTB", ex: "Der Mitarbeiter reichte fristgemäß sein Kündigungsschreiben ein." },
+        C1: { de: "das Arbeitsverhältnis aufkündigen", meaning: "формально розривати трудовий договір в односторонньому порядку", context: "юридичне", ex: "Die Angestellte kündigte das bestehende Arbeitsverhältnis zum Quartalsende auf." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "іменник",
+      concept: "відпустка / право на відпочинок",
+      words: {
+        A1: { de: "frei", meaning: "вільний день", context: "базове", ex: "Morgen habe ich frei." },
+        A2: { de: "der Urlaub", meaning: "відпустка", context: "побутове", ex: "Ich fahre nächste Woche in den Urlaub." },
+        B1: { de: "der Erholungsurlaub", meaning: "офіційна щорічна оплачувана відпустка", context: "робоче", ex: "Mein gesetzlicher Erholungsurlaub beträgt 24 Tage." },
+        B2: { de: "der Urlaubsanspruch", meaning: "юридичне право працівника на певну кількість днів відпустки", context: "кадри / DTB", ex: "Der verbleibende Urlaubsanspruch muss bis zum Jahresende geltend gemacht werden." },
+        C1: { de: "die Dienstbefreiung", meaning: "офіційне звільнення від виконання службових обов'язків", context: "правове / формальне", ex: "Ihm wurde für den Fortbildungstag eine bezahlte Dienstbefreiung bewilligt." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "іменник",
+      concept: "рада підприємства / захист прав",
+      words: {
+        A1: { de: "die Hilfe", meaning: "допомога", context: "базове", ex: "Ich brauche Hilfe bei der Arbeit." },
+        A2: { de: "die Gruppe", meaning: "команда / представники", context: "розмовне", ex: "Die Gruppe spricht mit dem Chef." },
+        B1: { de: "der Betriebsrat", meaning: "виробнича рада (представництво працівників)", context: "ділове", ex: "Der Betriebsrat vertritt die Interessen aller Kollegen." },
+        B2: { de: "die Arbeitnehmervertretung", meaning: "офіційне представництво прав та інтересів персоналу", context: "профспілкове / DTB", ex: "Die Maßnahme bedarf der formellen Zustimmung der Arbeitnehmervertretung." },
+        C1: { de: "das Mitbestimmungsrecht", meaning: "законодавчо закріплене право працівників брати участь в управлінні", context: "трудове право", ex: "Der Arbeitgeber verletzte bei den Kündigungen das gesetzliche Mitbestimmungsrecht." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "іменник",
+      concept: "зарплата / тарифи",
+      words: {
+        A1: { de: "das Geld", meaning: "гроші за роботу", context: "базове", ex: "Wann kommt mein Geld?" },
+        A2: { de: "der Lohn", meaning: "погодинна заробітна плата", context: "повсякденне", ex: "Der Lohn wird immer am Fünfzehnten überwiesen." },
+        B1: { de: "das Gehalt", meaning: "щомісячний посадовий оклад", context: "ділове", ex: "Das monatliche Gehalt richtet sich nach der Qualifikation." },
+        B2: { de: "die Tarifvergütung", meaning: "оплата праці суворо згідно з тарифною сіткою галузі", context: "HR / DTB", ex: "Die Entlohnung erfolgt transparent nach der aktuellen Tarifvergütung." },
+        C1: { de: "die Entgeltfortzahlung", meaning: "гарантоване законом продовження нарахування платні під час хвороби", context: "юридичне / бухгалтерія", ex: "Der gesetzliche Anspruch auf Entgeltfortzahlung im Krankheitsfall beträgt sechs Wochen." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "дієслово",
+      concept: "дотримуватися строків / правил",
+      words: {
+        A1: { de: "pünktlich sein", meaning: "бути точним у часі", context: "базове", ex: "Du musst morgen pünktlich sein." },
+        A2: { de: "aufpassen auf", meaning: "стежити за дедлайном", context: "побутове", ex: "Pass auf die Termine auf." },
+        B1: { de: "einhalten", meaning: "дотримуватися терміну чи правил", context: "стандартне", ex: "Wir müssen die gesetzlichen Pausenzeiten einhalten." },
+        B2: { de: "der Frist nachkommen", meaning: "своєчасно виконати офіційну вимогу/термін", context: "договірне / DTB", ex: "Der Arbeitnehmer ist der gesetzlichen Kündigungsfrist nicht nachgekommen." },
+        C1: { de: "wahren", meaning: "неухильно дотримуватися регламенту чи інтересів сторін", context: "юридичне / нормативи", ex: "Beide Parteien verpflichten sich, die vereinbarten Geheimhaltungsfristen strikt zu wahren." }
+      }
+    },
+    {
+      category: "Трудове право та умови",
+      pos: "прикметник",
+      concept: "терміновий / безстроковий (про договір)",
+      words: {
+        A1: { de: "kurz / lang", meaning: "короткий / довгий (про контракт)", context: "базове", ex: "Ich habe nur einen kurzen Vertrag." },
+        A2: { de: "mit Ende", meaning: "з кінцевою датою", context: "розмовне", ex: "Der Arbeitsvertrag ist mit Ende im Dezember." },
+        B1: { de: "befristet / unbefristet", meaning: "тимчасовий (строковий) або постійний", context: "стандартне ділове", ex: "Ich habe endlich einen unbefristeten Vertrag erhalten." },
+        B2: { de: "zeitlich limitiert", meaning: "обмежений точними часовими рамками", context: "HR / DTB", ex: "Die Beschäftigung ist aus betrieblichen Gründen zeitlich limitiert." },
+        C1: { de: "auf unbestimmte Zeit abgeschlossen", meaning: "укладений на невизначений строк (офіційне формулювання)", context: "договірне / правове", ex: "Das Dienstverhältnis gilt als auf unbestimmte Zeit abgeschlossen." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "дієслово",
+      concept: "робити пересадку / змінювати поїзд",
+      words: {
+        A1: { de: "wechseln", meaning: "змінювати (автобус або поїзд)", context: "базове", ex: "Wir müssen hier den Bus wechseln." },
+        A2: { de: "umsteigen", meaning: "робити пересадку на станції", context: "повсякденне", ex: "In München müssen wir in Gleis 4 umsteigen." },
+        B1: { de: "den Anschluss erreichen", meaning: "встигнути на наступний стикувальний рейс", context: "транспортне", ex: "Wegen der Verspätung konnte ich den Anschluss nicht erreichen." },
+        B2: { de: "eine Verbindung wahrnehmen", meaning: "скористатися запланованим транспортним стикуванням", context: "офіційне / подорожі", ex: "Fahrgäste werden gebeten, die alternative Verbindung über Köln wahrzunehmen." },
+        C1: { de: "auf einen Ausweichverkehr ausweichen", meaning: "переходити на дублюючий маршрут через збій руху", context: "регламентне / транспорт", ex: "Reisende mussten infolge der Streckensperrung auf den Schienenersatzverkehr ausweichen." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "іменник",
+      concept: "дорожній затор / скупчення машин",
+      words: {
+        A1: { de: "viele Autos", meaning: "багато машин на дорозі", context: "базове", ex: "Auf der Straße sind heute zu viele Autos." },
+        A2: { de: "der Stau", meaning: "автомобільний затор", context: "побутове", ex: "Wir stehen seit einer Stunde im Stau." },
+        B1: { de: "die Verkehrsbehinderung", meaning: "ускладнення дорожнього руху", context: "радіо / новини", ex: "Auf der A3 gibt es erhebliche Verkehrsbehinderungen." },
+        B2: { de: "das Verkehrsaufkommen", meaning: "висока інтенсивність або щільність потоку транспорту", context: "аналітичне / транспорт", ex: "Aufgrund des hohen Verkehrsaufkommens kam es zu Verzögerungen." },
+        C1: { de: "der Verkehrskollaps", meaning: "повний параліч транспортної системи міста/траси", context: "публіцистичне", ex: "Der plötzliche Wintereinbruch führte im Berufsverkehr zum totalen Verkehrskollaps." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "іменник",
+      concept: "квиток / проїзний документ",
+      words: {
+        A1: { de: "die Karte", meaning: "квиток (просте позначення)", context: "базове", ex: "Ich brauche eine Karte nach Berlin." },
+        A2: { de: "das Ticket", meaning: "квиток на поїзд або літак", context: "повсякденне", ex: "Haben Sie Ihr Ticket schon gekauft?" },
+        B1: { de: "die Fahrkarte", meaning: "офіційний квиток на громадський транспорт", context: "стандартне", ex: "Bitte zeigen Sie Ihre Fahrkarte bei der Kontrolle vor." },
+        B2: { de: "der Fahrausweis", meaning: "затверджений перевізником проїзний документ", context: "офіційне / правила", ex: "Fahrgäste ohne gültigen Fahrausweis müssen ein erhöhtes Beförderungsentgelt zahlen." },
+        C1: { de: "die Beförderungsberechtigung", meaning: "юридично оформлене право пасажира на проїзд", context: "правове / тарифне", ex: "Das digitale Ticket gilt ausschließlich in Verbindung mit einem Identitätsnachweis als Beförderungsberechtigung." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "дієслово",
+      concept: "скасовувати / анулювати рейс",
+      words: {
+        A1: { de: "fährt nicht", meaning: "не їде / не вирушає", context: "базове", ex: "Der Bus fährt heute leider nicht." },
+        A2: { de: "nicht fliegen", meaning: "не летіти за розкладом", context: "розмовне", ex: "Das Flugzeug fliegt wegen Schnee nicht." },
+        B1: { de: "ausfallen", meaning: "бути скасованим (про регулярний рейс)", context: "транспортне", ex: "Der Regionalzug nach Frankfurt fällt heute komplett aus." },
+        B2: { de: "die Fahrt stornieren", meaning: "офіційно анулювати замовлену поїздку чи квиток", context: "сервісне / подорожі", ex: "Der Reisende kann die gebuchte Fahrt bis zu 24 Stunden vorher kostenfrei stornieren." },
+        C1: { de: "den Betrieb vorübergehend einstellen", meaning: "тимчасово припиняти транспортне сполучення лінії", context: "офіційні сповіщення", ex: "Die Bahngesellschaft musste den Fahrbetrieb auf diesem Streckenabschnitt witterungsbedingt einstellen." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "прикметник",
+      concept: "заповнений / переповнений (про вагон чи салон)",
+      words: {
+        A1: { de: "voll", meaning: "повний людьми", context: "базове", ex: "Die U-Bahn war heute sehr voll." },
+        A2: { de: "kein Platz", meaning: "без вільних місць", context: "побутове", ex: "Im Bus gab es leider keinen Platz mehr." },
+        B1: { de: "überfüllt", meaning: "переповнений понад норму", context: "стандартне", ex: "Zur Hauptverkehrszeit sind die Züge regelmäßig überfüllt." },
+        B2: { de: "stark ausgelastet", meaning: "з високим відсотком завантаженості посадкових місць", context: "статистика / транспорт", ex: "Dieser ICE ist auf dieser Verbindung erfahrungsgemäß stark ausgelastet." },
+        C1: { de: "an die Kapazitätsgrenze stoßen", meaning: "досягати гранично допустимої межі пропускної здатності", context: "аналітичне / звіти", ex: "Der Nahverkehr im Ballungsraum stößt zur Rushhour regelmäßig an seine Kapazitätsgrenzen." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "дієслово",
+      concept: "вирушати / відправлятися",
+      words: {
+        A1: { de: "fahren", meaning: "їхати, вирушати", context: "базове", ex: "Wann fährt der Bus?" },
+        A2: { de: "losfahren", meaning: "рушати в дорогу", context: "побутове", ex: "Wir müssen jetzt endlich losfahren." },
+        B1: { de: "abfahren", meaning: "відправлятися за розкладом (поїзд/автобус)", context: "стандартне", ex: "Der Zug fährt pünktlich um 10:15 Uhr ab." },
+        B2: { de: "die Reise antreten", meaning: "офіційно розпочинати заплановану поїздку", context: "подорожі / стиль", ex: "Die Delegation wird ihre Auslandsreise am Montag antreten." },
+        C1: { de: "in See stechen / ablegen", meaning: "відчалювати від порту / виходити в рейс", context: "морське / образне", ex: "Das Kreuzfahrtschiff legte trotz des Sturms planmäßig ab." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "іменник",
+      concept: "розклад руху / графік",
+      words: {
+        A1: { de: "der Plan", meaning: "план, карта", context: "базове", ex: "Wo ist der Plan für die U-Bahn?" },
+        A2: { de: "die Zeit", meaning: "час відправлення", context: "розмовне", ex: "Zu welcher Zeit kommt die Bahn?" },
+        B1: { de: "der Fahrplan", meaning: "офіційний розклад руху транспорту", context: "транспортне", ex: "Laut aktuellem Fahrplan kommt der Bus alle zehn Minuten." },
+        B2: { de: "die Fahrplanänderung", meaning: "офіційне коригування графіка сполучення", context: "сповіщення / сервіс", ex: "Wegen Bauarbeiten kommt es kurzfristig zu Fahrplanänderungen." },
+        C1: { de: "die Taktung", meaning: "інтервал частоти курсування на маршруті", context: "урбаністика / планування", ex: "Zur Hauptverkehrszeit wurde die Taktung der Straßenbahnen verdichtet." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "іменник",
+      concept: "багаж / валіза",
+      words: {
+        A1: { de: "die Tasche", meaning: "сумка", context: "базове", ex: "Meine Tasche ist sehr schwer." },
+        A2: { de: "der Koffer", meaning: "дорожня валіза", context: "побутове", ex: "Hast du den Koffer schon gepackt?" },
+        B1: { de: "das Gepäck", meaning: "багаж мандрівника", context: "стандартне", ex: "Sie dürfen maximal 20 Kilo Gepäck mitnehmen." },
+        B2: { de: "das Freigepäck", meaning: "нормований безкоштовний багаж за квитком", context: "авіа / правила", ex: "Das zulässige Freigepäck richtet sich nach der gebuchten Flugklasse." },
+        C1: { de: "das Übergepäckentgelt", meaning: "встановлений тарифний збір за надмірну вагу багажу", context: "авіатарифне / офіційне", ex: "Für das schwere Musikinstrument musste ein Übergepäckentgelt entrichtet werden." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "дієслово",
+      concept: "бронювати / резервувати місце",
+      words: {
+        A1: { de: "kaufen", meaning: "купувати", context: "базове", ex: "Ich kaufe einen Platz im Zug." },
+        A2: { de: "bestellen", meaning: "замовляти заздалегідь", context: "побутове", ex: "Kann man den Sitzplatz telefonisch bestellen?" },
+        B1: { de: "buchen", meaning: "бронювати номер чи квиток", context: "подорожі", ex: "Wir haben den Flug online gebucht." },
+        B2: { de: "reservieren lassen", meaning: "фіксувати за собою конкретне посадкове місце", context: "сервісне / транспорт", ex: "Für lange Bahnfahrten sollte man immer einen Sitzplatz reservieren lassen." },
+        C1: { de: "eine Kontingentierung vornehmen", meaning: "виділяти та бронювати лімітований пакет місць", context: "туроператори / логістика", ex: "Die Agentur nahm eine frühzeitige Kontingentierung der Hotelplätze vor." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "дієслово",
+      concept: "прибувати / добиратися",
+      words: {
+        A1: { de: "kommen", meaning: "приходити, приїжджати", context: "базове", ex: "Wann kommst du in Berlin an?" },
+        A2: { de: "ankommen", meaning: "прибувати до місця призначення", context: "побутове", ex: "Der Zug ist pünktlich angekommen." },
+        B1: { de: "erreichen", meaning: "досягати пункту / добиратися", context: "стандартне", ex: "Wir haben das Hotel erst spät in der Nacht erreicht." },
+        B2: { de: "eintreffen", meaning: "офіційно прибувати (рейс, потяг, делегація)", context: "офіційне / розклад", ex: "Der Sonderzug wird voraussichtlich um 14:30 Uhr eintreffen." },
+        C1: { de: "anlanden", meaning: "причалювати до берега / здійснювати посадку", context: "морське / авіа", ex: "Das Rettungsboot landete sicher am Hafen an." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "іменник",
+      concept: "маршрут / напрямок руху",
+      words: {
+        A1: { de: "der Weg", meaning: "дорога, шлях", context: "базове", ex: "Ist das der richtige Weg zum Bahnhof?" },
+        A2: { de: "die Richtung", meaning: "напрямок", context: "повсякденне", ex: "Der Zug fährt in Richtung Hamburg." },
+        B1: { de: "die Strecke", meaning: "дистанція / відрізок шляху", context: "транспортне", ex: "Auf dieser Strecke fahren zurzeit keine Busse." },
+        B2: { de: "die Fahrtroute", meaning: "детально спланований маршрут слідування", context: "навігація / подорожі", ex: "Aufgrund der Baustelle mussten wir die Fahrtroute ändern." },
+        C1: { de: "der Streckenverlauf", meaning: "офіційна траєкторія або топографія шляху", context: "технічне / планування", ex: "Der genaue Streckenverlauf der neuen Trasse wurde behördlich genehmigt." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "дієслово",
+      concept: "проїхати повз / пропустити зупинку",
+      words: {
+        A1: { de: "nicht sehen", meaning: "не побачити (станцію)", context: "базове", ex: "Ich habe das Schild nicht gesehen." },
+        A2: { de: "verpassen", meaning: "пропустити рейс або момент виходу", context: "розмовне", ex: "Ich habe meine Haltestelle verpasst." },
+        B1: { de: "vorbeifahren an", meaning: "проїхати повз потрібне місце", context: "побутове", ex: "Wir sind versehentlich an der Ausfahrt vorbeigefahren." },
+        B2: { de: "übersehen", meaning: "не помітити важливий дорожній знак чи сигнал", context: "ПДР / протокол", ex: "Der Fahrer übersah im dichten Nebel das Haltesignal." },
+        C1: { de: "versäumen", meaning: "офіційно втратити можливість через недбалість/затримку", context: "формальне", ex: "Infolge des Ausfalls versäumte der Passagier seinen Anschlussflug." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "іменник",
+      concept: "зупинка / перон / платформа",
+      words: {
+        A1: { de: "der Platz", meaning: "місце", context: "базове", ex: "Wo ist der Platz für den Bus?" },
+        A2: { de: "die Haltestelle", meaning: "зупинка міського транспорту", context: "повсякденне", ex: "Ich warte an der Haltestelle auf dich." },
+        B1: { de: "der Bahnsteig", meaning: "перон залізничного вокзалу", context: "вокзал", ex: "Der Zug fährt von Bahnsteig 3 ab." },
+        B2: { de: "der Zustiegsbereich", meaning: "зона посадки пасажирів на рейс/потяг", context: "інфраструктурне", ex: "Bitte halten Sie sich ausschließlich im markierten Zustiegsbereich auf." },
+        C1: { de: "der Haltepunkt", meaning: "офіційний технічний або регламентний пункт зупинки", context: "залізничне / норми", ex: "Der Zug bedient diesen Haltepunkt nur bei vorangemeldetem Bedarf." }
+      }
+    },
+    {
+      category: "Транспорт і подорожі",
+      pos: "прикметник",
+      concept: "прямий / безпересадковий",
+      words: {
+        A1: { de: "einfach", meaning: "простий", context: "базове", ex: "Der Weg ist ganz einfach." },
+        A2: { de: "ohne Wechsel", meaning: "без заміни транспорту", context: "розмовне", ex: "Gibt es einen Bus ohne Wechsel?" },
+        B1: { de: "direkt", meaning: "прямий (без зупинок чи пересадок)", context: "транспортне", ex: "Wir haben einen direkten Zug nach Frankfurt gebucht." },
+        B2: { de: "umsteigefrei", meaning: "такий, що не вимагає пересадок на маршруті", context: "сервісне / розклад", ex: "Die Bahngesellschaft bietet nun eine umsteigefreie Verbindung an." },
+        C1: { de: "durchgängig", meaning: "безперервний на всьому протязі руху/шляху", context: "офіційне / логістика", ex: "Die durchgängige Beförderung von Gütern wurde vertraglich zugesichert." }
+      }
+    },
+    {
+      category: "Мислення",
+      pos: "іменник",
+      concept: "думка / точка зору",
+      words: {
+        A1: { de: "die Idee", meaning: "ідея, думка", context: "базове", ex: "Das ist eine interessante Idee." },
+        A2: { de: "die Meinung", meaning: "особиста думка", context: "побутове", ex: "Meiner Meinung nach ist das zu teuer." },
+        B1: { de: "die Ansicht", meaning: "погляд на певне питання", context: "ділове", ex: "Ich bin der Ansicht, dass wir den Plan ändern müssen." },
+        B2: { de: "der Standpunkt", meaning: "обґрунтована позиція у суперечці", context: "дискусія", ex: "Er vertrat seinen Standpunkt mit klaren Argumenten." },
+        C1: { de: "die Auffassung", meaning: "комплексний світоглядний або правовий погляд", context: "формальне / юридичне", ex: "Die juristische Auffassung der Kammer weicht von dem Urteil ab." }
+      }
+    },
+    {
+      category: "Мислення",
+      pos: "дієслово",
+      concept: "зосереджуватися / фокусуватися",
+      words: {
+        A1: { de: "gut zuhören", meaning: "уважно слухати", context: "базове", ex: "Hör mir bitte gut zu!" },
+        A2: { de: "aufpassen", meaning: "бути уважним", context: "побутове", ex: "Du musst bei der Aufgabe besser aufpassen." },
+        B1: { de: "sich konzentrieren auf", meaning: "зосереджувати увагу на чомусь", context: "стандартне", ex: "Ich kann mich bei dem Lärm nicht konzentrieren." },
+        B2: { de: "den Fokus legen auf", meaning: "свідомо ставити акцент на певному завданні", context: "ділове / аналітичне", ex: "Wir sollten den Fokus auf die Lösung des Hauptproblems legen." },
+        C1: { de: "seine Aufmerksamkeit widmen (+ Dat.)", meaning: "цілковито присвячувати свою увагу аспекту", context: "формальне / академічне", ex: "Die Forscherin widmete ihre ganze Aufmerksamkeit den Randnotizen." }
+      }
+    },
+    {
+      category: "Мислення",
+      pos: "дієслово",
+      concept: "помилятися / оманитися",
+      words: {
+        A1: { de: "falsch machen", meaning: "робити неправильно", context: "базове", ex: "Ich habe die Übung falsch gemacht." },
+        A2: { de: "einen Fehler machen", meaning: "припускатися помилки", context: "побутове", ex: "Jeder macht mal einen Fehler." },
+        B1: { de: "sich irren", meaning: "помилятися у судженні", context: "стандартне", ex: "Entschuldigung, da habe ich mich wohl geirrt." },
+        B2: { de: "einem Irrtum unterliegen", meaning: "перебувати в полоні хибної думки", context: "офіційне / юридичне", ex: "Bezüglich der Lieferzeiten unterlagen wir einem Irrtum." },
+        C1: { de: "sich verleiten lassen zu", meaning: "дати ввести себе в оману хибним припущенням", context: "аналітичне / аргументація", ex: "Man darf sich nicht zu voreiligen Schlüssen verleiten lassen." }
+      }
+    },
+    {
+      category: "Мислення",
+      pos: "дієслово",
+      concept: "винаходити / придумувати рішення",
+      words: {
+        A1: { de: "finden", meaning: "знаходити (ідею)", context: "базове", ex: "Ich finde keine gute Idee." },
+        A2: { de: "ausdenken", meaning: "придумувати план", context: "розмовне", ex: "Er hat sich einen neuen Plan ausgedacht." },
+        B1: { de: "erfinden", meaning: "створювати щось принципово нове", context: "стандартне", ex: "Sie haben eine neue Maschine erfunden." },
+        B2: { de: "konzipieren", meaning: "розробляти цілісну концепцію чи підхід", context: "професійне", ex: "Das Marketingteam konzipiert eine neuartige Strategie." },
+        C1: { de: "ersinnen", meaning: "глибокодумно винаходити витончений задум чи план", context: "літературне / вишукане", ex: "Er ersann einen geistreichen Ausweg aus der verfahrenen Situation." }
+      }
+    },
+    {
+      category: "Мислення",
+      pos: "іменник",
+      concept: "сумнів / непевність",
+      words: {
+        A1: { de: "die Frage", meaning: "питання, сумнів", context: "базове", ex: "Ich habe dazu noch eine Frage." },
+        A2: { de: "nicht sicher", meaning: "невпевненість (розмовне поняття)", context: "побутове", ex: "Das Nicht-Sicher-Sein macht mich nervös." },
+        B1: { de: "der Zweifel", meaning: "сумнів щодо правильності", context: "стандартне", ex: "Ich habe große Zweifel an seiner Ehrlichkeit." },
+        B2: { de: "das Bedenken", meaning: "обґрунтована пересторога перед дією", context: "ділове / аналітичне", ex: "Der Abteilungsleiter äußerte gravierende Bedenken gegen das Vorhaben." },
+        C1: { de: "die Skepsis", meaning: "критична недовіра до фактів чи прогнозів", context: "експертне", ex: "Die präsentierten Prognosen stießen bei Experten auf offene Skepsis." }
+      }
+    },
+    {
+      category: "Мислення",
+      pos: "прикметник",
+      concept: "переконливий / доведений",
+      words: {
+        A1: { de: "gut", meaning: "хороший (аргумент)", context: "базове", ex: "Das ist ein gutes Argument." },
+        A2: { de: "klar", meaning: "зрозумілий", context: "побутове", ex: "Das Beispiel ist sehr klar." },
+        B1: { de: "überzeugend", meaning: "той, що викликає довіру", context: "стандартне", ex: "Ihre Erklärung klang absolut überzeugend." },
+        B2: { de: "stichhaltig", meaning: "вагомий, такий, що базується на неспростовних фактах", context: "дискусія / правове", ex: "Er konnte keine stichhaltigen Beweise für seine Behauptung vorlegen." },
+        C1: { de: "plausibel", meaning: "внутрішньо логічний, очевидно ймовірний за змістом", context: "наукове / аналіз", ex: "Die Theorie bietet eine überaus plausible Erklärung für das Phänomen." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "переконувати / схиляти до думки",
+      words: {
+        A1: { de: "sagen", meaning: "наполягати на своєму", context: "базове", ex: "Ich sage dir: Das ist gut!" },
+        A2: { de: "mitmachen wollen", meaning: "пропонувати приєднатися", context: "побутове", ex: "Komm schon, mach einfach mit!" },
+        B1: { de: "überzeugen von", meaning: "переконувати фактами чи аргументами", context: "ділове", ex: "Er hat mich von seinen Plänen überzeugt." },
+        B2: { de: "umstimmen", meaning: "схилити на свій бік співрозмовника, який сумнівався", context: "переговори / DTB", ex: "Es gelang ihr, den skeptischen Kunden doch noch umzustimmen." },
+        C1: { de: "für sich gewinnen", meaning: "дипломатично завоювати повну прихильність сторони", context: "стратегічне спілкування", ex: "Durch geschickte Verhandlungsführung gewann er die Partner für sich." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "переривати розмову / втручатися",
+      words: {
+        A1: { de: "stoppen", meaning: "зупиняти розмову", context: "базове", ex: "Stopp bitte kurz, ich muss fragen." },
+        A2: { de: "dazwischenreden", meaning: "вставляти репліки без черги", context: "розмовне", ex: "Rede mir bitte nicht ständig dazwischen!" },
+        B1: { de: "unterbrechen", meaning: "ввічливо перебивати мовця", context: "стандартне ділове", ex: "Entschuldigen Sie, darf ich Sie kurz unterbrechen?" },
+        B2: { de: "ins Wort fallen", meaning: "раптово переривати співрозмовника на півслові", context: "дискусія / стиль", ex: "Lassen Sie mich bitte ausreden, ohne mir ständig ins Wort zu fallen." },
+        C1: { de: "einwerfen", meaning: "дипломатично або доречно вставляти коротке зауваження", context: "дебати / конференції", ex: "Er warf an dieser Stelle einen treffenden Einwand ein." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "іменник",
+      concept: "розмова / діалог",
+      words: {
+        A1: { de: "das Gespräch", meaning: "розмова", context: "базове", ex: "Danke für das nette Gespräch." },
+        A2: { de: "der Dialog", meaning: "діалог двох людей", context: "навчальне", ex: "Lest bitte den Dialog zu zweit." },
+        B1: { de: "die Unterhaltung", meaning: "невимушена бесіда на тему", context: "повсякденне", ex: "Wir hatten eine sehr interessante Unterhaltung." },
+        B2: { de: "der Gedankenaustausch", meaning: "змістовний обмін думками чи ідеями", context: "ділове / DTB", ex: "Vielen Dank für den offenen und konstruktiven Gedankenaustausch." },
+        C1: { de: "die Konsultation", meaning: "офіційна експертна або дорадча зустріч", context: "дипломатичне / консалтинг", ex: "Nach mehrtägigen Konsultationen wurde ein Kompromiss erzielt." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "іменник",
+      concept: "порада / рекомендація",
+      words: {
+        A1: { de: "der Tipp", meaning: "корисна підказка", context: "базове", ex: "Hast du einen Tipp für mich?" },
+        A2: { de: "die Hilfe", meaning: "порада як допомога", context: "побутове", ex: "Deine Hilfe war wirklich super." },
+        B1: { de: "der Rat", meaning: "зважена порада в життєвій ситуації", context: "стандартне", ex: "Ich brauche deinen Rat in dieser Sache." },
+        B2: { de: "die Empfehlung", meaning: "професійна або ділова рекомендація", context: "ділове / DTB", ex: "Auf Empfehlung unseres Partners wenden wir uns an Sie." },
+        C1: { de: "der Fingerzeig", meaning: "тонкий орієнтир, натяк або вказівка на вірний напрям", context: "аналітичне / публіцистика", ex: "Die Bemerkung des Prüfers war ein wertvoller Fingerzeig für die Lösung." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "натякати / давати зрозуміти",
+      words: {
+        A1: { de: "zeigen", meaning: "показувати на щось", context: "базове", ex: "Er zeigt mit der Hand darauf." },
+        A2: { de: "sagen wollen", meaning: "хотіти щось сказати між слів", context: "розмовне", ex: "Was willst du mir damit sagen?" },
+        B1: { de: "andeuten", meaning: "робити натяк на ситуацію", context: "стандартне", ex: "Er hat angedeutet, dass er die Firma verlassen möchte." },
+        B2: { de: "zu verstehen geben", meaning: "непрямо, але зрозуміло дати зрозуміти позицію", context: "ділове / DTB", ex: "Die Geschäftsleitung gab deutlich zu verstehen, dass Einsparungen nötig sind." },
+        C1: { de: "durchklingen lassen", meaning: "ненав'язливо проявити намір у підтексті слів", context: "дипломатичне", ex: "In seiner Rede ließ der Minister Bereitschaft zu Verhandlungen durchklingen." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "прикметник",
+      concept: "відвертий / прямолінійний",
+      words: {
+        A1: { de: "ehrlich", meaning: "чесний", context: "базове", ex: "Sei bitte ehrlich zu mir." },
+        A2: { de: "klar", meaning: "прямий і зрозумілий у словах", context: "побутове", ex: "Sie hat eine sehr klare Sprache." },
+        B1: { de: "direkt", meaning: "прямолінійний, без зайвих слів", context: "стандартне", ex: "Er hat eine sehr direkte Art zu kommunizieren." },
+        B2: { de: "aufrichtig", meaning: "щирий, відкритий у намірах і висловлюваннях", context: "ділове / особисте", ex: "Ich danke Ihnen für Ihre aufrichtige Rückmeldung." },
+        C1: { de: "unverblümt", meaning: "гранично прямий, без жодних прикрас чи евфемізмів", context: "критика / публіцистика", ex: "Sie sprach die Mängel im Projekt vollkommen unverblümt an." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "погоджуватися / схвалювати",
+      words: {
+        A1: { de: "ja sagen", meaning: "погоджуватися", context: "базове", ex: "Er sagt zu allem einfach ja." },
+        A2: { de: "gut finden", meaning: "вважати гарною ідеєю", context: "розмовне", ex: "Ich finde deinen Vorschlag wirklich gut." },
+        B1: { de: "zustimmen (+ Dat.)", meaning: "давати згоду на пропозицію", context: "стандартне", ex: "Ich stimme deinen Ausführungen vollkommen zu." },
+        B2: { de: "die Zustimmung erteilen", meaning: "офіційно давати письмову чи усну згоду", context: "ділове / DTB", ex: "Die Leitung hat dem Antrag die formelle Zustimmung erteilt." },
+        C1: { de: "einwilligen in (+ Akk.)", meaning: "юридично або остаточно погоджуватися на умови", context: "правове / договірне", ex: "Beide Parteien willigten schließlich in den Vergleich ein." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "вибачатися / просити вибачення",
+      words: {
+        A1: { de: "Entschuldigung", meaning: "вибачте", context: "базове", ex: "Entschuldigung, ich habe das vergessen." },
+        A2: { de: "leid tun", meaning: "жалкувати про щось", context: "повсякденне", ex: "Es tut mir wirklich leid." },
+        B1: { de: "sich entschuldigen bei", meaning: "особисто просити вибачення", context: "стандартне", ex: "Er hat sich bei den Kollegen für den Fehler entschuldigt." },
+        B2: { de: "um Entschuldigung bitten", meaning: "офіційно звертатися з проханням про вибачення", context: "ділове / DTB", ex: "Wir bitten für die entstandenen Unannehmlichkeiten vielmals um Entschuldigung." },
+        C1: { de: "sein Bedauern ausdrücken", meaning: "дипломатично висловлювати глибокий жаль", context: "протокольне / преса", ex: "Das Unternehmen drückte sein tiefes Bedauern über den Vorfall aus." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "переконувати / відмовляти від чогось",
+      words: {
+        A1: { de: "nein meinen", meaning: "радити не робити", context: "базове", ex: "Ich meine: Mach das lieber nicht!" },
+        A2: { de: "abraten", meaning: "не радити діяти певним чином", context: "побутове", ex: "Ich rate dir von diesem Schritt ab." },
+        B1: { de: "abbringen von", meaning: "відмовляти людину від наміру", context: "міжособистісне", ex: "Niemand konnte ihn von seiner Entscheidung abbringen." },
+        B2: { de: "ausreden (+ Dat.)", meaning: "аргументовано переконати не робити дурниць", context: "розмовне / переговори", ex: "Wir konnten dem Kunden diesen riskanten Plan rechtzeitig ausreden." },
+        C1: { de: "abspenstig machen", meaning: "дипломатично віднаджувати або схиляти від колишніх намірів/партнерів", context: "публіцистичне / бізнес", ex: "Der Mitbewerber versuchte, uns wichtige Auftraggeber abspenstig zu machen." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "іменник",
+      concept: "скарга / докір",
+      words: {
+        A1: { de: "das Problem", meaning: "проблема зі словом/товаром", context: "базове", ex: "Ich habe ein Problem mit dem Service." },
+        A2: { de: "der Streit", meaning: "суперечка з продавцем/колегою", context: "побутове", ex: "Es gab einen kurzen Streit an der Kasse." },
+        B1: { de: "die Beschwerde", meaning: "офіційна скарга споживача чи співробітника", context: "ділове", ex: "Der Kunde reichte eine schriftliche Beschwerde ein." },
+        B2: { de: "die Reklamation", meaning: "претензія щодо дефектів або якості послуги", context: "комерційне / DTB", ex: "Die Reklamation wird innerhalb von zwei Werktagen bearbeitet." },
+        C1: { de: "die Beanstandung", meaning: "формальний юридичний або регуляторний акт зауважень", context: "аудит / право", ex: "Die Mängelrüge führte zur Beanstandung der gesamten Charge." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "іменник",
+      concept: "обіцянка / гарантія",
+      words: {
+        A1: { de: "das Ja", meaning: "згода на дію", context: "базове", ex: "Er hat mir ein klares Ja gegeben." },
+        A2: { de: "das Wort", meaning: "слово честі", context: "розмовне", ex: "Ich gebe dir mein Wort." },
+        B1: { de: "das Versprechen", meaning: "щира обіцянка", context: "стандартне", ex: "Er hat sein Versprechen gehalten." },
+        B2: { de: "die Zusicherung", meaning: "ділове або офіційне зобов'язання виконати умови", context: "ділове / DTB", ex: "Wir erhielten die verbindliche Zusicherung, dass der Liefertermin steht." },
+        C1: { de: "die Gewährleistung", meaning: "законодавчо закріплена юридична гарантія", context: "договірне / цивільне право", ex: "Die Gewährleistung für versteckte Sachmängel erlischt nach zwei Jahren." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "відмовляти / відхиляти запит",
+      words: {
+        A1: { de: "nicht wollen", meaning: "не хотіти приймати", context: "базове", ex: "Er will das Angebot nicht." },
+        A2: { de: "nein sagen", meaning: "відповідати відмовою", context: "розмовне", ex: "Die Chefin hat leider nein gesagt." },
+        B1: { de: "absagen", meaning: "скасовувати зустріч або відхиляти запрошення", context: "стандартне", ex: "Ich muss den Termin kurzfristig absagen." },
+        B2: { de: "eine Absage erteilen", meaning: "офіційно направляти негативну відповідь", context: "кадри / DTB", ex: "Das Unternehmen musste mehreren Bewerbern eine Absage erteilen." },
+        C1: { de: "abweisen", meaning: "категорично відкидати позов, скаргу чи претензію", context: "юридичне / інстанції", ex: "Das Gericht wies die unbegründete Klage vollumfänglich ab." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "попереджати / застерігати",
+      words: {
+        A1: { de: "Achtung sagen", meaning: "казати про небезпеку", context: "базове", ex: "Er sagt laut: Achtung!" },
+        A2: { de: "aufpassen lassen", meaning: "просити бути пильним", context: "побутове", ex: "Pass gut auf deine Sachen auf!" },
+        B1: { de: "warnen vor (+ Dat.)", meaning: "застерігати від помилки чи загрози", context: "стандартне", ex: "Die Kollegen haben mich vor den Risiken gewarnt." },
+        B2: { de: "zur Vorsicht mahnen", meaning: "дипломатично закликати до обережності", context: "публічне / DTB", ex: "Wirtschaftsexperten mahnen angesichts der Marktlage zur Vorsicht." },
+        C1: { de: "eine Abmahnung aussprechen", meaning: "виносити офіційне правове попередження за порушення", context: "трудове право", ex: "Der Vorgesetzte sprach dem Mitarbeiter wegen Verspätung eine Abmahnung aus." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "прикметник",
+      concept: "переконливий / красномовний",
+      words: {
+        A1: { de: "gut", meaning: "гарний у мовленні", context: "базове", ex: "Er spricht sehr gut Deutsch." },
+        A2: { de: "interessant", meaning: "цікавий оповідач", context: "побутове", ex: "Ihr Vortrag war wirklich interessant." },
+        B1: { de: "verständlich", meaning: "доступний для сприйняття", context: "стандартне", ex: "Seine Argumente waren für alle verständlich." },
+        B2: { de: "ausdrucksstark", meaning: "виразний, змістовний у формулюваннях", context: "стиль / презентації", ex: "Die Präsentation war sachlich und ausdrucksstark gestaltet." },
+        C1: { de: "eloquent", meaning: "винятково красномовний і переконливий у дискусії", context: "риторика / дипломатія", ex: "Mit eloquenter Wortwahl führte die Sprecherin durch das Streitgespräch." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "повідомляти / інформувати",
+      words: {
+        A1: { de: "sagen", meaning: "казати новину", context: "базове", ex: "Er sagt mir morgen Bescheid." },
+        A2: { de: "informieren über", meaning: "інформувати про подію", context: "повсякденне", ex: "Wir informieren Sie über die Termine." },
+        B1: { de: "benachrichtigen", meaning: "сповіщати письмово або телефоном", context: "стандартне", ex: "Bitte benachrichtigen Sie mich bei Änderungen." },
+        B2: { de: "in Kenntnis setzen über", meaning: "офіційно доводити інформацію до відома", context: "ділове / DTB", ex: "Wir setzen Sie über die neuen Richtlinien in Kenntnis." },
+        C1: { de: "in Verzug setzen", meaning: "офіційно повідомляти про прострочення зобов'язань", context: "юридичне / претензії", ex: "Der Gläubiger setzte den Schuldner schriftlich in Verzug." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "звертатися до когось / вітати",
+      words: {
+        A1: { de: "Hallo sagen", meaning: "вітатися", context: "базове", ex: "Ich will ihm nur kurz Hallo sagen." },
+        A2: { de: "sprechen mit", meaning: "починати говорити з кимось", context: "розмовне", ex: "Er spricht mit den neuen Nachbarn." },
+        B1: { de: "ansprechen", meaning: "заговорити до людини / підняти тему", context: "стандартне", ex: "Darf ich Sie kurz auf das Thema ansprechen?" },
+        B2: { de: "sich wenden an (+ Akk.)", meaning: "офіційно адресувати запит або питання", context: "ділове / DTB", ex: "Bei technischen Problemen wenden Sie sich bitte an den Support." },
+        C1: { de: "ein Anliegen herantragen an", meaning: "шанобливо виносити ділову справу чи прохання на розгляд", context: "керівне / офіційне", ex: "Die Delegation trug ihr dringendes Anliegen an den Bürgermeister heran." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "пропонувати / вносити ідею",
+      words: {
+        A1: { de: "fragen", meaning: "запитувати, чи підійде", context: "базове", ex: "Ich frage: Wollen wir gehen?" },
+        A2: { de: "die Idee haben", meaning: "поділитися задумом", context: "побутове", ex: "Ich habe eine Idee für das Wochenende." },
+        B1: { de: "vorschlagen", meaning: "пропонувати конкретний варіант", context: "стандартне", ex: "Er schlug vor, die Besprechung zu verschieben." },
+        B2: { de: "einen Vorschlag unterbreiten", meaning: "офіційно подавати ділову чи комерційну пропозицію", context: "переговори / DTB", ex: "Wir möchten Ihnen ein maßgeschneidertes Angebot unterbreiten." },
+        C1: { de: "anregen", meaning: "дипломатично ініціювати обговорення чи новий напрям", context: "стратегічне / аналітика", ex: "Die Referentin regte eine umfassende Überarbeitung des Leitbilds an." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "дієслово",
+      concept: "хвалити / висловлювати визнання",
+      words: {
+        A1: { de: "gut finden", meaning: "схвалювати вчинок", context: "базове", ex: "Ich finde deine Arbeit sehr gut." },
+        A2: { de: "Danke sagen", meaning: "дякувати за результат", context: "розмовне", ex: "Der Chef sagte Danke für die Hilfe." },
+        B1: { de: "loben", meaning: "хвалити за якісну роботу", context: "стандартне", ex: "Die Abteilungsleiterin lobte das Engagement des Teams." },
+        B2: { de: "Anerkennung zollen (+ Dat.)", meaning: "віддавати належне та висловлювати офіційне визнання", context: "ділове / DTB", ex: "Die Geschäftsführung zollte den Mitarbeitern große Anerkennung für ihren Einsatz." },
+        C1: { de: "würdigen", meaning: "високо оцінювати внесок або заслуги на публічному рівні", context: "урочисте / преса", ex: "In der Festrede wurden die Verdienste des scheidenden Vorstands gewürdigt." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "іменник",
+      concept: "відповідь / зворотний зв'язок",
+      words: {
+        A1: { de: "die Antwort", meaning: "проста відповідь на питання", context: "базове", ex: "Ich warte auf deine Antwort." },
+        A2: { de: "die Mail", meaning: "відповідь електронним листом", context: "побутове", ex: "Danke für deine schnelle Mail." },
+        B1: { de: "die Rückmeldung", meaning: "зворотний зв'язок або коментар", context: "ділове", ex: "Wir freuen uns über Ihre zeitnahe Rückmeldung." },
+        B2: { de: "das Feedback", meaning: "структурований аналітичний відгук про роботу", context: "корпоративне / DTB", ex: "Konstruktives Feedback fördert die berufliche Entwicklung." },
+        C1: { de: "die Stellungnahme", meaning: "офіційний правовий або експертний коментар-позиція", context: "юридичне / медіа", ex: "Die Behörde forderte vom Konzern eine schriftliche Stellungnahme ein." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "іменник",
+      concept: "помилка в комунікації / непорозуміння",
+      words: {
+        A1: { de: "der Fehler", meaning: "помилка", context: "базове", ex: "Das war leider mein Fehler." },
+        A2: { de: "falsch verstehen", meaning: "невірне сприйняття слів", context: "розмовне", ex: "Wir haben das völlig falsch verstanden." },
+        B1: { de: "das Missverständnis", meaning: "побутове або робоче непорозуміння", context: "стандартне", ex: "Hier liegt offenbar ein bedauerliches Missverständnis vor." },
+        B2: { de: "die Fehlkommunikation", meaning: "збій у робочому ланцюжку передачі інформації", context: "корпоративне / DTB", ex: "Die Verzögerung entstand durch interne Fehlkommunikation im Projekt." },
+        C1: { de: "die Fehlinformation", meaning: "введення в оману через викривлені або неточні дані", context: "аналітичне / право", ex: "Die Entscheidung basierte auf einer folgenschweren Fehlinformation." }
+      }
+    },
+    {
+      category: "Спілкування",
+      pos: "прикметник",
+      concept: "короткий / лаконічний",
+      words: {
+        A1: { de: "kurz", meaning: "короткий за часом", context: "базове", ex: "Ich habe nur eine kurze Frage." },
+        A2: { de: "schnell", meaning: "швидкий у викладі", context: "побутове", ex: "Können wir das ganz schnell besprechen?" },
+        B1: { de: "knapp", meaning: "стислий, без зайвих подробиць", context: "стандартне ділове", ex: "Er fasste die wichtigsten Fakten knapp zusammen." },
+        B2: { de: "prägnant", meaning: "влучний, змістовний і компактний", context: "ділове / DTB", ex: "Formulieren Sie die Betreffzeile der E-Mail stets prägnant." },
+        C1: { de: "lakonisch", meaning: "вкрай стислий, сухий та безпристрасний у відповідях", context: "літературне / характеристика", ex: "Auf die ausführliche Kritik reagierte er mit einer lakonischen Bestätigung." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "дієслово",
+      concept: "брати участь / долучатися",
+      words: {
+        A1: { de: "mitmachen", meaning: "брати участь у спільній дії", context: "базове", ex: "Möchtest du beim Spiel mitmachen?" },
+        A2: { de: "dabei sein", meaning: "бути присутнім, долучитися", context: "побутове", ex: "Morgen bin ich gerne dabei." },
+        B1: { de: "teilnehmen an (+ Dat.)", meaning: "брати участь у заході чи курсі", context: "стандартне ділове", ex: "Sie nimmt an einer Weiterbildung teil." },
+        B2: { de: "sich beteiligen an (+ Dat.)", meaning: "робити активний внесок у проєкт чи обговорення", context: "професійне", ex: "Das Team hat sich engagiert an der Planung beteiligt." },
+        C1: { de: "mitwirken an (+ Dat.)", meaning: "брати фахову співучасть у реалізації складної ініціативи", context: "експертне / формальне", ex: "Experten aus mehreren Ländern wirkten an der Ausarbeitung der Richtlinie mit." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "дієслово",
+      concept: "встигати / справлятися",
+      words: {
+        A1: { de: "fertig werden", meaning: "закінчувати роботу", context: "базове", ex: "Ich werde gleich fertig." },
+        A2: { de: "schaffen", meaning: "впоратися із завданням", context: "побутове", ex: "Ich habe den Bericht heute noch geschafft." },
+        B1: { de: "bewältigen", meaning: "долати робоче навантаження чи труднощі", context: "ділове", ex: "Wir konnten das hohe Arbeitsaufkommen gut bewältigen." },
+        B2: { de: "einer Sache gewachsen sein", meaning: "бути достатньо компетентним для складного виклику", context: "оцінка навичок", ex: "Sie war den hohen Anforderungen der neuen Position vollauf gewachsen." },
+        C1: { de: "meistern", meaning: "віртуозно та впевнено впоратися з критичним викликом", context: "лідерське", ex: "Die Projektleitung meisterte die unerwartete Krise mit Bravour." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "іменник",
+      concept: "завдання / доручення",
+      words: {
+        A1: { de: "die Arbeit", meaning: "робота, заняття", context: "базове", ex: "Ich habe heute viel Arbeit." },
+        A2: { de: "die Aufgabe", meaning: "конкретна вправа чи обов'язок", context: "побутове", ex: "Kannst du diese Aufgabe übernehmen?" },
+        B1: { de: "der Auftrag", meaning: "офіційне робоче замовлення чи доручення", context: "ділове", ex: "Wir haben einen wichtigen Auftrag von einem Neukunden erhalten." },
+        B2: { de: "das Aufgabengebiet", meaning: "окреслена сфера службових обов'язків", context: "кадри / профіль", ex: "Zu ihrem Aufgabengebiet gehört die Koordination der Termine." },
+        C1: { de: "das Mandat", meaning: "офіційне юридичне або представницьке доручення/повноваження", context: "правове / корпоративне", ex: "Die Kanzlei übernahm das Mandat zur Vertretung der Gläubiger." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "дієслово",
+      concept: "відкладати / переносити на потім",
+      words: {
+        A1: { de: "später machen", meaning: "робити пізніше", context: "базове", ex: "Ich mache das lieber später." },
+        A2: { de: "warten", meaning: "чекати зі справою", context: "побутове", ex: "Die Aufgabe kann noch bis morgen warten." },
+        B1: { de: "verschieben", meaning: "переносити дату зустрічі чи дедлайн", context: "стандартне ділове", ex: "Wir müssen das Meeting auf nächste Woche verschieben." },
+        B2: { de: "vertagen", meaning: "офіційно переносити засідання або ухвалення рішення", context: "організаційне / DTB", ex: "Wegen fehlender Unterlagen wurde die Beschlussfassung vertagt." },
+        C1: { de: "aufschieben", meaning: "систематично або вимушено відтерміновувати важливу дію", context: "аналітичне / психологічне", ex: "Dringende Strukturreformen dürfen nicht länger aufgeschoben werden." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "прикметник",
+      concept: "активний / продуктивний",
+      words: {
+        A1: { de: "fleißig", meaning: "працьовитий, старанний", context: "базове", ex: "Sie ist eine sehr fleißige Mitarbeiterin." },
+        A2: { de: "schnell", meaning: "той, що робить усе жваво", context: "побутове", ex: "Er arbeitet heute besonders schnell." },
+        B1: { de: "aktiv", meaning: "ініціативний, діяльний", context: "стандартне", ex: "Er beteiligt sich immer aktiv an den Besprechungen." },
+        B2: { de: "leistungsstark", meaning: "високопродуктивний, з високим ККД", context: "оцінка персоналу", ex: "Das Team hat sich als äußerst leistungsstark und zuverlässig erwiesen." },
+        C1: { de: "hocheffizient", meaning: "максимально раціональний за витратою ресурсів і часу", context: "управлінське / аналіз", ex: "Durch optimierte Prozesse arbeitet die Abteilung nun hocheffizient." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "дієслово",
+      concept: "контролювати / перевіряти",
+      words: {
+        A1: { de: "sehen", meaning: "дивитися, чи все гаразд", context: "базове", ex: "Schau mal, ob das stimmt." },
+        A2: { de: "kontrollieren", meaning: "звіряти дані чи результат", context: "побутове", ex: "Bitte kontrollieren Sie den Beleg noch einmal." },
+        B1: { de: "prüfen", meaning: "детально перевіряти якість або документ", context: "ділове", ex: "Der Sachbearbeiter prüft derzeit die Antragsunterlagen." },
+        B2: { de: "überwachen", meaning: "вести безперервний моніторинг процесу чи графіка", context: "виробниче / DTB", ex: "Die Einhaltung des Zeitplans wird lückenlos überwacht." },
+        C1: { de: "einer Revision unterziehen", meaning: "піддавати комплексній офіційній перевірці чи аудиту", context: "аудит / правове", ex: "Die Geschäftsbücher wurden einer unabhängigen Revision unterzogen." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "іменник",
+      concept: "досвід / практика",
+      words: {
+        A1: { de: "die Zeit", meaning: "час, проведений за роботою", context: "базове", ex: "Ich habe schon lange Zeit in der Küche gearbeitet." },
+        A2: { de: "das Können", meaning: "уміння робити роботу", context: "побутове", ex: "Sein Können hilft dem ganzen Team." },
+        B1: { de: "die Erfahrung", meaning: "набутий практичний досвід", context: "стандартне ділове", ex: "Sie bringt viel Erfahrung im Kundenservice mit." },
+        B2: { de: "die Fachkompetenz", meaning: "професійна теоретична та практична кваліфікація", context: "кадри / DTB", ex: "Seine hohe Fachkompetenz trug maßgeblich zum Erfolg des Projekts bei." },
+        C1: { de: "die Expertise", meaning: "глибокі експертні знання у вузькій галузі", context: "експертне / консалтинг", ex: "Wir greifen dabei auf die anerkannte Expertise externer Prüfer zurück." }
+      }
+    },
+    {
+      category: "Діяльність",
+      pos: "дієслово",
+      concept: "планувати / складати графік",
+      words: {
+        A1: { de: "denken an", meaning: "думати наперед про плани", context: "базове", ex: "Ich denke an das nächste Wochenende." },
+        A2: { de: "aufschreiben", meaning: "занотовувати список дій", context: "побутове", ex: "Schreib bitte auf, was wir machen müssen." },
+        B1: { de: "planen", meaning: "складати робочий план", context: "стандартне ділове", ex: "Wir planen das nächste Seminar für November." },
+        B2: { de: "terminieren", meaning: "фіксувати точний часовий дедлайн або дату етапу", context: "проєктне / DTB", ex: "Die Fertigstellung der Anlage wurde für das dritte Quartal terminiert." },
+        C1: { de: "anberaumen", meaning: "офіційно призначати дату зборів, слухань або аудиту", context: "формальне / правове", ex: "Der Aufsichtsrat beraumte eine außerordentliche Sitzung an." }
+      }
+    },
+    {
+      category: "Соціальне",
+      pos: "дієслово",
+      concept: "допомагати нужденним / підтримувати",
+      words: {
+        A1: { de: "helfen", meaning: "допомагати (базово)", context: "базове", ex: "Ich helfe der alten Frau beim Einkaufen." },
+        A2: { de: "Geld geben", meaning: "давати гроші на допомогу", context: "побутове", ex: "Er gibt oft Geld für arme Menschen." },
+        B1: { de: "unterstützen", meaning: "підтримувати людину або ініціативу", context: "соціальне", ex: "Die Nachbarn unterstützen die neue Familie im Viertel." },
+        B2: { de: "sich engagieren für", meaning: "брати активну громадянську участь у допомозі", context: "громадське / волонтерство", ex: "Viele Bürger engagieren sich ehrenamtlich für Geflüchtete." },
+        C1: { de: "Beistand leisten", meaning: "надавати офіційну або моральну підтримку в біді", context: "формальне / етичне", ex: "Die Organisation leistete den Opfern der Katastrophe umgehend Beistand." }
+      }
+    },
+    {
+      category: "Соціальне",
+      pos: "іменник",
+      concept: "спільнота / суспільство",
+      words: {
+        A1: { de: "die Leute", meaning: "люди навколо", context: "базове", ex: "Hier wohnen viele nette Leute." },
+        A2: { de: "die Gruppe", meaning: "група людей, клуб", context: "побутове", ex: "Er ist Mitglied in einer Sportgruppe." },
+        B1: { de: "die Gemeinschaft", meaning: "спільнота людей зі спільними інтересами", context: "соціальне", ex: "Im Dorf gibt es eine sehr starke Gemeinschaft." },
+        B2: { de: "die Gesellschaft", meaning: "громадянське суспільство загалом", context: "соціологічне", ex: "Wir brauchen mehr Solidarität in unserer Gesellschaft." },
+        C1: { de: "das Gemeinwesen", meaning: "організована соціальна структура громади", context: "політологічне / адміністративне", ex: "Ehrenamtliche Arbeit bildet das Fundament für ein funktionierendes Gemeinwesen." }
+      }
+    },
+    {
+      category: "Соціальне",
+      pos: "дієслово",
+      concept: "інтегруватися / звикати до середовища",
+      words: {
+        A1: { de: "hier leben", meaning: "жити тут", context: "базове", ex: "Ich lebe seit einem Jahr hier." },
+        A2: { de: "Freunde finden", meaning: "знаходити нових друзів", context: "побутове", ex: "Es ist wichtig, schnell neue Freunde zu finden." },
+        B1: { de: "sich einleben", meaning: "звикати до нового місця й побуту", context: "стандартне", ex: "Sie haben sich in der neuen Stadt schnell eingelebt." },
+        B2: { de: "sich integrieren in (+ Akk.)", meaning: "повноцінно інтегруватися в суспільне життя", context: "соціокультурне", ex: "Gute Sprachkenntnisse helfen dabei, sich nahtlos in die Gesellschaft zu integrieren." },
+        C1: { de: "Fuß fassen", meaning: "твердо закріпитися та адаптуватися у новому соціумі", context: "образне / публіцистика", ex: "Nach anfänglichen Hürden fasste sie im Berufsleben festen Fuß." }
+      }
+    },
+    {
+      category: "Соціальне",
+      pos: "іменник",
+      concept: "допомога / благодійність",
+      words: {
+        A1: { de: "das Geschenk", meaning: "подарунок (речі/їжа)", context: "базове", ex: "Sie bringen Geschenke für die Kinder." },
+        A2: { de: "die Hilfe", meaning: "підтримка або догляд", context: "побутове", ex: "Ohne fremde Hilfe schafft er den Alltag nicht." },
+        B1: { de: "die Spende", meaning: "благодійний внесок або речі для фонду", context: "громадське", ex: "Der Verein sammelt Spenden für den Tierschutz." },
+        B2: { de: "die Wohltätigkeit", meaning: "цілеспрямована доброчинна діяльність", context: "гуманітарне", ex: "Sie widmet ihre freie Zeit ganz der Wohltätigkeit." },
+        C1: { de: "das Mäzenatentum / der Altruismus", meaning: "меценатство або безкорисливе служіння інтересам інших", context: "високий стиль / публіцистика", ex: "Das Kulturprojekt verdankt seine Existenz privatem Mäzenatentum." }
+      }
+    },
+    {
+      category: "Соціальне",
+      pos: "прикметник",
+      concept: "справедливий / рівноправний",
+      words: {
+        A1: { de: "gut", meaning: "хороший, правильний", context: "базове", ex: "Das ist nicht gut für alle." },
+        A2: { de: "gleich", meaning: "однаковий для кожного", context: "побутове", ex: "Alle bekommen den gleichen Teil." },
+        B1: { de: "gerecht", meaning: "справедливий за правилами", context: "стандартне", ex: "Der Schiedsrichter traf eine gerechte Entscheidung." },
+        B2: { de: "chancengleich", meaning: "такий, що гарантує рівні стартові можливості", context: "соціально-політичне", ex: "Das Bildungssystem sollte allen Kindern einen chancengleichen Start ermöglichen." },
+        C1: { de: "egalitär", meaning: "заснований на цілковитій соціальній рівності прав і статусу", context: "соціологія / аналітика", ex: "Die Bewegung forderte den Aufbau einer egalitären Gesellschaftsordnung." }
+      }
     }
-  },
-  {
-    category: "Мислення",
-    pos: "дієслово",
-    concept: "вирішувати / визначатися",
-    words: {
-      A1: { de: "wählen", meaning: "вибирати простий варіант", context: "базове", ex: "Welches Kleid wählst du?" },
-      A2: { de: "entscheiden", meaning: "робити вибір між кількома опціями", context: "особисте", ex: "Ich kann mich schwer entscheiden." },
-      B1: { de: "einen Entschluss fassen", meaning: "прийняти усвідомлене тверде рішення", context: "виважене", ex: "Sie fasste den Entschluss, die Stelle zu wechseln." },
-      B2: { de: "eine Entscheidung treffen", meaning: "ухвалити ділове / відповідальне рішення", context: "професійне / управлінське", ex: "Die Geschäftsleitung muss nun eine Entscheidung treffen." },
-      C1: { de: "beschließen", meaning: "офіційно ухвалити постанову чи закон", context: "законодавче / протокольне", ex: "Der Vorstand beschloss tiefgreifende Sparmaßnahmen." }
-    }
-  },
-  {
-    category: "Спілкування",
-    pos: "прислівник",
-    concept: "ймовірно / напевно",
-    words: {
-      A1: { de: "vielleicht", meaning: "можливо", context: "базове", ex: "Vielleicht kommt er morgen." },
-      A2: { de: "wahrscheinlich", meaning: "ймовірно, мабуть", context: "розмовне", ex: "Er hat den Termin wahrscheinlich vergessen." },
-      B1: { de: "vermutlich", meaning: "напевно, за припущенням", context: "стандартне", ex: "Die Lieferung verzögert sich vermutlich um zwei Tage." },
-      B2: { de: "aller Voraussicht nach", meaning: "за всіма очікуваннями / прогнозами", context: "ділове / DTB", ex: "Das Projekt wird aller Voraussicht nach termingerecht fertig." },
-      C1: { de: "mutmaßlich", meaning: "імовірно, на основі непрямих доказів", context: "аналітичне / офіційне", ex: "Der Schaden entstand mutmaßlich durch ein Software-Update." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "сполучник",
-    concept: "причина / через те що",
-    words: {
-      A1: { de: "weil", meaning: "тому що (пряма причина)", context: "базове", ex: "Ich bleibe zu Hause, weil ich krank bin." },
-      A2: { de: "denn", meaning: "бо (без зміни порядку слів)", context: "розмовне", ex: "Er kommt nicht, denn er hat viel zu tun." },
-      B1: { de: "da", meaning: "оскільки (причина вже відома)", context: "ділове", ex: "Da der Chef im Urlaub ist, vertrete ich ihn." },
-      B2: { de: "aufgrund dessen, dass", meaning: "на підставі того, що / через", context: "офіційне / DTB", ex: "Aufgrund dessen, dass das Material fehlt, stoppt die Arbeit." },
-      C1: { de: "in Anbetracht der Tatsache, dass", meaning: "беручи до уваги той факт, що", context: "формальне / аналітичне", ex: "In Anbetracht der Tatsache, dass die Kosten steigen, müssen wir sparen." }
-    }
-  },
-  {
-    category: "Конфлікти",
-    pos: "дієслово",
-    concept: "сваритися / конфліктувати",
-    words: {
-      A1: { de: "böse sein", meaning: "злитися на когось", context: "емоційне", ex: "Er ist böse auf mich." },
-      A2: { de: "streiten", meaning: "сваритися, сперечатися", context: "побутове", ex: "Die Kollegen streiten oft über Kleinigkeiten." },
-      B1: { de: "einen Konflikt haben", meaning: "мати розбіжності чи конфлікт", context: "особисте / робоче", ex: "Wir haben einen kleinen Konflikt im Team." },
-      B2: { de: "in Streit geraten", meaning: "втягнутися у серйозну суперечку", context: "професійне", ex: "Sie sind wegen der Urlaubsplanung in Streit geraten." },
-      C1: { de: "aneinandergeraten", meaning: "жорстко зіткнутися поглядами чи інтересами", context: "напружене", ex: "Die beiden Abteilungsleiter gerieten in der Sitzung heftig aneinander." }
-    }
-  },
-  {
-    category: "Конфлікти",
-    pos: "дієслово",
-    concept: "вирішувати / врегульовувати",
-    words: {
-      A1: { de: "gut machen", meaning: "виправити ситуацію, помиритися", context: "базове", ex: "Ich möchte das wieder gut machen." },
-      A2: { de: "sich beruhigen", meaning: "заспокоїтися після сварки", context: "емоційне", ex: "Beruhige dich bitte, wir finden eine Lösung." },
-      B1: { de: "lösen", meaning: "знаходити вихід із проблеми", context: "практичне", ex: "Wir müssen das Problem gemeinsam lösen." },
-      B2: { de: "einen Konflikt beilegen", meaning: "мирно владнати офіційний конфлікт", context: "ділове / DTB", ex: "Die Parteien konnten den Konflikt sachlich beilegen." },
-      C1: { de: "schlichten", meaning: "виступати арбітром і врегулювати спір", context: "юридичне / арбітраж", ex: "Ein externer Mediator wurde engagiert, um den Streit zu schlichten." }
-    }
-  },
-  {
-    category: "Конфлікти",
-    pos: "дієслово",
-    concept: "звинувачувати / докоряти",
-    words: {
-      A1: { de: "schuld sein", meaning: "бути винним", context: "базове", ex: "Wer ist schuld daran?" },
-      A2: { de: "die Schuld geben", meaning: "перекладати провину на іншого", context: "розмовне", ex: "Er gibt immer den anderen die Schuld." },
-      B1: { de: "kritisieren", meaning: "вказувати на помилки в роботі", context: "пряме", ex: "Der Vorgesetzte hat seine Arbeitsweise kritisiert." },
-      B2: { de: "einen Vorwurf machen", meaning: "висувати офіційні або робочі претензії", context: "корпоративне", ex: "Niemand macht Ihnen deswegen einen Vorwurf." },
-      C1: { de: "beschuldigen", meaning: "прямо звинувачувати у порушенні правил", context: "формальне / юридичне", ex: "Der Mitarbeiter wurde fälschlicherweise des Diebstahls beschuldigt." }
-    }
-  },
-  {
-    category: "Конфлікти",
-    pos: "дієслово",
-    concept: "погрожувати / тиснути",
-    words: {
-      A1: { de: "Angst machen", meaning: "лякати когось", context: "базове", ex: "Die Situation macht mir etwas Angst." },
-      A2: { de: "Druck machen", meaning: "підганяти або змушувати", context: "розмовне", ex: "Der Chef macht uns wegen der Deadline Druck." },
-      B1: { de: "drohen mit", meaning: "попереджати про неприємні наслідки", context: "ділове / претензія", ex: "Der Kunde droht mit einer Stornierung des Auftrags." },
-      B2: { de: "unter Druck setzen", meaning: "чинити психологічний чи діловий тиск", context: "професійне", ex: "Wir lassen uns von den Lieferanten nicht unter Druck setzen." },
-      C1: { de: "Rechtsschritte androhen", meaning: "офіційно попереджати про судовий позов", context: "юридичне / офіційне", ex: "Das Unternehmen drohte mit der Einleitung rechtlicher Schritte." }
-    }
-  },
-  {
-    category: "Конфлікти",
-    pos: "дієслово",
-    concept: "захищатися / заперечувати",
-    words: {
-      A1: { de: "nicht wahr sein", meaning: "казати, що це неправда", context: "базове", ex: "Das ist nicht wahr!" },
-      A2: { de: "sich wehren", meaning: "давати відсіч або опиратися", context: "практичне", ex: "Man muss sich gegen Ungerechtigkeit wehren." },
-      B1: { de: "widersprechen", meaning: "не погоджуватися з твердженням", context: "ділове", ex: "Da muss ich Ihnen leider widersprechen." },
-      B2: { de: "Stellung nehmen zu", meaning: "давати офіційні пояснення чи позицію", context: "корпоративне / DTB", ex: "Der Angestellte muss zu den Vorwürfen schriftlich Stellung nehmen." },
-      C1: { de: "zurückweisen", meaning: "категорично відкидати звинувачення", context: "офіційне / публічне", ex: "Die Geschäftsführung wies alle Vorwürfe entschieden zurück." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "дієслово",
-    concept: "брати участь / долучатися",
-    words: {
-      A1: { de: "mitmachen", meaning: "брати участь разом з усіма", context: "розмовне", ex: "Wer möchte beim Spiel mitmachen?" },
-      A2: { de: "dabei sein", meaning: "бути присутнім на події", context: "побутове", ex: "Morgen bin ich bei dem Treffen dabei." },
-      B1: { de: "teilnehmen an", meaning: "брати участь у заході", context: "стандартне", ex: "Ich nehme an der heutigen Besprechung teil." },
-      B2: { de: "sich beteiligen an", meaning: "активно долучатися до проєкту чи витрат", context: "ділове / DTB", ex: "Alle Mitarbeiter sollten sich an der Diskussion beteiligen." },
-      C1: { de: "mitwirken an", meaning: "робити суттєвий внесок у спільну справу", context: "професійне / партнерське", ex: "Sie hat maßgeblich an der Entwicklung des neuen Konzepts mitgewirkt." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "дієслово",
-    concept: "наймати / брати на роботу",
-    words: {
-      A1: { de: "nehmen", meaning: "взяти когось", context: "розмовне", ex: "Sie nehmen ihn für den Job." },
-      A2: { de: "einen Job geben", meaning: "дати роботу людині", context: "побутове", ex: "Die Firma hat ihm einen Job gegeben." },
-      B1: { de: "einstellen", meaning: "оформити нового працівника", context: "ділове", ex: "Wir stellen ab nächsten Monat zwei Verkäufer ein." },
-      B2: { de: "unter Vertrag nehmen", meaning: "підписати трудовий договір зі спеціалістом", context: "HR / DTB", ex: "Das Unternehmen hat die neue Projektleiterin unter Vertrag genommen." },
-      C1: { de: "anwerben", meaning: "цілеспрямовано залучати кваліфіковані кадри", context: "рекрутинг / ринок праці", ex: "Die Klinik wirbt gezielt medizinisches Fachpersonal aus dem Ausland an." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "дієслово",
-    concept: "застосовувати / впроваджувати",
-    words: {
-      A1: { de: "benutzen", meaning: "користуватися чимось", context: "базове", ex: "Ich benutze dieses Programm täglich." },
-      A2: { de: "brauchen", meaning: "використовувати за потребою", context: "побутове", ex: "Dafür brauchen wir dieses Werkzeug." },
-      B1: { de: "verwenden", meaning: "задіяти матеріал чи метод", context: "практичне", ex: "Für den Bericht verwenden wir die neuen Zahlen." },
-      B2: { de: "zur Anwendung bringen", meaning: "впроваджувати метод або правило на практиці", context: "виробниче / DTB", ex: "Die neuen Sicherheitsrichtlinien müssen wir sofort zur Anwendung bringen." },
-      C1: { de: "etablieren", meaning: "стійко закріпити процес чи систему", context: "стратегічне", ex: "Das Team konnte einen effizienten Workflow im Betrieb etablieren." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "дієслово",
-    concept: "брати відповідальність",
-    words: {
-      A1: { de: "machen", meaning: "робити на власний розсуд", context: "базове", ex: "Ich mache das auf meine Gefahr." },
-      A2: { de: "schuld sein", meaning: "відповідати, якщо щось піде не так", context: "розмовне", ex: "Wenn es schiefgeht, bin ich schuld." },
-      B1: { de: "zuständig sein für", meaning: "відповідати за конкретну ділянку роботи", context: "ділове", ex: "Frau Müller ist für die Rechnungsstellung zuständig." },
-      B2: { de: "die Verantwortung tragen", meaning: "нести повну відповідальність за результат", context: "управлінське / DTB", ex: "Die Abteilungsleitung trägt die Verantwortung für das Budget." },
-      C1: { de: "sich verbürgen für", meaning: "ручатися своєю репутацією за якість або особу", context: "офіційне / ділове", ex: "Der Geschäftsführer verbürgte sich persönlich für die Einhaltung der Fristen." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "іменник",
-    concept: "помилка / дефект",
-    words: {
-      A1: { de: "der Fehler", meaning: "помилка", context: "базове", ex: "Im Text ist ein kleiner Fehler." },
-      A2: { de: "das Versehen", meaning: "випадкова помилка, неуважність", context: "повсякденне", ex: "Das ist aus Versehen passiert." },
-      B1: { de: "der Mangel", meaning: "недолік або брак у товарі", context: "сервісне", ex: "Das gelieferte Gerät weist einen Mangel auf." },
-      B2: { de: "die Abweichung", meaning: "розбіжність зі стандартом або нормою", context: "контроль якості / DTB", ex: "Bei der Qualitätsprüfung wurde eine Abweichung festgestellt." },
-      C1: { de: "die Unstimmigkeit", meaning: "суттєва невідповідність у даних чи розрахунках", context: "аудит / фінанси", ex: "In der Bilanz traten gravierende Unstimmigkeiten auf." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "іменник",
-    concept: "пропозиція / оффер",
-    words: {
-      A1: { de: "die Idee", meaning: "ідея або пропозиція", context: "базове", ex: "Das ist eine gute Idee." },
-      A2: { de: "der Vorschlag", meaning: "пропозиція щодо плану дій", context: "організаційне", ex: "Ich habe einen Vorschlag für die Pause." },
-      B1: { de: "das Angebot", meaning: "комерційна або цінова пропозиція", context: "ділове", ex: "Wir haben ein günstiges Angebot erhalten." },
-      B2: { de: "die Offerte", meaning: "офіційний комерційний розрахунок для замовника", context: "закупівлі / DTB", ex: "Bitte unterbreiten Sie uns bis morgen eine verbindliche Offerte." },
-      C1: { de: "die Vorlage", meaning: "підготовлений проєкт рішення чи нормативний документ", context: "управлінське", ex: "Die Beschlussvorlage muss dem Vorstand vorgelegt werden." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "іменник",
-    concept: "звільнення / припинення договору",
-    words: {
-      A1: { de: "der Schluss", meaning: "кінець", context: "базове", ex: "Am Schluss waren alle zufrieden." },
-      A2: { de: "das Aufhören", meaning: "припинення праці", context: "розмовне", ex: "Sein Aufhören kam für uns überraschend." },
-      B1: { de: "die Kündigung", meaning: "розірвання контракту, звільнення", context: "стандартне ділове", ex: "Er hat gestern seine Kündigung eingereicht." },
-      B2: { de: "die Vertragsauflösung", meaning: "припинення дії договору (часто за згодою сторін)", context: "кадри / DTB", ex: "Beide Seiten einigten sich auf eine einvernehmliche Vertragsauflösung." },
-      C1: { de: "die Freistellung", meaning: "офіційне відсторонення від роботи зі збереженням або без окладу", context: "трудове право", ex: "Der Mitarbeiter erhielt mit sofortiger Wirkung eine bezahlte Freistellung." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "іменник",
-    concept: "підвищення / розвиток",
-    words: {
-      A1: { de: "das Lernen", meaning: "навчання", context: "базове", ex: "Das Lernen macht mir Spaß." },
-      A2: { de: "der Kurs", meaning: "навчальний курс", context: "практичне", ex: "Ich besuche einen Deutschkurs." },
-      B1: { de: "die Weiterbildung", meaning: "підвищення кваліфікації на роботі", context: "професійне", ex: "Die Firma bezahlt eine berufliche Weiterbildung." },
-      B2: { de: "die Qualifizierungsmaßnahme", meaning: "офіційна програма підвищення кваліфікації/перепідготовки", context: "HR / DTB", ex: "Alle Mitarbeiter nehmen an einer internen Qualifizierungsmaßnahme teil." },
-      C1: { de: "die Kompetenzerweiterung", meaning: "системне розширення професійних компетенцій", context: "стратегічне HR", ex: "Der Fokus des Workshops lag auf der gezielten Kompetenzerweiterung der Führungskräfte." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "дієслово",
-    concept: "прибирати / наводити лад",
-    words: {
-      A1: { de: "putzen", meaning: "мити, чистити", context: "базове", ex: "Ich muss heute das Bad putzen." },
-      A2: { de: "aufräumen", meaning: "складати речі на місця, прибирати кімнату", context: "побутове", ex: "Räum bitte dein Zimmer auf." },
-      B1: { de: "in Ordnung bringen", meaning: "приводити до ладу житло або справи", context: "стандартне", ex: "Vor dem Besuch müssen wir die Wohnung in Ordnung bringen." },
-      B2: { de: "instand halten", meaning: "підтримувати житло/прилади у справному стані", context: "технічне / оренда", ex: "Mieter sind verpflichtet, die Mietsache pfleglich instand zu halten." },
-      C1: { de: "sanieren", meaning: "капітально відновлювати або ремонтувати приміщення", context: "будівельне / офіційне", ex: "Die alte Wohnung muss vor dem Einzug grundlegend saniert werden." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "дієслово",
-    concept: "купувати продукти / запасатися",
-    words: {
-      A1: { de: "kaufen", meaning: "купувати", context: "базове", ex: "Ich kaufe Brot und Milch." },
-      A2: { de: "einkaufen", meaning: "робити щоденні покупки в магазині", context: "повсякденне", ex: "Wir gehen samstags immer im Supermarkt einkaufen." },
-      B1: { de: "besorgen", meaning: "знайти та дістати потрібну для дому річ", context: "організаційне", ex: "Kannst du auf dem Heimweg noch Waschmittel besorgen?" },
-      B2: { de: "Vorräte anlegen", meaning: "робити запаси продуктів чи побутової хімії", context: "господарське", ex: "Es ist ratsam, Vorräte an haltbaren Lebensmitteln anzulegen." },
-      C1: { de: "beziehen von", meaning: "регулярно замовляти харчі у постачальника/фермера", context: "офіційне / якість", ex: "Die Familie bezieht ihr Gemüse direkt von einem Bio-Hof." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "іменник",
-    concept: "житло / помешкання",
-    words: {
-      A1: { de: "das Zimmer", meaning: "кімната", context: "базове", ex: "Mein Zimmer ist hell und ruhig." },
-      A2: { de: "die Wohnung", meaning: "квартира", context: "повсякденне", ex: "Wir haben eine kleine Wohnung im Zentrum." },
-      B1: { de: "die Unterkunft", meaning: "тимчасове житло або прихисток", context: "практичне", ex: "Für die ersten Wochen suchen wir eine günstige Unterkunft." },
-      B2: { de: "die Mietimmobilie", meaning: "орендоване житлове приміщення за договором", context: "оренда / договір", ex: "Die Mietimmobilie verfügt über eine Einbauküche." },
-      C1: { de: "die Wohnstätte", meaning: "постійне місце проживання / оселя", context: "формальне / офіційне", ex: "Das historische Gebäude dient seit Jahrzehnten als Wohnstätte." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "іменник",
-    concept: "комунальні послуги / витрати",
-    words: {
-      A1: { de: "das Geld", meaning: "гроші", context: "базове", ex: "Das kostet zu viel Geld." },
-      A2: { de: "die Miete", meaning: "орендна плата за житло", context: "побутове", ex: "Die Miete ist am Monatsersten fällig." },
-      B1: { de: "die Nebenkosten", meaning: "комунальні платежі (вода, опалення, сміття)", context: "житлове", ex: "Die monatlichen Nebenkosten sind stark gestiegen." },
-      B2: { de: "die Betriebskostenabrechnung", meaning: "офіційний річний перерахунок комунальних витрат", context: "документи / оренда", ex: "Wir warten noch auf die Betriebskostenabrechnung für das letzte Jahr." },
-      C1: { de: "die Instandhaltungsrücklage", meaning: "фонд накопичення коштів на капітальний ремонт будинку", context: "юридичне / нерухомість", ex: "Ein Teil des Hausgeldes fließt direkt in die Instandhaltungsrücklage." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "дієслово",
-    concept: "готувати їжу / харчуватися",
-    words: {
-      A1: { de: "kochen", meaning: "варити, готувати", context: "базове", ex: "Ich koche gerne am Abend." },
-      A2: { de: "warm machen", meaning: "розігрівати готову їжу", context: "розмовне", ex: "Ich mache mir nur schnell eine Suppe warm." },
-      B1: { de: "zubereiten", meaning: "готувати страву за рецептом чи з інгредієнтів", context: "кулінарне", ex: "Er bereitet ein frisches Abendessen für die Familie zu." },
-      B2: { de: "sich verpflegen", meaning: "самостійно забезпечувати себе харчуванням", context: "побутове / офіційне", ex: "In der Ferienwohnung müssen sich die Gäste selbst verpflegen." },
-      C1: { de: "zehren von", meaning: "жити на залишках запасів чи ресурсів", context: "образне / складне", ex: "Nach dem Umzug zehrte die Familie tagelang von den Resten im Tiefkühler." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "дієслово",
-    concept: "сортувати / викидати сміття",
-    words: {
-      A1: { de: "wegwerfen", meaning: "викидати у смітник", context: "базове", ex: "Du kannst die alte Zeitung wegwerfen." },
-      A2: { de: "trennen", meaning: "розділяти сміття за баками", context: "побутове", ex: "In Deutschland muss man den Müll trennen." },
-      B1: { de: "entsorgen", meaning: "правильно утилізувати непотріб чи старі речі", context: "стандартне", ex: "Alte Batterien müssen fachgerecht entsorgt werden." },
-      B2: { de: "der Wiederverwertung zuführen", meaning: "віддавати на вторинну переробку / ресайклінг", context: "екологічне / побутове", ex: "Wir sollten Kartonagen direkt der Wiederverwertung zuführen." },
-      C1: { de: "beseitigen", meaning: "ліквідувати небезпечні залишки чи відходи", context: "офіційне / санітарне", ex: "Die Schadstoffe wurden unter strengen Auflagen beseitigt." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "дієслово",
-    concept: "ламатися / виходити з ладу",
-    words: {
-      A1: { de: "kaputtgehen", meaning: "ламатися", context: "базове", ex: "Die Lampe ist gestern kaputtgegangen." },
-      A2: { de: "nicht funktionieren", meaning: "не працювати", context: "розмовне", ex: "Der Kühlschrank funktioniert leider nicht mehr." },
-      B1: { de: "einen Defekt haben", meaning: "мати технічний дефект чи збій", context: "побутове / сервісне", ex: "Die Waschmaschine scheint einen Defekt zu haben." },
-      B2: { de: "den Geist aufgeben", meaning: "остаточно зламатися / зноситися", context: "образне побутове", ex: "Der alte Staubsauger hat nach zehn Jahren den Geist aufgegeben." },
-      C1: { de: "einer Funktionsstörung unterliegen", meaning: "зазнавати технічного збою у роботі системи", context: "технічне / договірне", ex: "Die Heizanlage unterlag einer vorübergehenden Funktionsstörung." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "дієслово",
-    concept: "ремонтувати / лагодити",
-    words: {
-      A1: { de: "heile machen", meaning: "полагодити (розмовне)", context: "просте", ex: "Kannst du das Spielzeug heile machen?" },
-      A2: { de: "reparieren", meaning: "ремонтувати прилад чи річ", context: "побутове", ex: "Der Handwerker repariert das Schloss." },
-      B1: { de: "instand setzen", meaning: "відновити придатність до експлуатації", context: "практичне / житлове", ex: "Die Heizung muss vor dem Winter instand gesetzt werden." },
-      B2: { de: "einen Schaden beheben", meaning: "усувати поломку або наслідки протікання", context: "оренда / сервіс", ex: "Der Vermieter versprach, den Wasserschaden zügig zu beheben." },
-      C1: { de: "restaurieren", meaning: "фахово реставрувати старі меблі чи елементи житла", context: "експертне", ex: "Die historischen Holztüren wurden fachmännisch restauriert." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "іменник",
-    concept: "сусідські правила / тиша",
-    words: {
-      A1: { de: "die Ruhe", meaning: "спокій, тиша", context: "базове", ex: "Ich brauche heute etwas Ruhe." },
-      A2: { de: "der Lärm", meaning: "шум, галас", context: "повсякденне", ex: "Der Lärm aus der Nachbarwohnung stört mich." },
-      B1: { de: "die Hausordnung", meaning: "правила внутрішнього розпорядку будинку", context: "побутове / оренда", ex: "Laut Hausordnung gilt ab 22 Uhr Nachtruhe." },
-      B2: { de: "die Ruhestörung", meaning: "порушення встановленого режиму тиші", context: "юридичне / побутове", ex: "Wegen wiederholter Ruhestörung beschwerten sich die Nachbarn." },
-      C1: { de: "das Nachbarschaftsverhältnis", meaning: "взаємовідносини між мешканцями / сусідами", context: "формальне", ex: "Ein offenes Gespräch kann das angespannte Nachbarschaftsverhältnis entspannen." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "іменник",
-    concept: "орендар / власник житла",
-    words: {
-      A1: { de: "der Chef", meaning: "головний (розмовне позначення орендодавця)", context: "спрощене", ex: "Der Chef vom Haus wohnt unten." },
-      A2: { de: "der Nachbar", meaning: "сусід по будинку чи поверху", context: "повсякденне", ex: "Mein Nachbar hilft mir oft beim Tragen." },
-      B1: { de: "der Mieter / der Vermieter", meaning: "орендар / орендодавець житла", context: "житлове", ex: "Der Vermieter hat die Nebenkostenabrechnung geschickt." },
-      B2: { de: "die Mietpartei", meaning: "сторона договору оренди (мешканці квартири)", context: "договірне / DTB", ex: "Jede Mietpartei erhält zwei Schlüssel für die Haustür." },
-      C1: { de: "der Immobilieneigentümer", meaning: "законний власник житлової нерухомості", context: "офіційне / правове", ex: "Der Immobilieneigentümer haftet für die Verkehrssicherheit des Gehwegs." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "прикметник",
-    concept: "чистий / прибраний",
-    words: {
-      A1: { de: "sauber", meaning: "чистий, не брудний", context: "базове", ex: "Die Küche ist wieder sauber." },
-      A2: { de: "ordentlich", meaning: "акуратний, прибраний", context: "побутове", ex: "Sein Zimmer ist immer ordentlich." },
-      B1: { de: "gepflegt", meaning: "доглянутий (стан житла або речей)", context: "стандартне / житлове", ex: "Das Haus macht einen sehr gepflegten Eindruck." },
-      B2: { de: "einwandfrei", meaning: "бездоганний, без жодних дефектів чи бруду", context: "оренда / стан", ex: "Die Wohnung wurde in einem einwandfreien Zustand übergeben." },
-      C1: { de: "makellos", meaning: "ідеально чистий, без найменшої вади", context: "описове / вишукане", ex: "Die frisch renovierten Räume waren in makellosem Zustand." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "прикметник",
-    concept: "брудний / занедбаний",
-    words: {
-      A1: { de: "schmutzig", meaning: "брудний", context: "базове", ex: "Meine Schuhe sind ganz schmutzig." },
-      A2: { de: "dreckig", meaning: "замазаний, дуже брудний", context: "розмовне", ex: "Das Geschirr steht noch dreckig in der Spüle." },
-      B1: { de: "unordentlich", meaning: "безладний, захаращений речами", context: "побутове", ex: "Im Flur sieht es wieder unordentlich aus." },
-      B2: { de: "verwahrlost", meaning: "занедбаний через відсутність догляду", context: "житлове / огляд", ex: "Der Garten wirkte nach dem Auszug völlig verwahrlost." },
-      C1: { de: "unzumutbar", meaning: "неприйнятний для проживання за санітарними нормами", context: "юридичне / скарги", ex: "Der Schimmelbefall machte den Zustand der Räume unzumutbar." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "прикметник",
-    concept: "зламаний / непридатний",
-    words: {
-      A1: { de: "kaputt", meaning: "зламаний", context: "базове", ex: "Der Stuhl ist leider kaputt." },
-      A2: { de: "alt", meaning: "старий, зношений", context: "повсякденне", ex: "Wir brauchen einen neuen Toaster, der hier ist zu alt." },
-      B1: { de: "defekt", meaning: "несправний технічно", context: "побутове / техніка", ex: "Die Klingel an der Haustür ist seit gestern defekt." },
-      B2: { de: "beschädigt", meaning: "пошкоджений (з видимими дефектами)", context: "акт прийому / оренда", ex: "Der Parkettboden im Wohnzimmer ist leicht beschädigt." },
-      C1: { de: "marode", meaning: "аварійний, напівзруйнований часом", context: "стан будівель", ex: "Die Wasserleitungen im Altbau sind mittlerweile marode." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "прикметник",
-    concept: "шумний / спокійний (акустика)",
-    words: {
-      A1: { de: "laut", meaning: "гучний", context: "базове", ex: "Die Musik der Nachbarn ist viel zu laut." },
-      A2: { de: "ruhig", meaning: "тихий, спокійний", context: "побутове", ex: "Wir suchen eine ruhige Wohnung am Stadtrand." },
-      B1: { de: "hellhörig", meaning: "з поганою звукоізоляцією (чути сусідів)", context: "житлове", ex: "Das Wohnhaus ist leider extrem hellhörig." },
-      B2: { de: "lärmbelästigt", meaning: "такий, що потерпає від постійного шуму", context: "офіційне / скарги", ex: "Die Anwohner fühlten sich durch die Baustelle lärmbelästigt." },
-      C1: { de: "geräuscharm", meaning: "малошумний, безшумний (про побутові прилади)", context: "технічний опис", ex: "Moderne Geschirrspüler arbeiten heutzutage sehr geräuscharm." }
-    }
-  },
-  {
-    category: "Побут",
-    pos: "прикметник",
-    concept: "тісний / просторий",
-    words: {
-      A1: { de: "klein", meaning: "маленький", context: "базове", ex: "Das Badezimmer ist sehr klein." },
-      A2: { de: "groß", meaning: "великий", context: "базове", ex: "Die Wohnung hat einen großen Balkon." },
-      B1: { de: "gemütlich", meaning: "затишний, комфортний для життя", context: "описове", ex: "Das Wohnzimmer ist klein, aber sehr gemütlich eingerichtet." },
-      B2: { de: "geräumig", meaning: "просторий, місткий за площею", context: "оголошення / оренда", ex: "Die Küche ist geräumig und bietet Platz für einen Esstisch." },
-      C1: { de: "beengt", meaning: "вкрай обмежений у просторі, стиснутий", context: "аналітичне / стан", ex: "Die Familie lebte jahrelang unter sehr beengten Wohnverhältnissen." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "допомагати / сприяти",
-    words: {
-      A1: { de: "helfen", meaning: "допомагати", context: "базове дієслово", ex: "Kannst du mir helfen?" },
-      A2: { de: "Hilfe geben", meaning: "надати допомогу", context: "розмовне", ex: "Er gibt mir gerne Hilfe." },
-      B1: { de: "Hilfe anbieten", meaning: "запропонувати поміч", context: "ввічливе", ex: "Ich habe den Kollegen meine Hilfe angeboten." },
-      B2: { de: "Unterstützung leisten", meaning: "надати підтримку / сприяння", context: "ділове / DTB", ex: "Wir müssen dem neuen Team fachliche Unterstützung leisten." },
-      C1: { de: "Hilfestellung gewährleisten", meaning: "гарантувати системне сприяння", context: "офіційне / керівне", ex: "Die Leitung gewährleistet den Mitarbeitern jede nötige Hilfestellung." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "подавати заявку / клопотати",
-    words: {
-      A1: { de: "fragen nach", meaning: "запитувати про щось", context: "базове", ex: "Ich frage nach mehr Urlaub." },
-      A2: { de: "bitten um", meaning: "просити про дозвіл чи послугу", context: "ввічливе", ex: "Ich bitte um ein kurzes Gespräch." },
-      B1: { de: "beantragen", meaning: "офіційно подавати заяву", context: "ділове", ex: "Sie beantragt morgen ihren Bildungsurlaub." },
-      B2: { de: "einen Antrag stellen auf", meaning: "подати офіційне письмове клопотання", context: "бюрократичне / DTB", ex: "Der Arbeitnehmer hat einen Antrag auf Elternzeit gestellt." },
-      C1: { de: "ein Gesuch einreichen", meaning: "офіційно вносити прохання до інстанції", context: "формальне / правове", ex: "Das Unternehmen reichte ein Gnadengesuch beim Ministerium ein." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "впливати / діяти на",
-    words: {
-      A1: { de: "machen", meaning: "робити враження", context: "базове", ex: "Das macht mich nervös." },
-      A2: { de: "ändern", meaning: "змінювати щось своєю дією", context: "практичне", ex: "Seine Meinung ändert alles." },
-      B1: { de: "beeinflussen", meaning: "чинити прямий вплив", context: "стандартне", ex: "Das Wetter beeinflusst unsere Stimmung." },
-      B2: { de: "Einfluss nehmen auf", meaning: "цілеспрямовано впливати на процес чи рішення", context: "професійне / DTB", ex: "Der Betriebsrat versuchte, Einfluss auf die Verhandlungen zu nehmen." },
-      C1: { de: "Auswirkungen zeitigen", meaning: "мати тривалі вагомі наслідки", context: "публіцистичне / аналіз", ex: "Die Krise zeitigte verheerende Auswirkungen auf den Arbeitsmarkt." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "критикувати / висувати претензію",
-    words: {
-      A1: { de: "schlecht finden", meaning: "вважати щось поганим", context: "базове", ex: "Ich finde die Idee schlecht." },
-      A2: { de: "meckern", meaning: "бурчати, висловлювати невдоволення", context: "розмовне", ex: "Er meckert über das schlechte Essen." },
-      B1: { de: "kritisieren", meaning: "вказувати на помилки в роботі", context: "ділове", ex: "Der Abteilungsleiter kritisierte die Verzögerung." },
-      B2: { de: "Kritik üben an", meaning: "висловлювати конструктивну критику", context: "офіційне / DTB", ex: "Die Prüfer übten deutliche Kritik an den Arbeitsbedingungen." },
-      C1: { de: "auf Missstände hinweisen", meaning: "фахово звертати увагу на серйозні системні порушення", context: "аудит / експертне", ex: "Der Bericht wies ausdrücklich auf strukturelle Missstände hin." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "сумніватися / перевіряти правдивість",
-    words: {
-      A1: { de: "nicht glauben", meaning: "не вірити", context: "базове", ex: "Ich glaube das nicht wirklich." },
-      A2: { de: "nicht sicher sein", meaning: "бути невпевненим у чомусь", context: "розмовне", ex: "Ich bin mir bei diesem Preis nicht sicher." },
-      B1: { de: "zweifeln an", meaning: "мати сумніви", context: "стандартне", ex: "Wir zweifeln am Erfolg dieses Plans." },
-      B2: { de: "in Zweifel ziehen", meaning: "ставити під офіційний сумнів факти чи дані", context: "ділове / DTB", ex: "Die Zahlen des Quartalsberichts wurden vom Vorstand in Zweifel gezogen." },
-      C1: { de: "Skepsis bekunden", meaning: "публічно або дипломатично висловлювати недовіру", context: "формальне / преса", ex: "Wirtschaftsexperten bekundeten erhebliche Skepsis bezüglich der Reform." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "обговорювати / дискутувати",
-    words: {
-      A1: { de: "sprechen über", meaning: "говорити про щось", context: "базове дієслово", ex: "Wir sprechen über den Plan." },
-      A2: { de: "reden über", meaning: "розмовляти на тему", context: "розмовне", ex: "Lass uns morgen darüber reden." },
-      B1: { de: "diskutieren über", meaning: "дискутувати, вести полеміку", context: "стандартне", ex: "Das Team diskutiert über die neue Regelung." },
-      B2: { de: "zur Sprache bringen", meaning: "підняти тему на обговорення під час наради", context: "ділове / DTB", ex: "Ich möchte dieses Problem in der Teamsitzung zur Sprache bringen." },
-      C1: { de: "zur Debatte stellen", meaning: "виносити питання на офіційну дискусію / голосування", context: "парламентське / рада", ex: "Der Vorsitzende stellte den umstrittenen Vorschlag zur Debatte." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "починати / давати старт",
-    words: {
-      A1: { de: "anfangen", meaning: "починати", context: "базове", ex: "Wann fängst du an?" },
-      A2: { de: "beginnen mit", meaning: "братися за дію", context: "стандартне", ex: "Wir beginnen jetzt mit der Arbeit." },
-      B1: { de: "starten", meaning: "запускати процес", context: "практичне", ex: "Nächste Woche starten wir die neue Kampagne." },
-      B2: { de: "in Angriff nehmen", meaning: "рішуче братися до виконання складного завдання", context: "професійне / DTB", ex: "Wir müssen die Digitalisierung der Akten endlich in Angriff nehmen." },
-      C1: { de: "die Weichen stellen für", meaning: "закладати стратегічні передумови на майбутнє", context: "стратегічне / бізнес", ex: "Das Management stellte frühzeitig die Weichen für den Markteintritt." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "враховувати / брати до уваги",
-    words: {
-      A1: { de: "denken an", meaning: "пам'ятати, згадувати", context: "базове", ex: "Denk bitte an die Unterlagen." },
-      A2: { de: "aufpassen auf", meaning: "стежити, бути уважним", context: "побутове", ex: "Pass auf deine Sachen auf." },
-      B1: { de: "beachten", meaning: "дотримуватися вимоги чи знаку", context: "інструкція", ex: "Bitte beachten Sie die Sicherheitsvorschriften." },
-      B2: { de: "in Betracht ziehen", meaning: "розглядати варіант / брати до уваги можливість", context: "ділове / DTB", ex: "Wir sollten auch alternative Anbieter in Betracht ziehen." },
-      C1: { de: "Rechnung tragen (+ Dat.)", meaning: "належним чином врахувати особливості чи інтереси", context: "офіційне / договірне", ex: "Das neue Konzept trägt den geänderten Marktbedingungen voll Rechnung." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "висловлювати сумнів / підозру",
-    words: {
-      A1: { de: "nicht sicher sein", meaning: "не знати точно", context: "базове", ex: "Ich bin mir da nicht sicher." },
-      A2: { de: "Angst haben", meaning: "боятися, що не вийде", context: "емоційне", ex: "Ich habe Angst vor Fehlern." },
-      B1: { de: "Bedenken haben", meaning: "мати внутрішні перестороги", context: "ділове", ex: "Der Kollege hat Bedenken bezüglich der Kosten." },
-      B2: { de: "Zweifel hegen an", meaning: "плекати сумніви щодо успіху / термінів", context: "професійне / DTB", ex: "Die Projektleitung hegt Zweifel an der Machbarkeit des Zeitplans." },
-      C1: { de: "Verdacht schöpfen", meaning: "запідозрити неправомірність дій чи обман", context: "юридичне / аудит", ex: "Die Innenrevision schöpfte nach der Durchsicht der Belege schweren Verdacht." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "виконувати / завершувати",
-    words: {
-      A1: { de: "fertig sein", meaning: "бути готовим", context: "базове", ex: "Ich bin gleich fertig." },
-      A2: { de: "fertigstellen", meaning: "доробити до кінця", context: "побутове", ex: "Der Bericht wurde gestern fertiggestellt." },
-      B1: { de: "abschließen", meaning: "закрити проєкт чи завдання", context: "ділове", ex: "Wir haben das Projekt erfolgreich abgeschlossen." },
-      B2: { de: "zu Ende führen", meaning: "довести почату справу чи переговори до кінця", context: "ділове / DTB", ex: "Trotz der Hürden konnten wir die Verhandlungen zu Ende führen." },
-      C1: { de: "zum Abschluss bringen", meaning: "остаточно формалізувати та завершити складний процес", context: "корпоративне", ex: "Der Vertrag wurde nach Monaten endlich zum Abschluss gebracht." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "NVV",
-    concept: "робити висновок / підсумовувати",
-    words: {
-      A1: { de: "wissen", meaning: "знати результат", context: "базове", ex: "Jetzt weiß ich Bescheid." },
-      A2: { de: "verstehen", meaning: "розуміти що до чого", context: "розмовне", ex: "Ich verstehe das Ergebnis jetzt." },
-      B1: { de: "zusammenfassen", meaning: "коротко узагальнювати", context: "стандартне", ex: "Können Sie die Ergebnisse kurz zusammenfassen?" },
-      B2: { de: "ein Fazit ziehen", meaning: "підбивати офіційний підсумок роботи", context: "аналітичне / DTB", ex: "Am Ende des Geschäftsjahres müssen wir ein nüchternes Fazit ziehen." },
-      C1: { de: "Schlussfolgerungen ableiten", meaning: "виводити логічні та системні наслідки з фактів", context: "експертне / звіт", ex: "Aus den Daten lassen sich präzise Schlussfolgerungen ableiten." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "прийменник",
-    concept: "через / внаслідок",
-    words: {
-      A1: { de: "wegen (+ Dat.)", meaning: "через, з причини", context: "розмовне", ex: "Wegen dem Regen bleibe ich hier." },
-      A2: { de: "durch (+ Akk.)", meaning: "завдяки, через дію", context: "базове", ex: "Durch das Telefonat weiß ich jetzt Bescheid." },
-      B1: { de: "infolge (+ Gen.)", meaning: "внаслідок раптової події", context: "новини / звіти", ex: "Infolge eines Unfalls kam es zu Verspätungen." },
-      B2: { de: "aufgrund (+ Gen.)", meaning: "на підставі, з офіційної причини", context: "ділове листування / DTB", ex: "Aufgrund betrieblicher Änderungen entfällt das geplante Meeting." },
-      C1: { de: "kraft (+ Gen.)", meaning: "силою, на підставі закону чи повноважень", context: "юридичне / протокольне", ex: "Kraft seines Amtes ordnete der Geschäftsführer eine Revision an." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "прийменник",
-    concept: "попри / всупереч",
-    words: {
-      A1: { de: "trotz (+ Dat.)", meaning: "незважаючи на", context: "розмовне", ex: "Trotz dem schlechten Wetter gehen wir raus." },
-      A2: { de: "ohne (+ Akk.)", meaning: "без урахування", context: "побутове", ex: "Wir haben das ohne Probleme geschafft." },
-      B1: { de: "trotz (+ Gen.)", meaning: "всупереч обставинам", context: "стандартне ділове", ex: "Trotz intensiver Bemühungen konnten wir ihn nicht erreichen." },
-      B2: { de: "ungeachtet (+ Gen.)", meaning: "не беручи до уваги застереження чи ризики", context: "офіційне / DTB", ex: "Ungeachtet der Einwände des Betriebsrats wurde die Maßnahme umgesetzt." },
-      C1: { de: "zuwider (+ Dat., післяменник)", meaning: "всупереч чинним правилам або волі", context: "нормативне / судове", ex: "Dieser Beschluss läuft den bestehenden Richtlinien zuwider." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "прийменник",
-    concept: "згідно з / відповідно до",
-    words: {
-      A1: { de: "nach (+ Dat.)", meaning: "згідно зі словами чи думкою", context: "базове", ex: "Nach meiner Meinung ist das falsch." },
-      A2: { de: "wie", meaning: "як зазначено", context: "розмовне", ex: "Wie besprochen, schicke ich die Datei." },
-      B1: { de: "laut (+ Dat./Gen.)", meaning: "за інформацією, згідно з документом", context: "ділове", ex: "Laut aktuellem Dienstplan hat er heute Nachtschicht." },
-      B2: { de: "gemäß (+ Dat.)", meaning: "відповідно до параграфа, контракту чи інструкції", context: "договірне / DTB", ex: "Die Abrechnung erfolgt gemäß den getroffenen Vereinbarungen." },
-      C1: { de: "in Anlehnung an (+ Akk.)", meaning: "спираючись на прецедент або нормативну базу", context: "аналітичне / стандарти", ex: "Der Sicherheitsbericht wurde in Anlehnung an internationale Standards verfasst." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "прийменник",
-    concept: "під час / упродовж",
-    words: {
-      A1: { de: "bei (+ Dat.)", meaning: "при, під час дії", context: "базове", ex: "Beim Essen telefonieren wir nicht." },
-      A2: { de: "in (+ Dat.)", meaning: "у часових межах", context: "побутове", ex: "In dieser Woche habe ich Urlaub." },
-      B1: { de: "während (+ Gen.)", meaning: "протягом часового відрізка чи зміни", context: "стандартне", ex: "Während der Probezeit gelten gesonderte Kündigungsfristen." },
-      B2: { de: "im Laufe (+ Gen.)", meaning: "у процесі розвитку подій протягом терміну", context: "організаційне / DTB", ex: "Wir werden die Anpassungen im Laufe des nächsten Quartals vornehmen." },
-      C1: { de: "binnen (+ Dat./Gen.)", meaning: "строго в межах визначеного стислого дедлайну", context: "претензії / правове", ex: "Die Nachbesserung muss binnen vierzehn Tagen erfolgen." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "прийменник",
-    concept: "стосовно / щодо",
-    words: {
-      A1: { de: "zu (+ Dat.)", meaning: "до цього питання", context: "базове", ex: "Hast du eine Frage zu der Aufgabe?" },
-      A2: { de: "über (+ Akk.)", meaning: "про цей предмет", context: "побутове", ex: "Wir brauchen Infos über die Preise." },
-      B1: { de: "bezüglich (+ Gen.)", meaning: "стосовно конкретної теми чи запиту", context: "ділове листування", ex: "Bezüglich Ihrer Anfrage vom Montag möchten wir Folgendes mitteilen." },
-      B2: { de: "hinsichtlich (+ Gen.)", meaning: "в аспекті, щодо певного параметра", context: "офіційне / DTB", ex: "Hinsichtlich der Lieferfristen müssen wir Rücksprache halten." },
-      C1: { de: "anbelangend (після іменника)", meaning: "що стосується окремого пункту (акцент)", context: "договірне / переговори", ex: "Die Kosten anbelangend, herrscht noch Klärungsbedarf." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "сполучник",
-    concept: "умова / якщо",
-    words: {
-      A1: { de: "wenn", meaning: "якщо / коли", context: "базове", ex: "Wenn du Zeit hast, hilf mir." },
-      A2: { de: "falls", meaning: "у разі якщо", context: "практичне", ex: "Falls es regnet, bleiben wir drinnen." },
-      B1: { de: "sofern", meaning: "за умови якщо", context: "ділове листування", ex: "Die Lieferung erfolgt morgen, sofern die Ware vorrätig ist." },
-      B2: { de: "vorausgesetzt, dass", meaning: "за виняткової умови, що", context: "договірне / DTB", ex: "Wir unterschreiben, vorausgesetzt, dass die Frist eingehalten wird." },
-      C1: { de: "es sei denn, dass", meaning: "хіба що тільки якщо (виняток)", context: "юридичне / норми", ex: "Der Vertrag verlängert sich, es sei denn, dass fristgerecht gekündigt wird." }
-    }
-  },
-  {
-    category: "DTB",
-    pos: "сполучник",
-    concept: "мета / для того щоб",
-    words: {
-      A1: { de: "für", meaning: "для (розмовна заміна з іменником)", context: "базове", ex: "Das mache ich für meinen Job." },
-      A2: { de: "um ... zu", meaning: "щоб зробити щось", context: "побутове", ex: "Ich lerne Deutsch, um eine Stelle zu finden." },
-      B1: { de: "damit", meaning: "для того щоб (різні підмети)", context: "стандартне", ex: "Ich erkläre es genau, damit Sie es verstehen." },
-      B2: { de: "mit dem Ziel, dass", meaning: "із конкретною метою, щоб", context: "проєктне / DTB", ex: "Die Schulung findet statt mit dem Ziel, dass Fehler vermieden werden." },
-      C1: { de: "auf dass", meaning: "аби тільки (високий стиль / заклик)", context: "урочисте / публіцистичне", ex: "Die Vereinbarungen wurden besiegelt, auf dass der Konflikt beigelegt sei." }
-    }
-  },
-  {
-    category: "Емоції",
-    pos: "дієслово",
-    concept: "хвилюватися / панікувати",
-    words: {
-      A1: { de: "Angst haben", meaning: "боятися", context: "базове", ex: "Ich habe Angst vor Spinnen." },
-      A2: { de: "nervös sein", meaning: "нервувати через ситуацію", context: "побутове", ex: "Vor dem Gespräch bin ich sehr nervös." },
-      B1: { de: "sich Sorgen machen", meaning: "переживати за когось або щось", context: "розмовне", ex: "Mach dir bitte keine Sorgen um mich." },
-      B2: { de: "beunruhigt sein", meaning: "відчувати внутрішню тривогу чи неспокій", context: "описове", ex: "Die späte Nachricht hat uns sehr beunruhigt." },
-      C1: { de: "in Panik geraten", meaning: "піддаватися гострому нападу паніки", context: "емоційний стан", ex: "Trotz des Alarms geriet niemand in Panik." }
-    }
-  },
-  {
-    category: "Здоров'я",
-    pos: "дієслово",
-    concept: "одужувати / лікуватися",
-    words: {
-      A1: { de: "gesund sein", meaning: "бути здоровим", context: "базове", ex: "Ich bin wieder gesund." },
-      A2: { de: "besser gehen", meaning: "почуватися краще", context: "побутове", ex: "Heute geht es mir schon viel besser." },
-      B1: { de: "sich erholen", meaning: "відновлювати сили після хвороби/втоми", context: "стандартне", ex: "Im Urlaub konnte ich mich gut erholen." },
-      B2: { de: "genesen", meaning: "проходити процес медичного одужання", context: "медичне / описове", ex: "Der Patient ist nach der Operation rasch genesen." },
-      C1: { de: "zu Kräften kommen", meaning: "повноцінно повертати сили після важкого стану", context: "образне / мова", ex: "Er muss sich schonen, um wieder zu Kräften zu kommen." }
-    }
-  },
-  {
-    category: "Подорожі",
-    pos: "іменник",
-    concept: "затримка / спізнення",
-    words: {
-      A1: { de: "zu spät", meaning: "запізно (базове поняття)", context: "базове", ex: "Der Bus kommt zu spät." },
-      A2: { de: "die Verspätung", meaning: "запізнення транспорту", context: "повсякденне", ex: "Der Zug hatte zwanzig Minuten Verspätung." },
-      B1: { de: "der Ausfall", meaning: "повне скасування рейсу або поїзда", context: "транспортне", ex: "Wegen des Streiks kam es zum Ausfall vieler Züge." },
-      B2: { de: "die Verzögerung", meaning: "вимушена часова затримка у маршруті", context: "інформаційне", ex: "Bei der Gepäckausgabe gab es unerwartete Verzögerungen." },
-      C1: { de: "der Stillstand", meaning: "повна зупинка руху на лінії чи дорозі", context: "аналітичне / звіти", ex: "Ein Unfall auf der Autobahn führte zu stundenlangem Stillstand." }
-    }
-  },
-  {
-    category: "Дозвілля",
-    pos: "дієслово",
-    concept: "відпочивати / розслаблятися",
-    words: {
-      A1: { de: "Pause machen", meaning: "робити коротку перерву", context: "базове", ex: "Lass uns eine kurze Pause machen." },
-      A2: { de: "chillen", meaning: "відпочивати, байдикувати", context: "молодіжне / розмовне", ex: "Am Sonntag will ich nur auf dem Sofa chillen." },
-      B1: { de: "sich entspannen", meaning: "скидати напругу, розслаблятися", context: "стандартне", ex: "Musik hilft mir, mich nach der Arbeit zu entspannen." },
-      B2: { de: "abschalten", meaning: "відволіктися від думок про буденність і справи", context: "психологічне", ex: "Beim Spaziergang im Wald kann ich vollkommen abschalten." },
-      C1: { de: "die Seele baumeln lassen", meaning: "насолоджуватися повним душевним спокоєм", context: "ідіома / образне", ex: "Am Wochenende hat sie einfach die Seele baumeln lassen." }
-    }
-  },
-  {
-    category: "Особисті стосунки",
-    pos: "дієслово",
-    concept: "знайомитися / налагоджувати контакт",
-    words: {
-      A1: { de: "treffen", meaning: "зустрічати людину", context: "базове", ex: "Ich treffe heute einen Freund." },
-      A2: { de: "kennenlernen", meaning: "знайомитися з кимось уперше", context: "повсякденне", ex: "Wir haben uns im Urlaub kennengelernt." },
-      B1: { de: "Kontakt aufnehmen mit", meaning: "встановлювати зв'язок або почати спілкуватися", context: "стандартне", ex: "Er hat über soziale Medien Kontakt mit ihr aufgenommen." },
-      B2: { de: "Kontakte knüpfen", meaning: "зав'язувати нові корисні чи дружні знайомства", context: "соціальне", ex: "Auf der Feier konnte sie viele interessante Kontakte knüpfen." },
-      C1: { de: "anbändeln mit", meaning: "починати романтичний або фліртуючий контакт", context: "розмовне / образне", ex: "Er versuchte den ganzen Abend, mit ihr anzubändeln." }
-    }
-  },
-  {
-    category: "Особисті стосунки",
-    pos: "дієслово",
-    concept: "довіряти / покладатися",
-    words: {
-      A1: { de: "glauben", meaning: "вірити словам", context: "базове", ex: "Ich glaube dir." },
-      A2: { de: "sicher sein", meaning: "бути впевненим у комусь", context: "побутове", ex: "Ich bin mir bei ihr ganz sicher." },
-      B1: { de: "vertrauen (+ Dat.)", meaning: "довіряти людині", context: "міжособистісне", ex: "Ich vertraue meinem besten Freund vollkommen." },
-      B2: { de: "sich verlassen auf (+ Akk.)", meaning: "твердо покладатися на іншого у важливій справі", context: "емоційне / міцне", ex: "Auf meine Familie kann ich mich in jeder Lage verlassen." },
-      C1: { de: "Vertrauen schenken (+ Dat.)", meaning: "свідомо наділяти когось глибокою довірою", context: "витончене / літературне", ex: "Nach vielen Enttäuschungen fiel es ihr schwer, jemandem neues Vertrauen zu schenken." }
-    }
-  },
-  {
-    category: "Особисті стосунки",
-    pos: "дієслово",
-    concept: "подобатися / захоплюватися",
-    words: {
-      A1: { de: "mögen", meaning: "подобатися, любити", context: "базове", ex: "Ich mag sie wirklich sehr." },
-      A2: { de: "gut gefallen", meaning: "справляти гарне враження", context: "повсякденне", ex: "Er gefällt mir schon seit Langem." },
-      B1: { de: "sympathisch finden", meaning: "знаходити людину приємною за характером", context: "оціночне", ex: "Ich fand ihn auf Anhieb sympathisch." },
-      B2: { de: "schwärmen für (+ Akk.)", meaning: "палко захоплюватися кимось, бути закоханим", context: "емоційне / романтичне", ex: "Sie schwärmt schon seit Monaten für ihren Studienkollegen." },
-      C1: { de: "Zuneigung empfinden für", meaning: "відчувати глибоку душевну прихильність і тепло", context: "психологічне / тонке", ex: "Er empfand eine tiefe Zuneigung für seine Jugendfreundin." }
-    }
-  },
-  {
-    category: "Особисті стосунки",
-    pos: "іменник",
-    concept: "розрив / розставання",
-    words: {
-      A1: { de: "das Ende", meaning: "кінець стосунків", context: "базове", ex: "Das war das Ende unserer Zeit." },
-      A2: { de: "der Abschied", meaning: "прощання", context: "побутове", ex: "Der Abschied am Bahnhof fiel beiden schwer." },
-      B1: { de: "die Trennung", meaning: "розставання пари", context: "міжособистісне", ex: "Die Trennung verlief glücklicherweise friedlich." },
-      B2: { de: "der Bruch", meaning: "різкий розрив дружби чи зв'язку через образу", context: "драматичне", ex: "Nach dem Streit kam es zum endgültigen Bruch zwischen den beiden." },
-      C1: { de: "das Zerwürfnis", meaning: "глибокий тривалий розлад і взаємна ворожнеча", context: "високий стиль / психологія", ex: "Ein jahrelanges familiäres Zerwürfnis verhinderte jede Aussöhnung." }
-    }
-  },
-  {
-    category: "Особисті стосунки",
-    pos: "прикметник",
-    concept: "вірний / відданий",
-    words: {
-      A1: { de: "gut", meaning: "хороший, щирий", context: "базове", ex: "Er ist ein guter Freund." },
-      A2: { de: "immer da", meaning: "той, хто постійно поруч", context: "розмовне", ex: "Sie ist immer für mich da." },
-      B1: { de: "treu", meaning: "вірний у коханні чи дружбі", context: "традиційне", ex: "Sie sind seit dreißig Jahren treue Freunde." },
-      B2: { de: "loyal", meaning: "лояльний, вірний принципам і людині перед іншими", context: "соціальне / характер", ex: "In schwierigen Zeiten hat er sich stets absolut loyal verhalten." },
-      C1: { de: "aufopferungsvoll", meaning: "самовідданий, готовий жертвувати власним комфортом", context: "образне / високе", ex: "Mit aufopferungsvoller Fürsorge stand sie ihrem Partner zur Seite." }
-    }
-  },
-  {
-    category: "Трудове право та умови",
-    pos: "іменник",
-    concept: "робочий договір / контракт",
-    words: {
-      A1: { de: "der Vertrag", meaning: "договір, угода", context: "базове", ex: "Ich unterschreibe den Vertrag heute." },
-      A2: { de: "das Papier", meaning: "документ (розмовне)", context: "побутове", ex: "Wo sind meine Papiere für die Arbeit?" },
-      B1: { de: "der Arbeitsvertrag", meaning: "трудовий договір", context: "ділове", ex: "Der Arbeitsvertrag wird für ein Jahr befristet." },
-      B2: { de: "das Beschäftigungsverhältnis", meaning: "офіційні трудові правовідносини", context: "правове / DTB", ex: "Das Beschäftigungsverhältnis endet am Monatsletzten." },
-      C1: { de: "die Vertragsvereinbarung", meaning: "положення / норма колективного або трудового контракту", context: "юридичне / норми", ex: "Diese Klausel entspricht nicht den gesetzlichen Vertragsvereinbarungen." }
-    }
-  },
-  {
-    category: "Трудове право та умови",
-    pos: "дієслово",
-    concept: "брати лікарняний / звітувати про хворобу",
-    words: {
-      A1: { de: "krank sein", meaning: "хворіти", context: "базове", ex: "Ich bin heute leider krank." },
-      A2: { de: "zu Hause bleiben", meaning: "залишатися вдома через нездужання", context: "побутове", ex: "Wegen Fieber muss ich heute zu Hause bleiben." },
-      B1: { de: "sich krankmelden", meaning: "повідомити працедавця про хворобу", context: "робоче", ex: "Ich habe mich heute früh telefonisch krankgemeldet." },
-      B2: { de: "eine Arbeitsunfähigkeitsbescheinigung einreichen", meaning: "подати офіційний електронний чи паперовий лікарняний (AU)", context: "кадри / DTB", ex: "Die Arbeitsunfähigkeitsbescheinigung muss spätestens am vierten Tag vorliegen." },
-      C1: { de: "den Nachweis der Dienstunfähigkeit erbringen", meaning: "юридично засвідчити непрацездатність", context: "формальне / держслужба", ex: "Der Angestellte erbrachte unverzüglich den Nachweis seiner Dienstunfähigkeit." }
-    }
-  },
-  {
-    category: "Трудове право та умови",
-    pos: "іменник",
-    concept: "понаднормові години",
-    words: {
-      A1: { de: "mehr Zeit", meaning: "більше часу на роботі", context: "базове", ex: "Ich brauche heute mehr Zeit." },
-      A2: { de: "mehr arbeiten", meaning: "працювати довше норми", context: "розмовне", ex: "Diese Woche muss ich viel mehr arbeiten." },
-      B1: { de: "die Überstunden", meaning: "понаднормові робочі години", context: "стандартне ділове", ex: "Ich habe im letzten Monat zehn Überstunden gemacht." },
-      B2: { de: "die Mehrarbeit", meaning: "офіційно зафіксована понаднормова праця понад ставку", context: "кадри / DTB", ex: "Der Betriebsrat muss der angeordneten Mehrarbeit zustimmen." },
-      C1: { de: "der Überstundenabbau", meaning: "компенсація понаднормового часу відпочинком (Freizeitausgleich)", context: "регламентне", ex: "Der geplante Überstundenabbau wurde mit der Abteilungsleitung vereinbart." }
-    }
-  },
-  {
-    category: "Трудове право та умови",
-    pos: "іменник",
-    concept: "випробувальний термін",
-    words: {
-      A1: { de: "der Anfang", meaning: "початок роботи", context: "базове", ex: "Am Anfang war die Arbeit sehr schwer." },
-      A2: { de: "die Testzeit", meaning: "тестовий період (калька/розмовне)", context: "побутове", ex: "Meine Testzeit dauert noch zwei Wochen." },
-      B1: { de: "die Probezeit", meaning: "офіційний випробувальний термін", context: "стандартне ділове", ex: "Während der Probezeit gilt eine Kündigungsfrist von zwei Wochen." },
-      B2: { de: "die Bewährungsphase", meaning: "період перевірки відповідності працівника вимогам посади", context: "HR / DTB", ex: "Sie hat die sechsmonatige Bewährungsphase mit Erfolg durchlaufen." },
-      C1: { de: "die Eignungsfeststellung", meaning: "системна процедура підтвердження професійної придатності", context: "експертне кадрове", ex: "Die formelle Eignungsfeststellung bildet die Grundlage für die Festanstellung." }
-    }
-  },
-  {
-    category: "Трудове право та умови",
-    pos: "дієслово",
-    concept: "звільнятися за власним бажанням",
-    words: {
-      A1: { de: "weggehen", meaning: "йти геть з місця", context: "базове", ex: "Ich gehe bald von hier weg." },
-      A2: { de: "aufhören", meaning: "кидати роботу", context: "розмовне", ex: "Er will nächsten Monat bei der Firma aufhören." },
-      B1: { de: "die Stelle kündigen", meaning: "подавати заяву на звільнення", context: "ділове", ex: "Sie hat ihre Stelle gekündigt, um umzuziehen." },
-      B2: { de: "ein Kündigungsschreiben einreichen", meaning: "офіційно подавати письмову заяву про розірвання договору", context: "документи / DTB", ex: "Der Mitarbeiter reichte fristgemäß sein Kündigungsschreiben ein." },
-      C1: { de: "das Arbeitsverhältnis aufkündigen", meaning: "формально розривати трудовий договір в односторонньому порядку", context: "юридичне", ex: "Die Angestellte kündigte das bestehende Arbeitsverhältnis zum Quartalsende auf." }
-    }
-  },
-
-
   ];
 
   let activeView = "all";
@@ -1239,6 +2049,20 @@
   const categoryGroup = document.getElementById("categoryGroup");
   const posGroup = document.getElementById("posGroup");
   const appRoot = document.getElementById("appRoot");
+  const themeToggleBtn = document.getElementById("themeToggle");
+
+  // Логіка темної теми
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark-theme");
+    themeToggleBtn.innerText = "☀️";
+  }
+
+  themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    const isDark = document.body.classList.contains("dark-theme");
+    themeToggleBtn.innerText = isDark ? "☀️" : "🌙";
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
 
   // Автоматична генерація фільтрів категорій і частин мови
   function initDynamicFilters() {
@@ -1346,7 +2170,7 @@
               </div>
             </td>`;
         } else {
-          html += `<td class="col-${lvl}" style="color: #cbd5e1; text-align: center;">—</td>`;
+          html += `<td class="col-${lvl}" style="color: #64748b; text-align: center;">—</td>`;
         }
       });
       html += `</tr>`;
